@@ -1,0 +1,77 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+    {% if category %}
+        {{ category.name }} — Muravka
+    {% else %}
+        Каталог — Muravka
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h2>Категорії</h2>
+<ul>
+    <li>
+        <a href="{% url 'store:product_list' %}">
+            Всі
+        </a>
+    </li>
+    {% for c in categories %}
+        <li>
+            <a href="{% url 'store:product_list_by_category' c.slug %}">
+                {{ c.name }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>
+    {% if category %}
+        {{ category.name }}
+    {% else %}
+        Всі товари
+    {% endif %}
+</h2>
+
+<ul>
+    <div class="row">
+    {% for product in page_obj %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'store:product_detail' product.slug %}" style="color:#3e2723;">
+                            {{ product.name }}
+                        </a>
+                    </h5>
+
+                    <p>{{ product.price }} грн</p>
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</ul>
+
+<div class="mt-4">
+
+    {% if page_obj.has_previous %}
+        <a href="?q={{ query }}&?page={{ page_obj.previous_page_number }}">← Назад</a>
+    {% endif %}
+
+    <span>Сторінка {{ page_obj.number }} з {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">Вперед →</a>
+    {% endif %}
+
+</div>
+
+{% endblock %}

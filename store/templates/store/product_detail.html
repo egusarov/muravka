@@ -1,0 +1,29 @@
+{% extends 'store/base.html' %}
+
+{% block title %}{{ product.name }} — Muravka{% endblock %}
+
+{% block content %}
+
+<h2>{{ product.name }}</h2>
+
+{% if product.image %}
+    <img src="{{ product.image.url }}" width="300">
+{% endif %}
+
+<p>{{ product.description }}</p>
+
+<p>
+    <strong>Ціна:</strong> {{ product.price }} грн
+</p>
+
+<form action="{% url 'store:cart_add' product.id %}" method="post">
+    {% csrf_token %}
+
+    {{ form.quantity }}
+
+    <button type="submit">Додати в кошик</button>
+</form>
+
+<a href="/">← Повернутися до каталогу</a>
+
+{% endblock %}

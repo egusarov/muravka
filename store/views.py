@@ -1,0 +1,121 @@
+from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404, redirect
+
+from .cart import Cart
+from .forms import CartAddProductForm, OrderCreateForm
+from .models import Category, Product, OrderItem
+
+
+def product_list(request, category_slug=None):
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    category = None
+    query = request.GET.get('q')
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+
+    if query:
+        products = products.filter(name__icontains=query)
+
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(
+        request,
+        'store/product_list.html',
+        {
+            'categories': categories,
+            'category': category,
+            'page_obj': page_obj,
+            'query': query,
+        }
+    )
+
+
+def product_detail(request, slug):
+    product = get_object_or_404(
+        Product,
+        slug=slug,
+        available=True
+    )
+
+    form = CartAddProductForm()
+
+    return render(
+        request,
+        'store/product_detail.html',
+        {
+            'product': product,
+            'form': form
+        }
+    )
+
+
+def cart_add(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+
+    form = CartAddProductForm(request.POST)
+
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(
+            product=product,
+            quantity=cd['quantity'],
+            override_quantity=cd['override']
+        )
+
+    return redirect('store:cart_detail')
+
+
+def cart_remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+
+    return redirect('store:cart_detail')
+
+
+def cart_detail(request):
+    cart = Cart(request)
+
+    for item in cart:
+        item['update_quantity_form'] = CartAddProductForm(
+            initial={
+                'quantity': item['quantity'],
+                'override': True
+            }
+        )
+
+    return render(
+        request, 'store/cart_detail.html', {'cart': cart})
+
+
+def order_create(request):
+    cart = Cart(request)
+
+    if request.method == 'POST':
+        form = OrderCreateForm(request.POST)
+
+        if form.is_valid():
+            order = form.save()
+
+            for item in cart:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item['product'],
+                    price=item['product'].price,
+                    quantity=item['quantity']
+                )
+
+            # очистка корзины
+            request.session['cart'] = {}
+
+            return render(request, 'store/order_created.html', {'order': order})
+    else:
+        form = OrderCreateForm()
+
+    return render(request, 'store/order_create.html', {'cart': cart, 'form': form})

@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Кошик — Muravka{% endblock %}
+
+{% block content %}
+
+<h2>Кошик</h2>
+
+<ul>
+    {% for item in cart %}
+        <li>
+            {{ item.product.name }}
+
+            <form action="{% url 'store:cart_add' item.product.id %}" method="post">
+                {% csrf_token %}
+                {{ item.update_quantity_form.quantity }}
+                {{ item.update_quantity_form.override }}
+                <button type="submit">Оновити</button>
+            </form>
+
+            — {{ item.total_price }} грн
+
+            <a href="{% url 'store:cart_remove' item.product.id %}">
+                Видалити
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<p>
+    <strong>Загальна сума:</strong> {{ cart.get_total_price }} грн
+</p>
+
+<a href="{% url 'store:order_create' %}">
+    Оформити замовлення
+</a>
+
+{% endblock %}
