@@ -20,7 +20,7 @@
             </div>
 
             <form method="get" action="">
-                <input type="text" name="q" placeholder="Пошук..." value="{{ query }}">
+                <input type="text" name="q" placeholder="Пошук..." value="{{ query|default:'' }}">
                 <button type="submit">Знайти</button>
             </form>
 

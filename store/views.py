@@ -10,7 +10,7 @@ def product_list(request, category_slug=None):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
     category = None
-    query = request.GET.get('q')
+    query = request.GET.get('q', '')
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
