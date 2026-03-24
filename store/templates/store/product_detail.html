@@ -8,7 +8,7 @@
 <h2>{{ product.name }}</h2>
 
 {% if product.image %}
-    {% cloudinary product.image width=800 crop="scale" quality="auto" fetch_format="auto" %}
+    {% cloudinary product.image.url width=800 crop="scale" quality="auto" fetch_format="auto" %}
 {% endif %}
 
 <p>{{ product.description }}</p>

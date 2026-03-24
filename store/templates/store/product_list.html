@@ -41,7 +41,7 @@
             <div class="card">
 
                 {% if product.image %}
-                    {% cloudinary product.image width=300 crop="scale" quality="auto" fetch_format="auto" class="card-img-top" loading="lazy" %}
+                    {% cloudinary product.image.url width=300 crop="scale" quality="auto" fetch_format="auto" class="card-img-top" loading="lazy" %}
                 {% endif %}
 
                 <div class="card-body">
