@@ -1,4 +1,5 @@
 {% extends 'store/base.html' %}
+{% load cloudinary %}
 
 {% block title %}{{ product.name }} — Muravka{% endblock %}
 
@@ -7,7 +8,7 @@
 <h2>{{ product.name }}</h2>
 
 {% if product.image %}
-    <img src="{{ product.image.url }}" width="300">
+    {% cloudinary product.image width=800 crop="scale" quality="auto" fetch_format="auto" %}
 {% endif %}
 
 <p>{{ product.description }}</p>
