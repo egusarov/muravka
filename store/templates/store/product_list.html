@@ -12,22 +12,21 @@
 {% block content %}
 
 <h2>Категорії</h2>
-<ul>
-    <li>
-        <a href="{% url 'store:product_list' %}">
+<div class="mb-4">
+    <div class="d-flex flex-wrap gap-2">
+        <a href="{% url 'store:product_list' %}" class="btn btn-outline-secondary btn-sm">
             Всі
         </a>
-    </li>
-    {% for c in categories %}
-        <li>
-            <a href="{% url 'store:product_list_by_category' c.slug %}">
+
+        {% for c in categories %}
+            <a href="{% url 'store:product_list_by_category' c.slug %}" class="btn btn-outline-secondary btn-sm">
                 {{ c.name }}
             </a>
-        </li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </div>
+</div>
 
-<h2>
+<h2 class="mb-3">
     {% if category %}
         {{ category.name }}
     {% else %}
@@ -38,20 +37,22 @@
 <div class="row">
     {% for product in page_obj %}
         <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card product-card">
 
                 {% if product.image %}
-                    {% cloudinary product.image.url width=300 crop="scale" quality="auto" fetch_format="auto" class="card-img-top" loading="lazy" %}
+                    <div class="product-image-wrapper">
+                        {% cloudinary product.image.url width=400 height=300 crop="fill" quality="auto" fetch_format="auto" %}
+                    </div>
                 {% endif %}
 
                 <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="{% url 'store:product_detail' product.slug %}" style="color:#3e2723;">
+                    <h5 class="card-title product-title">
+                        <a href="{% url 'store:product_detail' product.slug %}">
                             {{ product.name }}
                         </a>
                     </h5>
 
-                    <p>{{ product.price }} грн</p>
+                    <p class="product-price">{{ product.price }} грн</p>
                 </div>
 
             </div>
