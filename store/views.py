@@ -68,7 +68,7 @@ def cart_add(request, product_id):
             override_quantity=cd['override']
         )
 
-    return redirect('store:cart_detail')
+    return redirect(request.META.get('HTTP_REFERER', 'store:product_list'))
 
 
 def cart_remove(request, product_id):
