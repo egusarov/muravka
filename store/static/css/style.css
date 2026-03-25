@@ -71,3 +71,16 @@ body {
     background-color: #5d4037;
     transform: scale(1.02);
 }
+
+.btn-primary.custom-active {
+    background-color: #6d4c41 !important;
+    border-color: #6d4c41 !important;
+    color: white !important;
+}
+
+.btn-primary.custom-active:hover,
+.btn-primary.custom-active:focus {
+    background-color: #5d4037 !important;
+    border-color: #5d4037 !important;
+    color: white !important;
+}
