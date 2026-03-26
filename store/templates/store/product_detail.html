@@ -14,7 +14,7 @@
 <p>{{ product.description }}</p>
 
 <p>
-    <strong>Ціна:</strong> {{ product.price }} грн
+    <strong>Ціна:</strong> {{ product.price|floatformat:"-0" }} грн
 </p>
 
 <form action="{% url 'store:cart_add' product.id %}" method="post">

@@ -18,7 +18,7 @@
                 <button type="submit">Оновити</button>
             </form>
 
-            — {{ item.total_price }} грн
+            — {{ item.total_price|floatformat:"-0" }} грн
 
             <a href="{% url 'store:cart_remove' item.product.id %}">
                 Видалити
@@ -28,7 +28,7 @@
 </ul>
 
 <p>
-    <strong>Загальна сума:</strong> {{ cart.get_total_price }} грн
+    <strong>Загальна сума:</strong> {{ cart.get_total_price|floatformat:"-0" }} грн
 </p>
 
 <a href="{% url 'store:order_create' %}">

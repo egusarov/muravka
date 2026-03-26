@@ -2,6 +2,7 @@ body {
     background-color: #f8f9fa;
 }
 
+
 .site-header {
     background-color: #f5efe6;
 }
@@ -23,6 +24,7 @@ header a:hover .logo-title {
     font-size: 12px;
 }
 
+
 .product-card {
     height: 100%;
     border: none;
@@ -34,7 +36,6 @@ header a:hover .logo-title {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
-
 
 .product-image-wrapper {
     height: 250px;
@@ -48,7 +49,6 @@ header a:hover .logo-title {
     height: 100%;
     object-fit: cover;
 }
-
 
 .product-card .card-body {
     display: flex;
@@ -69,11 +69,11 @@ header a:hover .logo-title {
     color: #795548;
 }
 
-
 .product-price {
     margin-top: auto;
-    font-weight: bold;
-    font-size: 18px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #3e2723;
 }
 
 
