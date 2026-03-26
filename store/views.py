@@ -58,15 +58,14 @@ def cart_add(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
 
-    form = CartAddProductForm(request.POST)
+    quantity = int(request.POST.get('quantity', 1))
+    override = request.POST.get('override') == 'True'
 
-    if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(
-            product=product,
-            quantity=cd['quantity'],
-            override_quantity=cd['override']
-        )
+    cart.add(
+        product=product,
+        quantity=quantity,
+        override_quantity=override
+    )
 
     return redirect(request.META.get('HTTP_REFERER', 'store:product_list'))
 
@@ -111,7 +110,6 @@ def order_create(request):
                     quantity=item['quantity']
                 )
 
-            # очистка корзины
             request.session['cart'] = {}
 
             return render(request, 'store/order_created.html', {'order': order})

@@ -106,3 +106,7 @@ header a:hover .logo-title {
     border-color: #5d4037 !important;
     color: white !important;
 }
+
+.btn-outline-secondary {
+    min-width: 32px;
+}

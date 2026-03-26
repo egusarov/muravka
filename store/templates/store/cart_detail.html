@@ -4,35 +4,107 @@
 
 {% block content %}
 
-<h2>Кошик</h2>
+<h2 class="mb-4">🛒 Кошик</h2>
 
-<ul>
-    {% for item in cart %}
-        <li>
-            {{ item.product.name }}
+{% if cart %}
+    <div class="table-responsive">
+        <table class="table align-middle">
 
-            <form action="{% url 'store:cart_add' item.product.id %}" method="post">
-                {% csrf_token %}
-                {{ item.update_quantity_form.quantity }}
-                {{ item.update_quantity_form.override }}
-                <button type="submit">Оновити</button>
-            </form>
+            <thead class="table-light">
+                <tr>
+                    <th>Товар</th>
+                    <th style="width: 140px;">Кількість</th>
+                    <th>Ціна</th>
+                    <th>Сума</th>
+                    <th></th>
+                </tr>
+            </thead>
 
-            — {{ item.total_price|floatformat:"-0" }} грн
+            <tbody>
+                {% for item in cart %}
+                    <tr>
+                        <!-- PRODUCT -->
+                        <td>
+                            <strong>{{ item.product.name }}</strong>
+                        </td>
 
-            <a href="{% url 'store:cart_remove' item.product.id %}">
-                Видалити
+                        <!-- QUANTITY -->
+                        <td>
+                            <form action="{% url 'store:cart_add' item.product.id %}" method="post" class="d-flex gap-2">
+                                {% csrf_token %}
+                                <div class="d-flex align-items-center gap-1">
+
+                                <!-- MINUS -->
+                                <form action="{% url 'store:cart_add' item.product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="quantity" value="-1">
+                                    <input type="hidden" name="override" value="False">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">−</button>
+                                </form>
+
+                                <!-- CURRENT VALUE -->
+                                <span class="px-2">{{ item.quantity }}</span>
+
+                                <!-- PLUS -->
+                                <form action="{% url 'store:cart_add' item.product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="override" value="False">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                                </form>
+
+                                </div>
+
+                            </form>
+                        </td>
+
+                        <!-- PRICE -->
+                        <td>
+                            {{ item.price|floatformat:0 }} грн
+                        </td>
+
+                        <!-- TOTAL -->
+                        <td>
+                            <strong>{{ item.total_price|floatformat:0 }} грн</strong>
+                        </td>
+
+                        <!-- REMOVE -->
+                        <td>
+                            <a href="{% url 'store:cart_remove' item.product.id %}"
+                               class="btn btn-sm btn-outline-danger">
+                                ✕
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- TOTAL -->
+    <div class="d-flex justify-content-end mt-4">
+
+        <div class="text-end">
+
+            <h4 class="mb-3 fw-bold">
+                Разом: {{ cart.get_total_price|floatformat:0 }} грн
+            </h4>
+
+            <a href="{% url 'store:order_create' %}" class="btn btn-custom btn-lg">
+                Оформити замовлення
             </a>
-        </li>
-    {% endfor %}
-</ul>
 
-<p>
-    <strong>Загальна сума:</strong> {{ cart.get_total_price|floatformat:"-0" }} грн
-</p>
+        </div>
 
-<a href="{% url 'store:order_create' %}">
-    Оформити замовлення
-</a>
+    </div>
+
+{% else %}
+    <p>Ваш кошик порожній.</p>
+
+    <a href="{% url 'store:product_list' %}" class="btn btn-custom mt-3">
+        Перейти до покупок
+    </a>
+{% endif %}
 
 {% endblock %}
