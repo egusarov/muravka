@@ -5,26 +5,44 @@
 
 {% block content %}
 
-<h2>{{ product.name }}</h2>
+<div class="row">
 
-{% if product.image %}
-    {% cloudinary product.image.url width=800 crop="scale" quality="auto" fetch_format="auto" %}
-{% endif %}
+    <!-- IMAGE -->
+    <div class="col-md-6 mb-4">
+        {% if product.image %}
+            <div class="product-image-wrapper">
+                {% cloudinary product.image.url width=600 height=400 crop="fill" quality="auto" fetch_format="auto" %}
+            </div>
+        {% endif %}
+    </div>
 
-<p>{{ product.description }}</p>
+    <!-- INFO -->
+    <div class="col-md-6">
 
-<p>
-    <strong>Ціна:</strong> {{ product.price|floatformat:"-0" }} грн
-</p>
+        <h2 class="mb-3">{{ product.name }}</h2>
 
-<form action="{% url 'store:cart_add' product.id %}" method="post">
-    {% csrf_token %}
+        <p class="product-price fs-4">{{ product.price|floatformat:0 }} грн</p>
 
-    {{ form.quantity }}
+        {% if product.description %}
+            <div class="mb-4">
+                {{ product.description|linebreaks }}
+            </div>
+        {% endif %}
 
-    <button type="submit">Додати в кошик</button>
-</form>
+        <form action="{% url 'store:cart_add' product.id %}" method="post">
+            {% csrf_token %}
 
-<a href="/">← Повернутися до каталогу</a>
+            <button type="submit" class="btn btn-custom mt-3 px-4">
+                Додати в кошик
+            </button>
+        </form>
+
+        <a href="/" class="btn btn-link mt-4 p-0">
+            ← До каталогу
+        </a>
+
+    </div>
+
+</div>
 
 {% endblock %}
