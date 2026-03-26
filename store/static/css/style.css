@@ -38,10 +38,10 @@ header a:hover .logo-title {
 }
 
 .product-image-wrapper {
-    height: 250px;
+    aspect-ratio: 1 / 1;
+    width: 100%;
     overflow: hidden;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-radius: 12px 12px 0 0;
 }
 
 .product-image-wrapper img {

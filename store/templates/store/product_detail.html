@@ -11,7 +11,7 @@
     <div class="col-md-6 mb-4">
         {% if product.image %}
             <div class="product-image-wrapper">
-                {% cloudinary product.image.url width=600 height=400 crop="fill" quality="auto" fetch_format="auto" %}
+                {% cloudinary product.image.url width=600 height=600 crop="fill" quality="auto" fetch_format="auto" %}
             </div>
         {% endif %}
     </div>
