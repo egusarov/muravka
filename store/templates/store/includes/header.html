@@ -4,16 +4,16 @@
     <div class="container">
         <div class="row align-items-center">
 
+            <!-- LOGO -->
             <div class="col-md-3">
                 <a href="{% url 'store:product_list' %}" class="text-decoration-none">
-                    <div>
-                        <h1 class="h4 mb-0 logo-title">Muravka 🐜</h1>
-                        <small class="text-muted">Натуральна домашня косметика</small>
-                    </div>
+                    <h1 class="h4 mb-0 logo-title">Muravka 🐜</h1>
+                    <small class="text-muted">Натуральна домашня косметика</small>
                 </a>
             </div>
 
-            <div class="col-md-6">
+            <!-- SEARCH -->
+            <div class="col-md-5">
                 <form method="get" action="" class="d-flex">
                     <input type="text"
                            name="q"
@@ -26,34 +26,76 @@
                 </form>
             </div>
 
-            <div class="col-md-3 text-end">
+            <!-- CART + USER -->
+            <div class="col-md-4 d-flex justify-content-end align-items-center gap-3">
+
+                <!-- CART -->
                 <a href="/cart/" class="btn btn-custom position-relative">
-                    🛒 Кошик
+                    🛒
                     {% if cart|length > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ cart|length }}
                         </span>
                     {% endif %}
                 </a>
+
+                <!-- USER -->
+                {% if user.is_authenticated %}
+
+                    {% with user.socialaccount_set.all.0 as social %}
+                        {% if social %}
+                            {% with social.extra_data.picture as avatar %}
+
+                            <div class="dropdown">
+                                <button class="btn d-flex align-items-center gap-2 dropdown-toggle"
+                                        data-bs-toggle="dropdown">
+
+                                    <img src="{{ avatar }}"
+                                         class="rounded-circle"
+                                         width="32"
+                                         height="32">
+
+                                    <span class="d-none d-md-inline">
+                                        {{ user.first_name|default:user.email }}
+                                    </span>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end">
+
+                                    <li class="dropdown-item text-muted small">
+                                        {{ user.email }}
+                                    </li>
+
+                                    <li><hr class="dropdown-divider"></li>
+
+                                    <li>
+                                        <form action="{% url 'account_logout' %}" method="post">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item">
+                                                Вийти
+                                            </button>
+                                        </form>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            {% endwith %}
+                        {% endif %}
+                    {% endwith %}
+
+                {% else %}
+
+                    <a href="{% provider_login_url 'google' process='login' %}"
+                       class="btn btn-google btn-sm d-flex align-items-center gap-2">
+                        <img src="https://developers.google.com/identity/images/g-logo.png" width="18">
+                        <span class="d-none d-md-inline">Увійти</span>
+                    </a>
+
+                {% endif %}
+
             </div>
 
         </div>
-    </div>
-
-    <div class="container mt-2 text-end">
-        {% if user.is_authenticated %}
-            <span class="me-2">👤 {{ user.first_name|default:user.email }}</span>
-            <form action="{% url 'account_logout' %}" method="post" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-secondary btn-sm">
-                    Вийти
-                </button>
-            </form>
-        {% else %}
-            <a href="{% provider_login_url 'google' process='login' %}" class="btn btn-google btn-sm">
-                <img src="https://developers.google.com/identity/images/g-logo.png" width="18">
-                Увійти через Google
-            </a>
-        {% endif %}
     </div>
 </header>
