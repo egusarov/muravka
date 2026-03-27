@@ -1,0 +1,53 @@
+{% load socialaccount %}
+
+<header class="border-bottom py-3 site-header">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-md-3">
+                <a href="{% url 'store:product_list' %}" class="text-decoration-none">
+                    <div>
+                        <h1 class="h4 mb-0 logo-title">Muravka 🐜</h1>
+                        <small class="text-muted">Натуральна домашня косметика</small>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6">
+                <form method="get" action="" class="d-flex">
+                    <input type="text"
+                           name="q"
+                           placeholder="Пошук..."
+                           value="{{ query|default:'' }}"
+                           class="form-control me-2">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        Знайти
+                    </button>
+                </form>
+            </div>
+
+            <div class="col-md-3 text-end">
+                <a href="/cart/" class="btn btn-custom position-relative">
+                    🛒 Кошик
+                    {% if cart|length > 0 %}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ cart|length }}
+                        </span>
+                    {% endif %}
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-2 text-end">
+        {% if user.is_authenticated %}
+            <span class="me-2">👤 {{ user.first_name|default:user.email }}</span>
+            <a href="{% url 'account_logout' %}" class="btn btn-outline-secondary btn-sm">Вийти</a>
+        {% else %}
+            <a href="{% provider_login_url 'google' %}" class="btn btn-outline-dark btn-sm">
+                Увійти через Google
+            </a>
+        {% endif %}
+    </div>
+</header>

@@ -12,55 +12,7 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-    <header class="border-bottom py-3 site-header">
-        <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-md-3">
-                    <a href="{% url 'store:product_list' %}" class="text-decoration-none">
-                        <div>
-                            <h1 class="h4 mb-0 logo-title">Muravka 🐜</h1>
-                            <small class="text-muted">Натуральна домашня косметика</small>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-md-6">
-                    <form method="get" action="" class="d-flex">
-                        <input type="text"
-                               name="q"
-                               placeholder="Пошук..."
-                               value="{{ query|default:'' }}"
-                               class="form-control me-2">
-                        <button type="submit" class="btn btn-outline-secondary">
-                            Знайти
-                        </button>
-                    </form>
-                </div>
-
-                <div class="col-md-3 text-end">
-                    <a href="/cart/" class="btn btn-custom position-relative">
-                        🛒 Кошик
-                        {% if cart|length > 0 %}
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                {{ cart|length }}
-                            </span>
-                        {% endif %}
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-        {% if user.is_authenticated %}
-            <span class="me-2">👤 {{ user.first_name }}</span>
-            <a href="{% url 'account_logout' %}" class="btn btn-outline-secondary btn-sm">Вийти</a>
-        {% else %}
-            <a href="{% url 'account_login' %}" class="btn btn-outline-secondary btn-sm">
-                Увійти
-            </a>
-        {% endif %}
-    </header>
+    {% include "store/includes/header.html" %}
 
     <main class="flex-grow-1">
         <div class="container mt-4">
@@ -69,11 +21,7 @@
         </div>
     </main>
 
-    <footer class="bg-light border-top mt-auto">
-        <div class="container py-3 text-center text-muted">
-            © 2026 Muravka · Всі права захищені
-        </div>
-    </footer>
+    {% include "store/includes/footer.html" %}
 
 </body>
 </html>
