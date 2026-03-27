@@ -43,9 +43,15 @@
     <div class="container mt-2 text-end">
         {% if user.is_authenticated %}
             <span class="me-2">👤 {{ user.first_name|default:user.email }}</span>
-            <a href="{% url 'account_logout' %}" class="btn btn-outline-secondary btn-sm">Вийти</a>
+            <form action="{% url 'account_logout' %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-secondary btn-sm">
+                    Вийти
+                </button>
+            </form>
         {% else %}
-            <a href="{% provider_login_url 'google' %}" class="btn btn-outline-dark btn-sm">
+            <a href="{% provider_login_url 'google' process='login' %}" class="btn btn-google btn-sm">
+                <img src="https://developers.google.com/identity/images/g-logo.png" width="18">
                 Увійти через Google
             </a>
         {% endif %}
