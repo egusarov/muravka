@@ -51,6 +51,15 @@
 
             </div>
         </div>
+
+        {% if user.is_authenticated %}
+            <span class="me-2">👤 {{ user.first_name }}</span>
+            <a href="{% url 'account_logout' %}" class="btn btn-outline-secondary btn-sm">Вийти</a>
+        {% else %}
+            <a href="{% url 'account_login' %}" class="btn btn-outline-secondary btn-sm">
+                Увійти
+            </a>
+        {% endif %}
     </header>
 
     <main class="flex-grow-1">
