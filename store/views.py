@@ -6,6 +6,10 @@ from .forms import CartAddProductForm, OrderCreateForm
 from .models import Category, Product, OrderItem
 
 
+def home(request):
+    return render(request, 'store/home.html')
+
+
 def product_list(request, category_slug=None):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)

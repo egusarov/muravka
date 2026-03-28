@@ -1,0 +1,32 @@
+{% load static %}
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+<div class="hero">
+    <img src="{% static 'img/hero.webp' %}" class="hero-img">
+
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>Натуральна косметика ручної роботи</h1>
+
+            <p>
+                Турбота про шкіру без компромісів — тільки природні інгредієнти
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{% url 'store:product_list' %}" class="btn btn-primary">
+                    🧴 Магазин
+                </a>
+
+                <a href="#" class="btn btn-secondary">
+                    🌿 Аромадіагностика
+                </a>
+
+                <a href="#" class="btn btn-secondary">
+                    💆 Даоський масаж
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
