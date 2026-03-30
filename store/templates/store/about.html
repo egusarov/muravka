@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Про мене — Косметика Світла</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+</head>
+<body>
+
+<section class="about-hero">
+    <img src="{% static 'img/about-hero.webp' %}" class="about-hero-img">
+
+    <div class="about-hero-overlay">
+        <div class="about-hero-content">
+            <h1>Про мене</h1>
+            <p>
+                Мене звуть Світлана Гусарова — засновниця бренду
+                <strong>#КосметикаСвітла</strong>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-container">
+
+        <div class="about-grid">
+
+            <div class="about-image">
+                <img src="{% static 'img/about.webp' %}">
+            </div>
+
+            <div class="about-text">
+
+                <h2>Як усе почалося</h2>
+
+                <p>
+                    Усе почалося у 2017 році, коли моя шкіра стала настільки сухою,
+                    що аптечні засоби не давали результату.
+                </p>
+
+                <p>
+                    Попри те, що я провізор за освітою, я шукала рішення зовні —
+                    у кремах і баночках.
+                </p>
+
+                <p>
+                    Одного дня я створила свій перший крем — і це змінило все.
+                </p>
+
+                <h2>Мій перший результат</h2>
+
+                <ul>
+                    <li>шкіра зажила</li>
+                    <li>пігментація побліднішала</li>
+                    <li>чорні точки зникли</li>
+                    <li>зменшилась реактивність</li>
+                </ul>
+
+                <p class="quote">
+                    Це був не просто крем. Це був ритуал любові до себе.
+                </p>
+
+                <h2>Мій шлях далі</h2>
+
+                <p>
+                    Я почала вивчати косметологію, нутріціологію та китайську медицину,
+                    щоб зрозуміти глибші причини стану шкіри.
+                </p>
+
+                <h2>Як створюється косметика</h2>
+
+                <p>
+                    Кожен засіб створюється вручну — часто за індивідуальним рецептом
+                    після консультації.
+                </p>
+
+                <h2>Філософія</h2>
+
+                <p>
+                    “Косметика світла” — це не лише натуральні компоненти.
+                </p>
+
+                <p>
+                    Це про увагу. Про м’яке піклування.
+                    Про любов до найважливішої людини — себе.
+                </p>
+
+                <a href="{% url 'store:product_list' %}" class="back-btn">
+                    ← До магазину
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

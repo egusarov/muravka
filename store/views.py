@@ -10,6 +10,10 @@ def home(request):
     return render(request, 'store/home.html')
 
 
+def about(request):
+    return render(request, 'store/about.html')
+
+
 def product_list(request, category_slug=None):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)

@@ -2,6 +2,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
 
 <div class="hero">
     <img src="{% static 'img/hero.webp' %}" class="hero-img">
@@ -30,3 +31,30 @@
         </div>
     </div>
 </div>
+
+<section class="about-preview">
+    <div class="about-preview-container">
+
+        <div class="about-preview-image">
+            <img src="{% static 'img/about-2.webp' %}">
+        </div>
+
+        <div class="about-preview-text">
+            <h2>Про мене</h2>
+
+            <p class="about-lead">
+                Я створюю натуральну косметику, яку сама використовую щодня.
+            </p>
+
+            <p>
+                Усе почалося з власного досвіду — коли жодні засоби не допомагали,
+                я створила свій перший крем.
+            </p>
+
+            <a href="{% url 'about' %}" class="btn btn-outline-dark about-btn">
+                Дізнатися більше
+            </a>
+        </div>
+
+    </div>
+</section>
