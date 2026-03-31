@@ -1,3 +1,4 @@
+{% load static %}
 {% load socialaccount %}
 
 <header class="border-bottom py-3 site-header">
@@ -7,8 +8,14 @@
             <!-- LOGO -->
             <div class="col-md-3">
                 <a href="{% url 'store:product_list' %}" class="text-decoration-none">
-                    <h1 class="h4 mb-0 logo-title">Muravka 🐜</h1>
-                    <small class="text-muted">Натуральна домашня косметика</small>
+                    <div class="logo-wrapper d-flex align-items-center gap-2">
+                        <img src="{% static 'img/logo.webp' %}" class="logo-img">
+
+                        <div class="logo-text">
+                            <div class="logo-title">Косметика Світла</div>
+                            <small class="text-muted">Натуральна домашня косметика</small>
+                        </div>
+                    </div>
                 </a>
             </div>
 
