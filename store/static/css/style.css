@@ -85,59 +85,6 @@ header a:hover .logo-title {
 }
 
 
-.btn-custom {
-    background-color: #6d4c41;
-    color: white;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-}
-
-.btn-custom:hover {
-    background-color: #5d4037;
-    transform: scale(1.02);
-}
-
-.btn-primary.custom-active {
-    background-color: #6d4c41 !important;
-    border-color: #6d4c41 !important;
-    color: white !important;
-}
-
-.btn-primary.custom-active:hover,
-.btn-primary.custom-active:focus {
-    background-color: #5d4037 !important;
-    border-color: #5d4037 !important;
-    color: white !important;
-}
-
-.btn-outline-secondary {
-    min-width: 32px;
-}
-
-.btn-google {
-    background-color: #ffffff;
-    color: #444;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-.btn-google:hover {
-    background-color: #f1f3f4;
-    border-color: #dadce0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-}
-
-.btn-google img {
-    display: block;
-}
-
 .dropdown-toggle::after {
     margin-left: 6px;
 }
@@ -235,31 +182,14 @@ header a:hover .logo-title {
     flex-wrap: wrap;
 }
 
-.btn {
-    padding: 12px 26px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    transition: all 0.3s ease;
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.btn-primary {
-    background: rgba(255, 255, 255, 0.9);
-    color: #000;
-    backdrop-filter: blur(4px);
-}
-
-.btn-primary:hover {
-    background: #fff;
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.25);
+.cart-quantity-value {
+    min-width: 24px;
+    text-align: center;
 }

@@ -1,0 +1,171 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 24px;
+    border-radius: 30px;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+    border: none;
+}
+
+.btn--primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    backdrop-filter: blur(4px);
+}
+
+.btn--primary:hover {
+    background: #fff;
+}
+
+.btn--secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.btn--outline {
+    background: transparent;
+    color: #222;
+    border: 1px solid #222;
+}
+
+.btn--outline:hover {
+    background: #222;
+    color: #fff;
+}
+
+.btn--link {
+    font-size: 15px;
+    opacity: 0.8;
+
+    padding: 0;
+    border-radius: 0;
+
+    background: transparent;
+    color: #222;
+
+    position: relative;
+}
+
+.btn--link:hover {
+    opacity: 1;
+}
+
+.btn--link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+
+    width: 100%;
+    height: 1px;
+    background: #222;
+
+    transition: 0.3s;
+}
+
+.btn--link:hover::after {
+    width: 0;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn--active {
+    background: #6d4c41;
+    color: #fff;
+    border-color: #6d4c41;
+}
+
+.btn--sm {
+    padding: 8px 16px;
+    font-size: 14px;
+    height: 38px;
+}
+
+.btn--outline-light {
+    border: 1px solid #ccc;
+    color: #555;
+    background: transparent;
+}
+
+.btn--outline-light:hover {
+    background: #f5f5f5;
+    border-color: #bbb;
+    color: #222;
+}
+
+.btn--brand {
+    background: #6d4c41;
+    color: #fff;
+
+    padding: 10px 16px;
+    font-size: 18px;
+
+    box-shadow: 0 4px 12px rgba(109, 76, 65, 0.2);
+}
+
+.btn--brand:hover {
+    background: #5d4037;
+}
+
+.btn--google {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #444;
+}
+
+.btn--google:hover {
+    background: #f1f3f4;
+}
+
+.btn--ghost {
+    background: transparent;
+    color: #222;
+}
+
+.btn--ghost:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.btn--icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
+
+.btn--danger {
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    background: transparent;
+}
+
+.btn--danger:hover {
+    background: #dc3545;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.btn--lg {
+    padding: 14px 32px;
+    font-size: 16px;
+}

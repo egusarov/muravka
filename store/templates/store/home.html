@@ -1,6 +1,7 @@
 {% load static %}
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
 <link href="{% static 'css/about.css' %}" rel="stylesheet">
 
@@ -16,15 +17,15 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="{% url 'store:product_list' %}" class="btn btn-primary">
+                <a href="{% url 'store:product_list' %}" class="btn btn--primary">
                     🧴 Магазин
                 </a>
 
-                <a href="#" class="btn btn-secondary">
+                <a href="#" class="btn btn--secondary">
                     🌿 Аромадіагностика
                 </a>
 
-                <a href="#" class="btn btn-secondary">
+                <a href="#" class="btn btn--secondary">
                     💆 Даоський масаж
                 </a>
             </div>
@@ -51,7 +52,7 @@
                 я створила свій перший крем.
             </p>
 
-            <a href="{% url 'about' %}" class="btn btn-outline-dark about-btn">
+            <a href="{% url 'about' %}" class="btn btn--outline about-btn">
                 Дізнатися більше
             </a>
         </div>

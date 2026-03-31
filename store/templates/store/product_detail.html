@@ -32,12 +32,12 @@
         <form action="{% url 'store:cart_add' product.id %}" method="post">
             {% csrf_token %}
 
-            <button type="submit" class="btn btn-custom mt-3 px-4">
-                Додати в кошик
+            <button type="submit" class="btn btn--brand mt-3">
+                🛒 Додати в кошик
             </button>
         </form>
 
-        <a href="/" class="btn btn-link mt-4 p-0">
+        <a href="/" class="btn btn--link mt-4">
             ← До каталогу
         </a>
 

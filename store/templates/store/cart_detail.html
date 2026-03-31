@@ -30,32 +30,28 @@
 
                         <!-- QUANTITY -->
                         <td>
-                            <form action="{% url 'store:cart_add' item.product.id %}" method="post" class="d-flex gap-2">
-                                {% csrf_token %}
-                                <div class="d-flex align-items-center gap-1">
+                                <div class="d-flex align-items-center gap-1 cart-quantity">
 
-                                <!-- MINUS -->
-                                <form action="{% url 'store:cart_add' item.product.id %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="quantity" value="-1">
-                                    <input type="hidden" name="override" value="False">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary">−</button>
-                                </form>
+                                    <!-- MINUS -->
+                                    <form action="{% url 'store:cart_add' item.product.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="quantity" value="-1">
+                                        <input type="hidden" name="override" value="False">
+                                        <button type="submit" class="btn btn--sm btn--outline-light btn--icon">−</button>
+                                    </form>
 
-                                <!-- CURRENT VALUE -->
-                                <span class="px-2">{{ item.quantity }}</span>
+                                    <!-- CURRENT VALUE -->
+                                    <span class="cart-quantity-value">{{ item.quantity }}</span>
 
-                                <!-- PLUS -->
-                                <form action="{% url 'store:cart_add' item.product.id %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="override" value="False">
-                                    <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
-                                </form>
+                                    <!-- PLUS -->
+                                    <form action="{% url 'store:cart_add' item.product.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="quantity" value="1">
+                                        <input type="hidden" name="override" value="False">
+                                        <button type="submit" class="btn btn--sm btn--outline-light btn--icon">+</button>
+                                    </form>
 
                                 </div>
-
-                            </form>
                         </td>
 
                         <!-- PRICE -->
@@ -71,7 +67,7 @@
                         <!-- REMOVE -->
                         <td>
                             <a href="{% url 'store:cart_remove' item.product.id %}"
-                               class="btn btn-sm btn-outline-danger">
+                               class="btn btn--sm btn--danger btn--icon">
                                 ✕
                             </a>
                         </td>
@@ -91,7 +87,7 @@
                 Разом: {{ cart.get_total_price|floatformat:0 }} грн
             </h4>
 
-            <a href="{% url 'store:order_create' %}" class="btn btn-custom btn-lg">
+            <a href="{% url 'store:order_create' %}" class="btn btn--brand btn--lg">
                 Оформити замовлення
             </a>
 
@@ -102,7 +98,7 @@
 {% else %}
     <p>Ваш кошик порожній.</p>
 
-    <a href="{% url 'store:product_list' %}" class="btn btn-custom mt-3">
+    <a href="{% url 'store:product_list' %}" class="btn btn--brand mt-3">
         Перейти до покупок
     </a>
 {% endif %}

@@ -20,7 +20,7 @@
                            placeholder="Пошук..."
                            value="{{ query|default:'' }}"
                            class="form-control me-2">
-                    <button type="submit" class="btn btn-outline-secondary">
+                    <button type="submit" class="btn btn--outline btn--sm">
                         Знайти
                     </button>
                 </form>
@@ -30,7 +30,7 @@
             <div class="col-md-4 d-flex justify-content-end align-items-center gap-3">
 
                 <!-- CART -->
-                <a href="/cart/" class="btn btn-custom position-relative">
+                <a href="{% url 'store:cart_detail' %}" class="btn btn--brand position-relative">
                     🛒
                     {% if cart|length > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -47,7 +47,7 @@
                             {% with social.extra_data.picture as avatar %}
 
                             <div class="dropdown">
-                                <button class="btn d-flex align-items-center gap-2 dropdown-toggle"
+                                <button class="btn btn--ghost d-flex align-items-center gap-2 dropdown-toggle"
                                         data-bs-toggle="dropdown">
 
                                     <img src="{{ avatar }}"
@@ -87,7 +87,7 @@
                 {% else %}
 
                     <a href="{% provider_login_url 'google' process='login' %}"
-                       class="btn btn-google btn-sm d-flex align-items-center gap-2">
+                       class="btn btn--sm btn--google d-flex align-items-center gap-2">
                         <img src="https://developers.google.com/identity/images/g-logo.png" width="18">
                         <span class="d-none d-md-inline">Увійти</span>
                     </a>

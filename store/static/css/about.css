@@ -167,18 +167,6 @@ body {
     font-weight: 500;
 }
 
-/* КНОПКА стиль */
-.btn-outline-dark {
-    border: 1px solid #222;
-    color: #222;
-    background: transparent;
-}
-
-.btn-outline-dark:hover {
-    background: #222;
-    color: #fff;
-}
-
 /* АДАПТИВ */
 
 /* планшеты */
