@@ -188,7 +188,8 @@
     font-size: 18px;
     color: #3e2723;
     line-height: 1;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
 }
 
 header a:hover .logo-title {

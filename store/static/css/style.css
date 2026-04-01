@@ -18,11 +18,6 @@ header a:hover .logo-title {
     color: #6d4c41;
 }
 
-.logo-title {
-    color: #3e2723;
-    transition: color 0.2s ease;
-}
-
 .badge {
     font-size: 12px;
 }
