@@ -2,33 +2,10 @@
 {% load cloudinary %}
 
 {% block title %}
-    {% if category %}
-        {{ category.name }} — Muravka-krem
-    {% else %}
-        Каталог — Muravka-krem
-    {% endif %}
+    Каталог — Muravka-krem
 {% endblock %}
 
 {% block content %}
-
-<div class="mb-4">
-    <div class="d-flex flex-wrap gap-2">
-
-        <a href="{% url 'store:product_list' %}"
-           class="btn btn--sm {% if not category %}btn--primary btn--active{% else %}btn--outline-light{% endif %}">
-            Всі
-        </a>
-
-        {% for c in categories %}
-            <a href="{% url 'store:product_list_by_category' c.slug %}"
-               class="btn btn--sm {% if category and category.id == c.id %}btn--primary btn--active{% else %}btn--outline-light{% endif %}">
-                {{ c.name }}
-            </a>
-        {% endfor %}
-
-    </div>
-</div>
-
 <div class="row">
     {% for product in page_obj %}
         <div class="col-md-4 mb-4">
@@ -68,21 +45,17 @@
 <div class="mt-4">
 
     {% if page_obj.has_previous %}
-        {% if query %}
-            <a href="?q={{ query }}&page={{ page_obj.previous_page_number }}">← Назад</a>
-        {% else %}
-            <a href="?page={{ page_obj.previous_page_number }}">← Назад</a>
-        {% endif %}
+        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}">
+            ← Назад
+        </a>
     {% endif %}
 
     <span>Сторінка {{ page_obj.number }} з {{ page_obj.paginator.num_pages }}</span>
 
     {% if page_obj.has_next %}
-        {% if query %}
-            <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">Вперед →</a>
-        {% else %}
-            <a href="?page={{ page_obj.next_page_number }}">Вперед →</a>
-        {% endif %}
+        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}">
+            Вперед →
+        </a>
     {% endif %}
 
 </div>

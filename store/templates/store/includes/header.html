@@ -2,43 +2,48 @@
 {% load socialaccount %}
 
 <header class="border-bottom py-3 site-header">
+
     <div class="container">
-        <div class="row align-items-center">
+
+        <!-- TOP ROW -->
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
 
             <!-- LOGO -->
-            <div class="col-md-3">
-                <a href="{% url 'store:product_list' %}" class="text-decoration-none">
-                    <div class="logo-wrapper d-flex align-items-center gap-2">
-                        <img src="{% static 'img/logo.webp' %}" class="logo-img">
+            <a href="{% url 'store:product_list' %}" class="text-decoration-none">
+                <div class="logo-wrapper d-flex align-items-center gap-2">
+                    <img src="{% static 'img/logo.webp' %}" class="logo-img">
 
-                        <div class="logo-text">
-                            <div class="logo-title">Muravka-krem</div>
-                            <small class="text-muted">природна косметика</small>
-                        </div>
+                    <div class="logo-text">
+                        <div class="logo-title">Muravka-krem</div>
+                        <small class="text-muted">природна косметика</small>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <!-- SEARCH -->
-            <div class="col-md-5">
-                <form method="get" action="" class="d-flex">
-                    <input type="text"
-                           name="q"
-                           placeholder="Пошук..."
-                           value="{{ query|default:'' }}"
-                           class="form-control me-2">
-                    <button type="submit" class="btn btn--outline btn--sm">
-                        Знайти
+            <!-- ACTIONS -->
+            <div class="d-flex align-items-center gap-2 flex-wrap header-actions">
+
+                <!-- SEARCH -->
+                <div class="search position-relative">
+                    <button class="btn btn--ghost btn--icon" id="searchToggle">
+                        🔍
                     </button>
-                </form>
-            </div>
 
-            <!-- CART + USER -->
-            <div class="col-md-4 d-flex justify-content-end align-items-center gap-3">
+                    <form method="get" action="{% url 'store:product_list' %}" class="search-form" id="searchForm">
+                        <input type="text"
+                               name="q"
+                               placeholder="Пошук..."
+                               value="{{ query|default:'' }}"
+                               class="form-control">
+                    </form>
+                </div>
 
                 <!-- CART -->
-                <a href="{% url 'store:cart_detail' %}" class="btn btn--brand position-relative">
+                <a href="{% url 'store:cart_detail' %}"
+                   class="btn btn--ghost btn--icon position-relative">
+
                     🛒
+
                     {% if cart|length > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ cart|length }}
@@ -104,5 +109,20 @@
             </div>
 
         </div>
+
+        <!-- CATEGORIES -->
+        <div class="header-categories mt-2 d-flex flex-wrap gap-3">
+
+            {% for category in categories %}
+                <a href="{% url 'store:product_list' %}?category={{ category.slug }}"
+                   class="btn btn--link {% if current_category == category.slug %}btn--active{% endif %}">
+                    {{ category.name }}
+                </a>
+            {% endfor %}
+
+        </div>
+
     </div>
 </header>
+
+<script src="{% static 'js/header.js' %}"></script>

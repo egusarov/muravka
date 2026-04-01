@@ -199,3 +199,43 @@ header a:hover .logo-title {
 header a:hover .logo-img {
     transform: scale(1.05);
 }
+
+/* HEADER ACTIONS FIX */
+.header-actions .btn {
+    height: 40px;
+    padding: 0 14px;
+}
+
+/* ICON BUTTONS */
+.btn--icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+
+/* SEARCH DROPDOWN */
+.search-form {
+    position: absolute;
+    top: 120%;
+    right: 0;
+
+    width: 260px;
+    padding: 8px 12px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+
+    background: #fff;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+
+    transition: all 0.25s ease;
+}
+
+.search-form.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}

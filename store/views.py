@@ -14,15 +14,15 @@ def about(request):
     return render(request, 'store/about.html')
 
 
-def product_list(request, category_slug=None):
+def product_list(request):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
-    category = None
+
+    category_slug = request.GET.get('category')
     query = request.GET.get('q', '')
 
     if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
+        products = products.filter(category__slug=category_slug)
 
     if query:
         products = products.filter(name__icontains=query)
@@ -36,9 +36,9 @@ def product_list(request, category_slug=None):
         'store/product_list.html',
         {
             'categories': categories,
-            'category': category,
             'page_obj': page_obj,
             'query': query,
+            'current_category': category_slug,
         }
     )
 
