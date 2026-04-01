@@ -43,20 +43,38 @@
 </div>
 
 {% if page_obj.paginator.num_pages > 1 %}
-<div class="mt-4">
+<div class="pagination">
 
+    <!-- PREV -->
     {% if page_obj.has_previous %}
-        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}">
-            ← Назад
+        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}"
+           class="pagination-btn">
+            ←
         </a>
+    {% else %}
+        <span class="pagination-btn disabled">←</span>
     {% endif %}
 
-    <span>Сторінка {{ page_obj.number }} з {{ page_obj.paginator.num_pages }}</span>
+    <!-- PAGES -->
+    {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+            <span class="pagination-btn active">{{ num }}</span>
+        {% else %}
+            <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ num }}"
+               class="pagination-btn">
+                {{ num }}
+            </a>
+        {% endif %}
+    {% endfor %}
 
+    <!-- NEXT -->
     {% if page_obj.has_next %}
-        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}">
-            Вперед →
+        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}"
+           class="pagination-btn">
+            →
         </a>
+    {% else %}
+        <span class="pagination-btn disabled">→</span>
     {% endif %}
 
 </div>

@@ -249,3 +249,50 @@ header a:hover .logo-title {
     transform: translateY(-2px);
     opacity: 0.9;
 }
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 30px;
+}
+
+.pagination-btn {
+    min-width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    text-decoration: none;
+
+    font-size: 14px;
+    color: #333;
+
+    background: transparent;
+    border: 1px solid transparent;
+
+    transition: all 0.2s ease;
+}
+
+/* hover */
+.pagination-btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+/* active page */
+.pagination-btn.active {
+    background: #6d4c41;
+    color: #fff;
+}
+
+/* disabled */
+.pagination-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
