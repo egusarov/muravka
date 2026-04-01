@@ -189,3 +189,63 @@ header a:hover .logo-title {
     min-width: 24px;
     text-align: center;
 }
+
+
+.site-footer {
+    background: #f5efe6;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 16px 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+/* LEFT */
+.footer-copy {
+    font-size: 12px;
+    color: #888;
+}
+
+/* CENTER */
+.footer-socials {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* ICON BASE */
+.social-link {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+/* 🔥 Instagram — фирменный градиент */
+.social-link.instagram {
+    background: radial-gradient(circle at 30% 30%,
+        #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    color: #fff;
+}
+
+/* 🔵 Telegram — фирменный синий */
+.social-link.telegram {
+    background: #229ED9;
+    color: #fff;
+}
+
+/* Hover (минимальный, без “кричащести”) */
+.social-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
