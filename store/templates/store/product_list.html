@@ -26,7 +26,7 @@
                         </a>
                     </h5>
 
-                    <p class="product-price">{{ product.price|floatformat:"-0" }} грн</p>
+                    <p class="product-price">{{ product.price|floatformat:"-0" }} ₴</p>
 
                     <form action="{% url 'store:cart_add' product.id %}" method="post" class="mt-2">
                         {% csrf_token %}

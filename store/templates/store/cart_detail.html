@@ -56,12 +56,12 @@
 
                         <!-- PRICE -->
                         <td>
-                            {{ item.price|floatformat:0 }} грн
+                            {{ item.price|floatformat:0 }} ₴
                         </td>
 
                         <!-- TOTAL -->
                         <td>
-                            <strong>{{ item.total_price|floatformat:0 }} грн</strong>
+                            <strong>{{ item.total_price|floatformat:0 }} ₴</strong>
                         </td>
 
                         <!-- REMOVE -->
@@ -84,7 +84,7 @@
         <div class="text-end">
 
             <h4 class="mb-3 fw-bold">
-                Разом: {{ cart.get_total_price|floatformat:0 }} грн
+                Разом: {{ cart.get_total_price|floatformat:0 }} ₴
             </h4>
 
             <a href="{% url 'store:order_create' %}" class="btn btn--brand btn--lg">
