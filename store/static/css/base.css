@@ -51,17 +51,16 @@
 .btn--link {
     font-size: 15px;
     opacity: 0.8;
-
-    padding: 0;
-    border-radius: 0;
-
+    padding: 6px 14px;
+    border-radius: 999px;
     background: transparent;
     color: #222;
-
     position: relative;
+    transition: all 0.2s ease;
 }
 
 .btn--link:hover {
+    background: rgba(0,0,0,0.06);
     opacity: 1;
 }
 
@@ -204,6 +203,18 @@ header a:hover .logo-img {
 .header-actions .btn {
     height: 40px;
     padding: 0 14px;
+}
+
+.header-categories {
+    justify-content: center;
+}
+
+.active-category {
+    background: #6d4c41;
+    color: #fff;
+    border-radius: 999px;
+    padding: 6px 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 /* ICON BUTTONS */

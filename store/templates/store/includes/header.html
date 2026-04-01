@@ -110,12 +110,12 @@
 
         </div>
 
-        <!-- CATEGORIES -->
-        <div class="header-categories mt-2 d-flex flex-wrap gap-3">
+        <!-- CATEGORIES ROW -->
+        <div class="header-categories mt-2 d-flex justify-content-center flex-wrap gap-3">
 
             {% for category in categories %}
                 <a href="{% url 'store:product_list' %}?category={{ category.slug }}"
-                   class="btn btn--link {% if current_category == category.slug %}btn--active{% endif %}">
+                   class="btn btn--link {% if current_category == category.slug %}active-category{% endif %}">
                     {{ category.name }}
                 </a>
             {% endfor %}
@@ -124,5 +124,3 @@
 
     </div>
 </header>
-
-<script src="{% static 'js/header.js' %}"></script>
