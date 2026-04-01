@@ -42,6 +42,7 @@
     {% endfor %}
 </div>
 
+{% if page_obj.paginator.num_pages > 1 %}
 <div class="mt-4">
 
     {% if page_obj.has_previous %}
@@ -59,5 +60,6 @@
     {% endif %}
 
 </div>
+{% endif %}
 
 {% endblock %}
