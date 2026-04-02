@@ -4,43 +4,45 @@
 <header class="border-bottom py-3 site-header">
     <div class="container">
 
-        <!-- MAIN ROW -->
-        <div class="header-row">
+        <!-- ONE LINE HEADER -->
+        <div class="header-top">
 
             <!-- LOGO -->
-            <a href="{% url 'store:product_list' %}" class="text-decoration-none">
+            <a href="{% url 'store:product_list' %}" class="logo text-decoration-none">
                 <div class="logo-wrapper d-flex align-items-center gap-2">
                     <img src="{% static 'img/logo.webp' %}" class="logo-img">
 
                     <div class="logo-text">
                         <div class="logo-title">Muravka-krem</div>
-                        <small class="text-muted">природна косметика</small>
+                        <small class="text-muted d-none d-md-block">
+                            природна косметика
+                        </small>
                     </div>
                 </div>
             </a>
 
-            <!-- CATEGORIES (DESKTOP) -->
-            <div class="header-categories d-none d-md-flex">
-
+            <!-- DESKTOP CATEGORIES -->
+            <div class="header-categories-desktop">
                 {% for category in categories %}
                     <a href="{% url 'store:product_list' %}?category={{ category.slug }}"
                        class="btn btn--link {% if current_category == category.slug %}active-category{% endif %}">
                         {{ category.name }}
                     </a>
                 {% endfor %}
-
             </div>
 
             <!-- ACTIONS -->
-            <div class="header-actions d-flex align-items-center gap-2">
+            <div class="header-actions">
 
                 <!-- SEARCH -->
                 <div class="search position-relative">
-                    <button class="btn btn--ghost btn--icon" id="searchToggle">
-                        🔍
-                    </button>
+                    <button class="btn btn--ghost btn--icon" id="searchToggle">🔍</button>
 
-                    <form method="get" action="{% url 'store:product_list' %}" class="search-form" id="searchForm">
+                    <form method="get"
+                          action="{% url 'store:product_list' %}"
+                          class="search-form"
+                          id="searchForm">
+
                         <input type="text"
                                name="q"
                                placeholder="Пошук..."
@@ -52,9 +54,7 @@
                 <!-- CART -->
                 <a href="{% url 'store:cart_detail' %}"
                    class="btn btn--ghost btn--icon position-relative">
-
                     🛒
-
                     {% if cart|length > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             {{ cart|length }}
@@ -110,27 +110,23 @@
                 {% else %}
 
                     <a href="{% provider_login_url 'google' process='login' %}"
-                       class="btn btn--sm btn--google d-flex align-items-center gap-2">
+                       class="btn btn--google btn--sm d-flex align-items-center gap-2">
                         <img src="https://developers.google.com/identity/images/g-logo.png" width="18">
                         <span class="d-none d-md-inline">Увійти</span>
                     </a>
 
                 {% endif %}
-
             </div>
-
         </div>
 
-        <!-- CATEGORIES (MOBILE) -->
-        <div class="header-categories-mobile d-md-none">
-
+        <!-- MOBILE CATEGORIES -->
+        <div class="header-categories-mobile">
             {% for category in categories %}
                 <a href="{% url 'store:product_list' %}?category={{ category.slug }}"
                    class="btn btn--link {% if current_category == category.slug %}active-category{% endif %}">
                     {{ category.name }}
                 </a>
             {% endfor %}
-
         </div>
 
     </div>
