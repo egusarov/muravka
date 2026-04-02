@@ -220,7 +220,8 @@ header a:hover .logo-img {
     gap: 20px;
 }
 
-.header-categories .active-category::after {
+.header-categories .active-category::after,
+.header-categories-mobile .active-category::after {
     display: none;
 }
 
