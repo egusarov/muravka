@@ -2,11 +2,10 @@
 {% load socialaccount %}
 
 <header class="border-bottom py-3 site-header">
-
     <div class="container">
 
-        <!-- TOP ROW -->
-        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <!-- MAIN ROW -->
+        <div class="header-row">
 
             <!-- LOGO -->
             <a href="{% url 'store:product_list' %}" class="text-decoration-none">
@@ -20,8 +19,20 @@
                 </div>
             </a>
 
+            <!-- CATEGORIES (DESKTOP) -->
+            <div class="header-categories d-none d-md-flex">
+
+                {% for category in categories %}
+                    <a href="{% url 'store:product_list' %}?category={{ category.slug }}"
+                       class="btn btn--link {% if current_category == category.slug %}active-category{% endif %}">
+                        {{ category.name }}
+                    </a>
+                {% endfor %}
+
+            </div>
+
             <!-- ACTIONS -->
-            <div class="d-flex align-items-center gap-2 flex-wrap header-actions">
+            <div class="header-actions d-flex align-items-center gap-2">
 
                 <!-- SEARCH -->
                 <div class="search position-relative">
@@ -110,8 +121,8 @@
 
         </div>
 
-        <!-- CATEGORIES ROW -->
-        <div class="header-categories mt-2 d-flex justify-content-center flex-wrap gap-3">
+        <!-- CATEGORIES (MOBILE) -->
+        <div class="header-categories-mobile d-md-none">
 
             {% for category in categories %}
                 <a href="{% url 'store:product_list' %}?category={{ category.slug }}"

@@ -191,6 +191,14 @@
     transition: color 0.2s ease;
 }
 
+
+/* MAIN ROW */
+.header-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
 header a:hover .logo-title {
     color: #6d4c41;
 }
@@ -205,12 +213,33 @@ header a:hover .logo-img {
     padding: 0 14px;
 }
 
+/* CENTER CATEGORIES */
 .header-categories {
+    display: flex;
     justify-content: center;
+    gap: 20px;
 }
 
 .header-categories .active-category::after {
     display: none;
+}
+
+/* MOBILE CATEGORIES */
+.header-categories-mobile {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    margin-top: 10px;
+    padding-bottom: 4px;
+}
+
+.header-categories-mobile::-webkit-scrollbar {
+    display: none;
+}
+
+/* важный момент — не даём ломаться */
+.header-categories-mobile .btn {
+    white-space: nowrap;
 }
 
 .active-category {
