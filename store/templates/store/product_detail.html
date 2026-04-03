@@ -29,6 +29,11 @@
             </div>
         {% endif %}
         <div class="product-detail-actions">
+
+            <a href="{% url 'store:product_list' %}" class="btn btn--link product-back-link">
+                ← До каталогу
+            </a>
+
             <form action="{% url 'store:cart_add' product.id %}" method="post">
                 {% csrf_token %}
 
@@ -36,11 +41,8 @@
                     🛒 Додати в кошик
                 </button>
             </form>
-        </div>
-        <a href="/" class="btn btn--link product-back-link">
-            ← До каталогу
-        </a>
 
+        </div>
     </div>
 
 </div>
