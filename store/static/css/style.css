@@ -70,6 +70,7 @@ header a:hover .logo-title {
 .product-card .card-body {
     display: flex;
     flex-direction: column;
+    padding: 12px;
 }
 
 .product-card form {
