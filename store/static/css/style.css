@@ -192,6 +192,9 @@ header a:hover .logo-title {
     flex-wrap: wrap;
 }
 
+.hero-buttons .btn--primary {
+    font-size: var(--fs-md);
+}
 
 .cart-quantity {
     display: flex;
@@ -303,6 +306,7 @@ header a:hover .logo-title {
 .pagination-btn.active {
     background: #6d4c41;
     color: #fff;
+    font-weight: 600;
 }
 
 /* disabled */
