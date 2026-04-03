@@ -1,7 +1,20 @@
+:root {
+    --fs-xs: 12px;
+    --fs-sm: 14px;
+    --fs-md: 16px;   /* BASE */
+    --fs-lg: 18px;
+    --fs-xl: 20px;
+    --fs-2xl: 24px;
+    --fs-3xl: 30px;
+}
+
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+    font-size: var(--fs-md);
+    line-height: 1.5;
     background-color: #f8f9fa;
     letter-spacing: 0.2px;
 }
@@ -64,9 +77,10 @@ header a:hover .logo-title {
 }
 
 .product-title a {
+    font-size: var(--fs-md);
+    font-weight: 500;
     text-decoration: none;
     color: #3e2723;
-    font-weight: 500;
 }
 
 .product-title a:hover {
@@ -76,7 +90,7 @@ header a:hover .logo-title {
 .product-price {
     margin-top: auto;
     font-weight: 600;
-    font-size: 20px;
+    font-size: var(--fs-xl);
     color: #3e2723;
 }
 
@@ -146,13 +160,13 @@ header a:hover .logo-title {
 }
 
 .hero-content h1 {
-    font-size: 42px;
+    font-size: clamp(28px, 5vw, 36px);
     font-weight: 600;
     margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 18px;
+    font-size: var(--fs-lg);
     margin-bottom: 30px;
     opacity: 0.9;
 }
@@ -205,7 +219,7 @@ header a:hover .logo-title {
 
 /* LEFT */
 .footer-copy {
-    font-size: 12px;
+    font-size: var(--fs-xs);
     color: #888;
 }
 
@@ -271,7 +285,7 @@ header a:hover .logo-title {
     border-radius: 10px;
     text-decoration: none;
 
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: #333;
 
     background: transparent;
