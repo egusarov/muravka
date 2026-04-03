@@ -76,6 +76,10 @@ header a:hover .logo-title {
     margin-top: 10px;
 }
 
+.product-title {
+    margin-bottom: 0;
+}
+
 .product-title a {
     font-size: var(--fs-md);
     font-weight: 500;
@@ -87,10 +91,40 @@ header a:hover .logo-title {
     color: #795548;
 }
 
+.product-footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: 0;
+    gap: 10px;
+}
+
+.product-footer .btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.product-footer .btn:hover {
+    transform: scale(1.05);
+}
+
+.product-footer .btn--brand {
+    background: rgba(109, 76, 65, 0.1);
+    color: #6d4c41;
+    box-shadow: none;
+}
+
+.product-footer .btn--brand:hover {
+    background: rgba(109, 76, 65, 0.18);
+}
+
 .product-price {
-    margin-top: auto;
+    margin: 0;
     font-weight: 600;
     font-size: var(--fs-xl);
+    letter-spacing: 0.2px;
     color: #3e2723;
 }
 
