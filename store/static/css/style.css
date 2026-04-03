@@ -19,9 +19,6 @@ body {
     letter-spacing: 0.2px;
 }
 
-.page-content {
-    padding-bottom: 40px;
-}
 
 .site-header {
     background-color: #f5efe6;
@@ -353,6 +350,10 @@ header a:hover .logo-title {
     pointer-events: none;
 }
 
+
+.product-detail-page {
+    padding-bottom: 40px;
+}
 
 .product-detail-image {
     max-width: 480px;
