@@ -8,10 +8,10 @@
 <div class="row">
 
     <!-- IMAGE -->
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6 mb-4 d-flex align-items-start justify-content-center">
         {% if product.image %}
-            <div class="product-image-wrapper">
-                {% cloudinary product.image.url width=600 height=600 crop="fill" quality="auto" fetch_format="auto" %}
+            <div class="product-image-wrapper product-detail-image">
+                {% cloudinary product.image.url width=500 height=500 crop="fill" quality="auto" fetch_format="auto" %}
             </div>
         {% endif %}
     </div>
@@ -19,25 +19,25 @@
     <!-- INFO -->
     <div class="col-md-6">
 
-        <h2 class="mb-3">{{ product.name }}</h2>
+        <h2 class="product-detail-title">{{ product.name }}</h2>
 
-        <p class="product-price fs-4">{{ product.price|floatformat:0 }} ₴</p>
+        <div class="product-detail-price">{{ product.price|floatformat:0 }} ₴</div>
 
         {% if product.description %}
-            <div class="mb-4">
+            <div class="product-detail-description">
                 {{ product.description|linebreaks }}
             </div>
         {% endif %}
+        <div class="product-detail-actions">
+            <form action="{% url 'store:cart_add' product.id %}" method="post">
+                {% csrf_token %}
 
-        <form action="{% url 'store:cart_add' product.id %}" method="post">
-            {% csrf_token %}
-
-            <button type="submit" class="btn btn--brand mt-3">
-                🛒 Додати в кошик
-            </button>
-        </form>
-
-        <a href="/" class="btn btn--link mt-4">
+                <button type="submit" class="btn btn--brand">
+                    🛒 Додати в кошик
+                </button>
+            </form>
+        </div>
+        <a href="/" class="btn btn--link product-back-link">
             ← До каталогу
         </a>
 

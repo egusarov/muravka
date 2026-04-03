@@ -349,3 +349,66 @@ header a:hover .logo-title {
     opacity: 0.3;
     pointer-events: none;
 }
+
+
+.product-detail-image {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.product-detail-title {
+    font-size: var(--fs-2xl);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.product-detail-price {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.product-detail-description {
+    max-width: 520px;
+    font-size: var(--fs-md);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.product-detail-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.product-detail-actions .btn {
+    transition: all 0.2s ease;
+}
+
+.product-detail-actions .btn--brand {
+    font-size: var(--fs-md);
+    padding: 10px 16px;
+    background: rgba(109, 76, 65, 0.1);
+    color: #6d4c41;
+    box-shadow: none;
+}
+
+.product-detail-actions .btn--brand:hover {
+    background: rgba(109, 76, 65, 0.18);
+}
+
+.product-back-link {
+    font-size: var(--fs-sm);
+    margin-top: 12px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .product-detail-image {
+        max-width: 100%;
+    }
+
+    .product-detail-title {
+        font-size: var(--fs-xl);
+    }
+}
