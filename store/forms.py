@@ -18,11 +18,38 @@ class CartAddProductForm(forms.Form):
 class OrderCreateForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['first_name', 'last_name', 'email', 'address', 'city']
+        fields = [
+            'first_name',
+            'last_name',
+            'phone',
+            'city',
+            'warehouse',
+            'comment'
+        ]
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'address': forms.TextInput(attrs={'class': 'form-control'}),
-            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={
+                'placeholder': "Ім’я",
+                'class': 'form-control'
+            }),
+            'last_name': forms.TextInput(attrs={
+                'placeholder': "Прізвище",
+                'class': 'form-control'
+            }),
+            'phone': forms.TextInput(attrs={
+                'placeholder': "+380XXXXXXXXX або 0XXXXXXXXX",
+                'class': 'form-control'
+            }),
+            'city': forms.TextInput(attrs={
+                'placeholder': "Місто",
+                'class': 'form-control'
+            }),
+            'warehouse': forms.TextInput(attrs={
+                'placeholder': "Відділення / Поштомат",
+                'class': 'form-control'
+            }),
+            'comment': forms.Textarea(attrs={
+                'placeholder': "Коментар до замовлення (необов’язково)",
+                'rows': 3,
+                'class': 'form-control'
+            })
         }

@@ -108,7 +108,12 @@ def order_create(request):
         form = OrderCreateForm(request.POST)
 
         if form.is_valid():
-            order = form.save()
+            order = form.save(commit=False)
+
+            if request.user.is_authenticated:
+                order.user = request.user
+
+            order.save()
 
             for item in cart:
                 OrderItem.objects.create(
@@ -122,6 +127,14 @@ def order_create(request):
 
             return render(request, 'store/order_created.html', {'order': order})
     else:
-        form = OrderCreateForm()
+        initial_data = {}
+
+        if request.user.is_authenticated:
+            initial_data = {
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+            }
+
+        form = OrderCreateForm(initial=initial_data)
 
     return render(request, 'store/order_create.html', {'cart': cart, 'form': form})

@@ -1,10 +1,21 @@
+import re
+
+from django.conf import settings
 from django.db import models
 from django.core.exceptions import ValidationError
 
 
 def validate_image_size(image):
     if image.size > 2 * 1024 * 1024:
-        raise ValidationError("Максимальний размер 2MB")
+        raise ValidationError("Максимальний розмір зображення — 2MB")
+
+
+def validate_phone(value):
+    pattern = r'^(\+380\d{9}|0\d{9})$'
+    if not re.match(pattern, value):
+        raise ValidationError(
+            'Введіть номер у форматі +380XXXXXXXXX або 0XXXXXXXXX'
+        )
 
 
 class Category(models.Model):
@@ -41,11 +52,22 @@ class Product(models.Model):
 
 
 class Order(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='orders'
+    )
+
     first_name = models.CharField("Ім'я", max_length=50)
     last_name = models.CharField("Прізвище", max_length=50)
-    email = models.EmailField("Електронна пошта")
-    address = models.CharField("Адреса", max_length=250)
-    city = models.CharField("Місто", max_length=100)
+    phone = models.CharField("Мобільний телефон", max_length=20, validators=[validate_phone])
+
+    city = models.CharField("Місто", max_length=50)
+    warehouse = models.CharField("Відділення / поштомат", max_length=255)
+
+    comment = models.TextField("Коментар", blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
