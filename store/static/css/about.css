@@ -10,7 +10,7 @@ body {
 /* HERO (about page) */
 .about-hero {
     position: relative;
-    height: 60vh;
+    height: 60dvh;
     min-height: 400px;
     overflow: hidden;
 }
@@ -31,11 +31,18 @@ body {
     background: rgba(0,0,0,0.35);
 
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
+
+    padding-bottom: 5vh;
 
     text-align: center;
     color: white;
+}
+
+.about-hero-content {
+    max-width: 700px;
+    padding: 0 16px; /* чтобы не лип к краям на мобиле */
 }
 
 .about-hero-content h1 {
@@ -150,10 +157,9 @@ body {
     margin-bottom: 4px;
 }
 
-/* 🔥 КНОПКА (фикс) */
 .about-btn {
     margin-top: 20px;
-    align-self: flex-end; /* вместо flex-end */
+    align-self: flex-end;
 }
 
 /* Типографика */
@@ -168,6 +174,16 @@ body {
 }
 
 /* АДАПТИВ */
+@media (max-width: 768px) {
+    .about-hero {
+        height: 50vh;
+        min-height: 300px; /* 🔥 уменьшаем */
+    }
+
+    .about-hero-overlay {
+        padding-bottom: 8vh;
+    }
+}
 
 /* планшеты */
 @media (max-width: 600px) {
