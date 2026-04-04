@@ -43,14 +43,16 @@
                 {{ form.comment }}
             </div>
 
-            <div class="d-grid gap-2 mt-3">
-                <button type="submit" class="btn btn--brand btn--lg w-100">
-                    ✅ Підтвердити замовлення
-                </button>
+            <div class="product-detail-actions d-flex justify-content-between">
 
                 <a href="{% url 'store:cart_detail' %}" class="btn btn--link">
-                    ← Повернутися до кошика
+                    ← До кошика
                 </a>
+
+                <button type="submit" class="btn btn--brand">
+                    🧾 Підтвердити замовлення
+                </button>
+
             </div>
 
         </form>
