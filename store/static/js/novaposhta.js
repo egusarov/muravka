@@ -7,10 +7,20 @@ const warehouseDropdown = document.getElementById('warehouse-dropdown');
 const cityRefInput = document.getElementById('city-ref');
 
 let selectedCityRef = null;
+let warehousesCache = [];
 
 
-// 🔍 Города
-cityInput.addEventListener('input', async () => {
+function debounce(fn, delay = 300) {
+    let timeout;
+
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+    };
+}
+
+
+const handleCityInput = debounce(async () => {
     const query = cityInput.value.trim();
 
     if (query.length < 2) {
@@ -33,12 +43,11 @@ cityInput.addEventListener('input', async () => {
                 cityInput.value = city.name;
                 selectedCityRef = city.ref;
 
-                // ✅ сохраняем ref
                 cityRefInput.value = city.ref;
 
-                // ✅ очищаем warehouse полностью
                 warehouseInput.value = '';
                 warehouseDropdown.innerHTML = '';
+                warehousesCache = [];
 
                 cityDropdown.innerHTML = '';
             });
@@ -49,31 +58,26 @@ cityInput.addEventListener('input', async () => {
     } catch (error) {
         console.error('Error loading cities:', error);
     }
-});
+}, 300);
+
+cityInput.addEventListener('input', handleCityInput);
 
 
-// 📦 Отделения
 warehouseInput.addEventListener('focus', async () => {
     if (!selectedCityRef) return;
+
+    if (warehousesCache.length) {
+        renderWarehouses(warehousesCache);
+        return;
+    }
 
     try {
         const response = await fetch(`/store/api/warehouses/?city_ref=${selectedCityRef}`);
         const data = await response.json();
 
-        warehouseDropdown.innerHTML = '';
+        warehousesCache = data.results;
 
-        data.results.forEach(wh => {
-            const div = document.createElement('div');
-            div.classList.add('dropdown-item');
-            div.textContent = wh.name;
-
-            div.addEventListener('click', () => {
-                warehouseInput.value = wh.name;
-                warehouseDropdown.innerHTML = '';
-            });
-
-            warehouseDropdown.appendChild(div);
-        });
+        renderWarehouses(warehousesCache);
 
     } catch (error) {
         console.error('Error loading warehouses:', error);
@@ -81,7 +85,35 @@ warehouseInput.addEventListener('focus', async () => {
 });
 
 
-// ❌ Закрытие dropdown при клике вне
+warehouseInput.addEventListener('input', () => {
+    const query = warehouseInput.value.toLowerCase().trim();
+
+    const filtered = warehousesCache.filter(wh =>
+        wh.name.toLowerCase().includes(query)
+    );
+
+    renderWarehouses(filtered);
+});
+
+
+function renderWarehouses(list) {
+    warehouseDropdown.innerHTML = '';
+
+    list.forEach(wh => {
+        const div = document.createElement('div');
+        div.classList.add('dropdown-item');
+        div.textContent = wh.name;
+
+        div.addEventListener('click', () => {
+            warehouseInput.value = wh.name;
+            warehouseDropdown.innerHTML = '';
+        });
+
+        warehouseDropdown.appendChild(div);
+    });
+}
+
+
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.mb-3')) {
         cityDropdown.innerHTML = '';
