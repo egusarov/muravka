@@ -1,9 +1,11 @@
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .cart import Cart
 from .forms import CartAddProductForm, OrderCreateForm
 from .models import Category, Product, OrderItem
+from .services.novaposhta import get_cities, get_warehouses
 
 
 def home(request):
@@ -138,3 +140,23 @@ def order_create(request):
         form = OrderCreateForm(initial=initial_data)
 
     return render(request, 'store/order_create.html', {'cart': cart, 'form': form})
+
+
+def api_cities(request):
+    query = request.GET.get("q", "")
+
+    if not query:
+        return JsonResponse({"results": []})
+
+    cities = get_cities(query)
+    return JsonResponse({"results": cities})
+
+
+def api_warehouses(request):
+    city_ref = request.GET.get("city_ref")
+
+    if not city_ref:
+        return JsonResponse({"results": []})
+
+    warehouses = get_warehouses(city_ref)
+    return JsonResponse({"results": warehouses})

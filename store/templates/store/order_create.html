@@ -1,4 +1,5 @@
 {% extends 'store/base.html' %}
+{% load static %}
 
 {% block title %}Оформлення замовлення — Muravka-krem{% endblock %}
 
@@ -33,6 +34,7 @@
 
             <div class="mb-3">
                 {{ form.city }}
+                <input type="hidden" id="city-ref" name="city_ref">
             </div>
 
             <div class="mb-3">
@@ -91,5 +93,7 @@
     </div>
 
 </div>
+
+<script src="{% static 'js/novaposhta.js' %}"></script>
 
 {% endblock %}
