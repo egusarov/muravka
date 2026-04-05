@@ -32,13 +32,15 @@
                 {% endif %}
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 position-relative">
                 {{ form.city }}
                 <input type="hidden" id="city-ref" name="city_ref">
+                <div id="city-dropdown" class="dropdown-list"></div>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 position-relative">
                 {{ form.warehouse }}
+                <div id="warehouse-dropdown" class="dropdown-list"></div>
             </div>
 
             <div class="mb-3">

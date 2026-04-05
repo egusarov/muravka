@@ -1,31 +1,90 @@
 const cityInput = document.querySelector('[name="city"]');
+const cityDropdown = document.getElementById('city-dropdown');
+
 const warehouseInput = document.querySelector('[name="warehouse"]');
+const warehouseDropdown = document.getElementById('warehouse-dropdown');
+
+const cityRefInput = document.getElementById('city-ref');
 
 let selectedCityRef = null;
 
-// 🔍 Поиск городов
+
+// 🔍 Города
 cityInput.addEventListener('input', async () => {
-    const query = cityInput.value;
+    const query = cityInput.value.trim();
 
-    if (query.length < 2) return;
+    if (query.length < 2) {
+        cityDropdown.innerHTML = '';
+        return;
+    }
 
-    const response = await fetch(`/store/api/cities/?q=${query}`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`/store/api/cities/?q=${query}`);
+        const data = await response.json();
 
-    console.log('Cities:', data.results);
+        cityDropdown.innerHTML = '';
 
-    // Пока просто берём первый вариант (упрощение)
-    if (data.results.length > 0) {
-        selectedCityRef = data.results[0].ref;
+        data.results.forEach(city => {
+            const div = document.createElement('div');
+            div.classList.add('dropdown-item');
+            div.textContent = city.name;
+
+            div.addEventListener('click', () => {
+                cityInput.value = city.name;
+                selectedCityRef = city.ref;
+
+                // ✅ сохраняем ref
+                cityRefInput.value = city.ref;
+
+                // ✅ очищаем warehouse полностью
+                warehouseInput.value = '';
+                warehouseDropdown.innerHTML = '';
+
+                cityDropdown.innerHTML = '';
+            });
+
+            cityDropdown.appendChild(div);
+        });
+
+    } catch (error) {
+        console.error('Error loading cities:', error);
     }
 });
 
-// 📦 Подгрузка отделений при фокусе
+
+// 📦 Отделения
 warehouseInput.addEventListener('focus', async () => {
     if (!selectedCityRef) return;
 
-    const response = await fetch(`/store/api/warehouses/?city_ref=${selectedCityRef}`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`/store/api/warehouses/?city_ref=${selectedCityRef}`);
+        const data = await response.json();
 
-    console.log('Warehouses:', data.results);
+        warehouseDropdown.innerHTML = '';
+
+        data.results.forEach(wh => {
+            const div = document.createElement('div');
+            div.classList.add('dropdown-item');
+            div.textContent = wh.name;
+
+            div.addEventListener('click', () => {
+                warehouseInput.value = wh.name;
+                warehouseDropdown.innerHTML = '';
+            });
+
+            warehouseDropdown.appendChild(div);
+        });
+
+    } catch (error) {
+        console.error('Error loading warehouses:', error);
+    }
+});
+
+
+// ❌ Закрытие dropdown при клике вне
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.mb-3')) {
+        cityDropdown.innerHTML = '';
+        warehouseDropdown.innerHTML = '';
+    }
 });
