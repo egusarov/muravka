@@ -16,6 +16,10 @@ def about(request):
     return render(request, 'store/about.html')
 
 
+def aromadiagnostics(request):
+    return render(request, 'store/aromadiagnostics.html')
+
+
 def product_list(request):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)

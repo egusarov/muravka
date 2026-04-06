@@ -3,12 +3,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from store.views import home, about
+from store.views import home, about, aromadiagnostics
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('about/', about, name='about'),
+    path('aromadiagnostics/', aromadiagnostics, name='aromadiagnostics'),
     path('store/', include('store.urls')),
     path('accounts/', include('allauth.urls')),
 ]

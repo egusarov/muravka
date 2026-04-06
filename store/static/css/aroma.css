@@ -1,0 +1,131 @@
+.container {
+    max-width: 1100px;
+}
+
+/* ОБЩИЙ БЛОК */
+.aroma-block {
+    margin-bottom: 100px;
+}
+
+.aroma-content {
+    max-width: 420px;
+    width: 100%;
+}
+
+/* КОЛОНКИ */
+.aroma-left {
+    margin-right: auto;
+    text-align: left;
+}
+
+.aroma-right {
+    margin-left: auto;
+    text-align: left;
+}
+
+/* ТЕКСТ */
+.aroma-title {
+    font-size: var(--fs-2xl);
+    margin-bottom: 12px;
+}
+
+.aroma-text {
+    line-height: 1.6;
+}
+
+/* СПИСОК */
+.aroma-list {
+    padding-left: 18px;
+}
+
+.aroma-list li {
+    margin-bottom: 6px;
+}
+
+/* КНОПКА */
+.aroma-content .btn {
+    display: inline-flex;
+}
+
+/* КАРТИНКИ */
+.aroma-img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    display: block;
+}
+
+/* ВЫРАВНИВАНИЕ КАРТИНОК */
+.aroma-left .aroma-img {
+    margin-right: auto;
+}
+
+.aroma-right .aroma-img {
+    margin-left: auto;
+}
+
+/* СЕРТИФИКАТ */
+.aroma-cert {
+    max-width: 260px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.aroma-cert:hover {
+    transform: scale(1.05);
+}
+
+/* MODAL */
+.cert-modal {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0,0,0,0.8);
+    z-index: 9999;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.cert-modal.active {
+    display: flex;
+}
+
+/* АДАПТИВ */
+@media (max-width: 768px) {
+
+    .aroma-block {
+        margin-bottom: 50px;
+    }
+
+    .aroma-left,
+    .aroma-right {
+        align-items: center;
+        text-align: center;
+    }
+
+    .aroma-text {
+        margin: 0 auto;
+    }
+
+    .aroma-col .btn {
+        align-self: center;
+    }
+}
+
+ul {
+  list-style-type: "✨";
+}
