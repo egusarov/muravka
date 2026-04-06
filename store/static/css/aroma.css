@@ -7,6 +7,15 @@
     margin-bottom: 100px;
 }
 
+.aroma-block:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: rgba(109, 76, 65, 0.2);
+    margin: 60px auto 0;
+}
+
 .aroma-content {
     max-width: 420px;
     width: 100%;
@@ -32,10 +41,12 @@
 /* ТЕКСТ */
 .aroma-title {
     font-size: var(--fs-2xl);
+    font-weight: 600;
     margin-bottom: 12px;
 }
 
 .aroma-text {
+    color: #444;
     line-height: 1.6;
 }
 
@@ -54,6 +65,7 @@
     max-width: 420px;
     border-radius: 16px;
     display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 /* ВЫРАВНИВАНИЕ КАРТИНОК */
@@ -65,10 +77,11 @@
     margin-left: auto;
 }
 
-/* КНОПКИ */
 .aroma-page {
+    background: #faf8f6;
 }
 
+/* КНОПКИ */
 .aroma-page .btn--brand {
     padding: 10px 16px;
     background: rgba(109, 76, 65, 0.1);
