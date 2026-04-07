@@ -227,31 +227,6 @@ header a:hover .logo-img {
     display: none;
 }
 
-@media (max-width: 768px) {
-
-    .header-top {
-        grid-template-columns: auto auto;
-    }
-
-    /* hide desktop categories */
-    .header-categories-desktop {
-        display: none;
-    }
-
-    /* show mobile categories */
-    .header-categories-mobile {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 10px;
-    }
-
-    .header-categories-mobile .btn {
-        flex: 1 1 auto;
-        text-align: center;
-        font-size: var(--fs-sm);
-    }
-}
 
 /* =========================
    SEARCH DROPDOWN
@@ -285,4 +260,32 @@ header a:hover .logo-img {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+
+@media (max-width: 992px) {
+
+    .header-top {
+        grid-template-columns: auto auto;
+    }
+
+    /* hide desktop categories */
+    .header-categories-desktop {
+        display: none;
+    }
+
+    /* show mobile categories */
+    .header-categories-mobile {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .header-categories-mobile .btn {
+        flex: 1 1 auto;
+        text-align: center;
+        font-size: var(--fs-sm);
+    }
 }
