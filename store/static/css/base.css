@@ -81,6 +81,7 @@
 .active-category {
     background: #6d4c41;
     color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* SMALL */
@@ -135,6 +136,10 @@
     width: 40px;
     height: 40px;
     padding: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* DANGER */
@@ -212,11 +217,9 @@ header a:hover .logo-img {
     flex-wrap: nowrap;
 }
 
-/* actions fix */
-.header-actions .btn {
+.header-actions .btn:not(.btn--icon) {
     height: 40px;
     padding: 0 14px;
-    white-space: nowrap;
 }
 
 /* =========================
@@ -284,8 +287,20 @@ header a:hover .logo-img {
     }
 
     .header-categories-mobile .btn {
-        flex: 1 1 auto;
+        flex: 0 1 auto;
         text-align: center;
         font-size: var(--fs-sm);
+    }
+}
+
+@media (min-width: 992px) {
+    .header-actions .btn--icon {
+        background: rgba(109, 76, 65, 0.06);
+        font-size: 18px;
+    }
+
+    .header-actions .btn--icon:hover {
+        background: rgba(109, 76, 65, 0.12);
+        transform: translateY(-1px);
     }
 }
