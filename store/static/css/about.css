@@ -1,10 +1,7 @@
 /* БАЗА */
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
+.about-page {
     color: #222;
-    line-height: 1.6;
-    overflow-x: hidden; /* 🔥 защита от скролла */
+    overflow-x: hidden;
 }
 
 /* HERO (about page) */
@@ -112,7 +109,7 @@ body {
 /* ABOUT PREVIEW (landing) */
 .about-preview {
     padding: 60px 20px;
-    background: #fafafa;
+    background: #faf8f6;
     animation: fadeInUp 0.8s ease;
 }
 

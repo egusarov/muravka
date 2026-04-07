@@ -15,7 +15,6 @@ body {
     font-weight: 400;
     font-size: var(--fs-md);
     line-height: 1.5;
-    background: #faf8f6;
     letter-spacing: 0.2px;
 }
 
@@ -448,4 +447,16 @@ header a:hover .logo-title {
 
 .dropdown-item:hover {
     background-color: #f5f5f5;
+}
+
+
+/* =========================
+   PAGE BACKGROUNDS
+========================= */
+
+.home-page,
+.about-page,
+.aroma-page,
+.store-page {
+    background: #faf8f6;
 }
