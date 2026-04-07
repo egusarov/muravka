@@ -4,84 +4,83 @@
 
 {% block content %}
 
-<h2 class="mb-4">🛒 Кошик</h2>
+<div class="container-custom">
 
-{% if cart %}
-    <div class="table-responsive">
-        <table class="table align-middle">
+    <h2 class="mb-4">🛒 Кошик</h2>
 
-            <thead class="table-light">
-                <tr>
-                    <th>Товар</th>
-                    <th style="width: 140px;">Кількість</th>
-                    <th>Ціна</th>
-                    <th>Сума</th>
-                    <th></th>
-                </tr>
-            </thead>
+    {% if cart %}
 
-            <tbody>
-                {% for item in cart %}
-                    <tr>
-                        <!-- PRODUCT -->
-                        <td>
-                            <strong>{{ item.product.name }}</strong>
-                        </td>
+        <div class="cart-list">
 
-                        <!-- QUANTITY -->
-                        <td>
-                                <div class="d-flex align-items-center gap-1 cart-quantity">
+            {% for item in cart %}
+                <div class="cart-item">
 
-                                    <!-- MINUS -->
-                                    <form action="{% url 'store:cart_add' item.product.id %}" method="post">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="quantity" value="-1">
-                                        <input type="hidden" name="override" value="False">
-                                        <button type="submit" class="btn btn--sm btn--outline-light btn--icon">−</button>
-                                    </form>
+                    <!-- PRODUCT -->
+                    <div class="cart-item-product">
 
-                                    <!-- CURRENT VALUE -->
-                                    <span class="cart-quantity-value">{{ item.quantity }}</span>
+                        <img src="{{ item.product.image.url }}" class="cart-item-img">
 
-                                    <!-- PLUS -->
-                                    <form action="{% url 'store:cart_add' item.product.id %}" method="post">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="quantity" value="1">
-                                        <input type="hidden" name="override" value="False">
-                                        <button type="submit" class="btn btn--sm btn--outline-light btn--icon">+</button>
-                                    </form>
+                        <a href="{{ item.product.get_absolute_url }}"
+                           class="cart-item-title">
+                            {{ item.product.name }}
+                        </a>
 
-                                </div>
-                        </td>
+                    </div>
 
-                        <!-- PRICE -->
-                        <td>
-                            {{ item.price|floatformat:0 }} ₴
-                        </td>
+                    <!-- QUANTITY -->
+                    <div class="cart-item-qty">
 
-                        <!-- TOTAL -->
-                        <td>
-                            <strong>{{ item.total_price|floatformat:0 }} ₴</strong>
-                        </td>
+                        <!-- MINUS -->
+                        <form action="{% url 'store:cart_add' item.product.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="-1">
+                            <input type="hidden" name="override" value="False">
 
-                        <!-- REMOVE -->
-                        <td>
-                            <a href="{% url 'store:cart_remove' item.product.id %}"
-                               class="btn btn--sm btn--danger btn--icon">
-                                ✕
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
+                            <button type="submit"
+                                    class="btn btn--sm btn--outline btn--icon"
+                                    {% if item.quantity <= 1 %}disabled{% endif %}>
+                                −
+                            </button>
+                        </form>
 
-        </table>
-    </div>
+                        <span class="cart-quantity-value">
+                            {{ item.quantity }}
+                        </span>
 
-    <!-- TOTAL -->
-    <div class="d-flex justify-content-end mt-4">
+                        <!-- PLUS -->
+                        <form action="{% url 'store:cart_add' item.product.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="override" value="False">
 
-        <div class="text-end">
+                            <button type="submit"
+                                    class="btn btn--sm btn--outline btn--icon">
+                                +
+                            </button>
+                        </form>
+
+                    </div>
+
+                    <!-- TOTAL -->
+                    <div class="cart-item-total">
+                        {{ item.total_price|floatformat:0 }} ₴
+                    </div>
+
+                    <!-- REMOVE -->
+                    <div class="cart-item-remove">
+                        <a href="{% url 'store:cart_remove' item.product.id %}"
+                           class="btn btn--sm btn--danger btn--icon">
+                            ✕
+                        </a>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="cart-summary text-end mt-4">
 
             <h4 class="mb-3 fw-bold">
                 Разом: {{ cart.get_total_price|floatformat:0 }} ₴
@@ -93,14 +92,16 @@
 
         </div>
 
-    </div>
+    {% else %}
 
-{% else %}
-    <p>Ваш кошик порожній.</p>
+        <p>Ваш кошик порожній.</p>
 
-    <a href="{% url 'store:product_list' %}" class="btn btn--brand mt-3">
-        Перейти до покупок
-    </a>
-{% endif %}
+        <a href="{% url 'store:product_list' %}" class="btn btn--brand mt-3">
+            Перейти до покупок
+        </a>
+
+    {% endif %}
+
+</div>
 
 {% endblock %}
