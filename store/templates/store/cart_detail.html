@@ -86,7 +86,7 @@
                 Разом: {{ cart.get_total_price|floatformat:0 }} ₴
             </h4>
 
-            <a href="{% url 'store:order_create' %}" class="btn btn--brand btn--lg">
+            <a href="{% url 'store:order_create' %}" class="btn btn--cta">
                 Оформити замовлення
             </a>
 
@@ -96,7 +96,7 @@
 
         <p>Ваш кошик порожній.</p>
 
-        <a href="{% url 'store:product_list' %}" class="btn btn--brand mt-3">
+        <a href="{% url 'store:product_list' %}" class="btn btn--cta mt-3">
             Перейти до покупок
         </a>
 

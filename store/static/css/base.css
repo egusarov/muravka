@@ -154,6 +154,21 @@
     color: #fff;
 }
 
+.btn--cta {
+    background: rgba(109, 76, 65, 0.1);
+    color: #6d4c41;
+
+    padding: 12px 20px;
+    font-size: var(--fs-lg);
+
+    border-radius: 30px;
+    box-shadow: none;
+}
+
+.btn--cta:hover {
+    background: rgba(109, 76, 65, 0.18);
+}
+
 /* =========================
    LOGO
 ========================= */
