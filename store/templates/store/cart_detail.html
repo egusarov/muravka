@@ -30,7 +30,6 @@
                     <!-- QUANTITY -->
                     <div class="cart-item-qty">
 
-                        <!-- MINUS -->
                         <form action="{% url 'store:cart_add' item.product.id %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="-1">
@@ -47,7 +46,6 @@
                             {{ item.quantity }}
                         </span>
 
-                        <!-- PLUS -->
                         <form action="{% url 'store:cart_add' item.product.id %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1">
@@ -94,7 +92,7 @@
 
     {% else %}
 
-        <p>Ваш кошик порожній.</p>
+        <p>Ваш кошик порожній</p>
 
         <a href="{% url 'store:product_list' %}" class="btn btn--cta mt-3">
             Перейти до покупок
