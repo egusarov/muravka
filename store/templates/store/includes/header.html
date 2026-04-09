@@ -55,11 +55,11 @@
                 <a href="{% url 'store:cart_detail' %}"
                    class="btn btn--ghost btn--icon position-relative">
                     🛒
-                    {% if cart|length > 0 %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            {{ cart|length }}
-                        </span>
-                    {% endif %}
+
+                    <span class="cart-counter position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                          style="{% if cart|length == 0 %}display: none;{% endif %}">
+                        {{ cart|length }}
+                    </span>
                 </a>
 
                 <!-- USER -->

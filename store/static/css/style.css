@@ -241,6 +241,11 @@ header a:hover .logo-title {
     text-align: center;
 }
 
+.bump {
+    transform: scale(1.15);
+    transition: transform 0.15s ease;
+    will-change: transform;
+}
 
 .site-footer {
     background: #f5efe6;

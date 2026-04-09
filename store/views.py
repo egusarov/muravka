@@ -81,6 +81,15 @@ def cart_add(request, product_id):
         override_quantity=override
     )
 
+    # AJAX
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({
+            "success": True,
+            "cart_count": len(cart),
+            "product_id": product.id,
+        })
+
+    # fallback
     return redirect(request.META.get('HTTP_REFERER', 'store:product_list'))
 
 
