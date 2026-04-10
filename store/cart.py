@@ -43,9 +43,13 @@ class Cart:
 
         for product in products:
             item = self.cart[str(product.id)]
-            item['product'] = product
-            item['total_price'] = product.price * item['quantity']
-            yield item
+
+            yield {
+                'product': product,
+                'quantity': item['quantity'],
+                'price': item['price'],
+                'total_price': product.price * item['quantity']
+            }
 
     def get_total_price(self):
         return sum(

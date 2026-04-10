@@ -86,6 +86,7 @@ def cart_add(request, product_id):
         return JsonResponse({
             "success": True,
             "cart_count": len(cart),
+            "cart_total": float(cart.get_total_price()),
             "product_id": product.id,
         })
 
@@ -94,9 +95,19 @@ def cart_add(request, product_id):
 
 
 def cart_remove(request, product_id):
+    if request.method != 'POST':
+        return redirect('store:cart_detail')
+
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({
+            "success": True,
+            "cart_count": len(cart),
+            "cart_total": float(cart.get_total_price()),
+        })
 
     return redirect('store:cart_detail')
 
