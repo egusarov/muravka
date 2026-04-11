@@ -12,3 +12,10 @@ def categories(request):
     return {
         'categories': Category.objects.all()
     }
+
+
+def analytics(request):
+    from django.conf import settings
+    return {
+        "GA_MEASUREMENT_ID": getattr(settings, "GA_MEASUREMENT_ID", None)
+    }

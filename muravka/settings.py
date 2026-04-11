@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'store.context_processors.cart',
                 'store.context_processors.categories',
+                'store.context_processors.analytics',
             ],
         },
     },
@@ -144,3 +145,5 @@ ACCOUNT_SIGNUP_FIELDS = [
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 NOVA_POSHTA_API_KEY = os.getenv('NOVA_POSHTA_API_KEY')
+
+GA_MEASUREMENT_ID = os.getenv('GA_MEASUREMENT_ID')
