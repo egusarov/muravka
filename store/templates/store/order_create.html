@@ -12,15 +12,25 @@
     <!-- FORM -->
     <div class="col-md-7">
 
-        <form method="post" class="card p-4 shadow-sm">
+        <form method="post" novalidate class="card p-4 shadow-sm">
             {% csrf_token %}
 
             <div class="mb-3">
                 {{ form.first_name }}
+                {% if form.first_name.errors %}
+                    <div class="text-danger small">
+                        {{ form.first_name.errors.0 }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="mb-3">
                 {{ form.last_name }}
+                {% if form.last_name.errors %}
+                    <div class="text-danger small">
+                        {{ form.last_name.errors.0 }}
+                    </div>
+                {% endif %}
             </div>
 
             <div class="mb-3">
@@ -34,12 +44,22 @@
 
             <div class="mb-3 position-relative">
                 {{ form.city }}
+                {% if form.city.errors %}
+                    <div class="text-danger small">
+                        {{ form.city.errors.0 }}
+                    </div>
+                {% endif %}
                 <input type="hidden" id="city-ref" name="city_ref">
                 <div id="city-dropdown" class="dropdown-list"></div>
             </div>
 
             <div class="mb-3 position-relative">
                 {{ form.warehouse }}
+                {% if form.warehouse.errors %}
+                    <div class="text-danger small">
+                        {{ form.warehouse.errors.0 }}
+                    </div>
+                {% endif %}
                 <div id="warehouse-dropdown" class="dropdown-list"></div>
             </div>
 

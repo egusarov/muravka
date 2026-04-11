@@ -26,6 +26,7 @@ class OrderCreateForm(forms.ModelForm):
             'warehouse',
             'comment'
         ]
+
         widgets = {
             'first_name': forms.TextInput(attrs={
                 'placeholder': "Ім’я",
@@ -36,7 +37,7 @@ class OrderCreateForm(forms.ModelForm):
                 'class': 'form-control'
             }),
             'phone': forms.TextInput(attrs={
-                'placeholder': "+380XXXXXXXXX або 0XXXXXXXXX",
+                'placeholder': "Телефон",
                 'class': 'form-control'
             }),
             'city': forms.TextInput(attrs={
@@ -52,4 +53,22 @@ class OrderCreateForm(forms.ModelForm):
                 'rows': 3,
                 'class': 'form-control'
             })
+        }
+
+        error_messages = {
+            'first_name': {
+                'required': "Введіть ім’я",
+            },
+            'last_name': {
+                'required': "Введіть прізвище",
+            },
+            'phone': {
+                'required': "Введіть номер телефону",
+            },
+            'city': {
+                'required': "Оберіть місто",
+            },
+            'warehouse': {
+                'required': "Оберіть відділення",
+            },
         }
