@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.style.opacity = '0';
                     setTimeout(() => item.remove(), 200);
                 } else {
-                    let currentQty = parseInt(quantityEl.textContent);
+                    let currentQty = parseInt(quantityEl.textContent) || 0;
                     currentQty += quantityChange;
 
                     if (currentQty <= 0) {
@@ -174,6 +174,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+    });
+
+    // ======================
+    // SOCIAL TRACKING
+    // ======================
+
+    const socialLinks = document.querySelectorAll('.js-social-click');
+
+    socialLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const url = link.href;
+
+            if (typeof gtag !== 'undefined') {
+                e.preventDefault();
+
+                gtag('event', 'social_click', {
+                    social_network: link.dataset.social,
+                    location: link.dataset.location,
+                    event_callback: () => {
+                        window.location.href = url;
+                    }
+                });
+
+                // fallback если callback не сработает
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 300);
+            }
+        });
     });
 
 });
