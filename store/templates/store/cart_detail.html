@@ -74,7 +74,7 @@
                     <div class="cart-item-remove">
                         <form action="{% url 'store:cart_remove' item.product.id %}"
                               method="post"
-                              class="js-cart-form">
+                              class="js-cart-form js-remove-form">
                             {% csrf_token %}
 
                             <button type="submit"

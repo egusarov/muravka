@@ -1,4 +1,5 @@
 import re
+from decimal import Decimal
 
 from django.urls import reverse
 from django.conf import settings
@@ -76,8 +77,17 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ['-created_at']
+
+    def get_total_cost(self):
+        return sum(
+            (item.price * item.quantity for item in self.items.all()),
+            Decimal('0')
+        )
+
     def __str__(self):
-        return f'Order {self.id}'
+        return f'Order #{self.id} ({self.first_name} {self.last_name})'
 
 
 class OrderItem(models.Model):

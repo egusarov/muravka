@@ -49,4 +49,18 @@
     </div>
 </div>
 
+<script>
+if (typeof gtag !== 'undefined') {
+  gtag('event', 'view_item', {
+    currency: 'UAH',
+    value: {{ product.price|floatformat:2 }},
+    items: [{
+      item_id: "{{ product.id }}",
+      item_name: "{{ product.name }}",
+      price: {{ product.price }}
+    }]
+  });
+}
+</script>
+
 {% endblock %}

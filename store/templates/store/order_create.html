@@ -118,4 +118,23 @@
 
 <script src="{% static 'js/novaposhta.js' %}"></script>
 
+<script>
+if (typeof gtag !== 'undefined') {
+  gtag('event', 'begin_checkout', {
+    currency: 'UAH',
+    value: {{ cart.get_total_price|floatformat:2 }},
+    items: [
+      {% for item in cart %}
+      {
+        item_id: "{{ item.product.id }}",
+        item_name: "{{ item.product.name }}",
+        price: {{ item.product.price }},
+        quantity: {{ item.quantity }}
+      }
+      {% endfor %}
+    ]
+  });
+}
+</script>
+
 {% endblock %}

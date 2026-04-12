@@ -5,6 +5,26 @@
 <h2>Дякуємо!</h2>
 <p>Ваше замовлення №{{ order.id }} успішно створено.</p>
 
-<a href="/">На головну</a>
+<a href="{% url 'store:product_list' %}">До магазину</a>
+
+<script>
+if (typeof gtag !== 'undefined') {
+  gtag('event', 'purchase', {
+    transaction_id: "{{ order.id }}",
+    currency: 'UAH',
+    value: {{ order.get_total_cost|floatformat:2 }},
+    items: [
+      {% for item in order.items.all %}
+      {
+        item_id: "{{ item.product.id }}",
+        item_name: "{{ item.product.name }}",
+        price: {{ item.price }},
+        quantity: {{ item.quantity }}
+      }
+      {% endfor %}
+    ]
+  });
+}
+</script>
 
 {% endblock %}

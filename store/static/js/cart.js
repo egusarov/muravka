@@ -71,6 +71,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 button.innerHTML = '✓';
+
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'add_to_cart', {
+                        currency: 'UAH',
+                        value: parseFloat(form.dataset.productPrice) || 0,
+                        items: [{
+                            item_id: form.dataset.productId,
+                            item_name: form.dataset.productName,
+                            price: parseFloat(form.dataset.productPrice) || 0,
+                            quantity: 1
+                        }]
+                    });
+                }
             }
 
             setTimeout(() => {
@@ -83,6 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ======================
     // CART PAGE
     // ======================
+
+    // GLOBAL UI
+    const totalEl = document.getElementById('cart-total');
+    const counter = document.querySelector('.cart-counter');
+
+    // CART ITEMS
     const cartItems = document.querySelectorAll('.cart-item');
 
     cartItems.forEach(item => {
@@ -90,8 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const forms = item.querySelectorAll('.js-cart-form');
 
         const quantityEl = item.querySelector('.cart-quantity-value');
-        const totalEl = document.getElementById('cart-total');
-        const counter = document.querySelector('.cart-counter');
         const minusBtn = item.querySelector('.js-decrease-btn');
 
         forms.forEach(form => {
@@ -110,7 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // REMOVE
-                if (!formData.has('quantity')) {
+                const isRemove = form.classList.contains('js-remove-form');
+
+                if (isRemove) {
                     item.style.opacity = '0';
                     setTimeout(() => item.remove(), 200);
                 } else {
