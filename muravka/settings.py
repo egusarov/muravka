@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'store.middleware.UTMTrackingMiddleware',
 ]
 
 ROOT_URLCONF = 'muravka.urls'

@@ -22,7 +22,10 @@ if (typeof gtag !== 'undefined') {
         quantity: {{ item.quantity }}
       }
       {% endfor %}
-    ]
+    ],
+        utm_source: "{{ request.session.utm_source|default:'direct' }}",
+        utm_medium: "{{ request.session.utm_medium|default:'none' }}",
+        utm_campaign: "{{ request.session.utm_campaign|default:'none' }}"
   });
 }
 </script>
