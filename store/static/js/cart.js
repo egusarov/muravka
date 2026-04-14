@@ -205,4 +205,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // CTA TRACKING
+    document.querySelectorAll('.js-cta-click').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'cta_click', {
+                    location: btn.dataset.location || 'unknown',
+                    cta: btn.dataset.cta
+                });
+            }
+        });
+    });
+
 });
