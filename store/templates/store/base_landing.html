@@ -1,0 +1,11 @@
+{% extends "store/base.html" %}
+
+{% block body_class %}
+    landing-page {% block extra_body_class %}{% endblock %}
+{% endblock %}
+
+{% block layout %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+{% endblock %}
