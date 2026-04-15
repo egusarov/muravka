@@ -1,119 +1,132 @@
-{% extends 'store/base.html' %}
+{% extends 'store/base_store.html' %}
 
 {% block title %}Кошик — Muravka-krem{% endblock %}
 
 {% block content %}
 
-<div class="container-custom">
+    <div class="container-custom">
 
-    <h2 class="mb-4">🛒 Кошик</h2>
+        <h2 class="mb-4">🛒 Кошик</h2>
 
-    {% if cart %}
+        {% if cart %}
 
-        <div class="cart-list">
+            <ul class="cart-list">
 
-            {% for item in cart %}
-                <div class="cart-item" data-product-id="{{ item.product.id }}">
+                {% for item in cart %}
+                    <li class="cart-item"
+                        data-product-id="{{ item.product.id }}"
+                        data-product-name="{{ item.product.name }}"
+                        data-product-price="{{ item.product.price|floatformat:2 }}"
+                        data-product-quantity="{{ item.quantity }}">
 
-                    <!-- PRODUCT -->
-                    <div class="cart-item-product">
+                        <!-- PRODUCT -->
+                        <div class="cart-item-product">
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}"
+                                     class="cart-item-img"
+                                     alt="{{ item.product.name }}"
+                                     loading="lazy">
+                            {% endif %}
 
-                        <img src="{{ item.product.image.url }}" class="cart-item-img">
+                            <a href="{{ item.product.get_absolute_url }}"
+                               class="cart-item-title">
+                                {{ item.product.name }}
+                            </a>
 
-                        <a href="{{ item.product.get_absolute_url }}"
-                           class="cart-item-title">
-                            {{ item.product.name }}
-                        </a>
 
-                    </div>
+                        </div>
 
-                    <!-- QUANTITY -->
-                    <div class="cart-item-qty">
+                        <!-- QUANTITY -->
+                        <div class="cart-item-qty">
 
-                        <!-- ➖ -->
-                        <form action="{% url 'store:cart_add' item.product.id %}"
-                              method="post"
-                              class="js-cart-form">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="-1">
-                            <input type="hidden" name="override" value="False">
+                            <!-- ➖ -->
+                            <form action="{% url 'store:cart_add' item.product.id %}"
+                                  method="post"
+                                  class="js-cart-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="quantity" value="-1">
+                                <input type="hidden" name="override" value="False">
 
-                            <button type="submit"
-                                    class="btn btn--sm btn--outline btn--icon js-decrease-btn"
-                                    {% if item.quantity <= 1 %}disabled{% endif %}>
-                                −
-                            </button>
-                        </form>
+                                <button type="submit"
+                                        class="btn btn--sm btn--outline btn--icon js-decrease-btn"
+                                        {% if item.quantity <= 1 %}disabled{% endif %}
+                                        aria-label="Зменшити кількість">
+                                    −
+                                </button>
+                            </form>
 
-                        <span class="cart-quantity-value">
-                            {{ item.quantity }}
-                        </span>
+                            <span class="cart-quantity-value">{{ item.quantity }}</span>
 
-                        <!-- ➕ -->
-                        <form action="{% url 'store:cart_add' item.product.id %}"
-                              method="post"
-                              class="js-cart-form">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="override" value="False">
+                            <!-- ➕ -->
+                            <form action="{% url 'store:cart_add' item.product.id %}"
+                                  method="post"
+                                  class="js-cart-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="override" value="False">
 
-                            <button type="submit"
-                                    class="btn btn--sm btn--outline btn--icon">
-                                +
-                            </button>
-                        </form>
+                                <button type="submit"
+                                        class="btn btn--sm btn--outline btn--icon"
+                                        aria-label="Збільшити кількість">
+                                    +
+                                </button>
+                            </form>
 
-                    </div>
+                        </div>
 
-                    <!-- TOTAL -->
-                    <div class="cart-item-total">
-                        {{ item.total_price|floatformat:0 }} ₴
-                    </div>
+                        <!-- TOTAL -->
+                        <div class="cart-item-total">
+                            {{ item.total_price|floatformat:0 }} ₴
+                        </div>
 
-                    <!-- REMOVE -->
-                    <div class="cart-item-remove">
-                        <form action="{% url 'store:cart_remove' item.product.id %}"
-                              method="post"
-                              class="js-cart-form js-remove-form">
-                            {% csrf_token %}
+                        <!-- REMOVE -->
+                        <div class="cart-item-remove">
+                            <form action="{% url 'store:cart_remove' item.product.id %}"
+                                  method="post"
+                                  class="js-cart-form js-remove-form">
+                                {% csrf_token %}
 
-                            <button type="submit"
-                                    class="btn btn--sm btn--danger btn--icon">
-                                ✕
-                            </button>
-                        </form>
-                    </div>
+                                <button type="submit"
+                                        class="btn btn--sm btn--danger btn--icon"
+                                        aria-label="Видалити товар">
+                                    ✕
+                                </button>
+                            </form>
+                        </div>
 
-                </div>
-            {% endfor %}
+                    </li>
+                {% endfor %}
 
-        </div>
+            </ul>
 
-        <!-- SUMMARY -->
-        <div class="cart-summary text-end mt-4">
+            <!-- SUMMARY -->
+            <div class="cart-summary text-end mt-4">
 
-            <h4 class="mb-3 fw-bold">
-                Разом: <span id="cart-total">
+                <h4 class="mb-3 fw-bold">
+                    Разом: <span id="cart-total">
                     {{ cart.get_total_price|floatformat:0 }}
                 </span> ₴
-            </h4>
+                </h4>
 
-            <a href="{% url 'store:order_create' %}" class="btn btn--cta">
-                Оформити замовлення
+                <a href="{% url 'store:order_create' %}"
+                   class="btn btn--cta js-cta-click"
+                   data-location="cart"
+                   data-cta="begin_checkout">
+                    Оформити замовлення
+                </a>
+
+            </div>
+
+        {% else %}
+
+            <p>Ваш кошик порожній</p>
+
+            <a href="{% url 'store:product_list' %}" class="btn btn--cta mt-3">
+                Перейти до покупок
             </a>
 
-        </div>
+        {% endif %}
 
-    {% else %}
-
-        <p>Ваш кошик порожній</p>
-
-        <a href="{% url 'store:product_list' %}" class="btn btn--cta mt-3">
-            Перейти до покупок
-        </a>
-
-    {% endif %}
-
-</div>
+    </div>
 
 {% endblock %}
