@@ -256,4 +256,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // PRODUCT DETAIL tracking
+    const detail = document.querySelector('.product-detail-page');
+
+    if (detail && typeof gtag !== 'undefined') {
+        gtag('event', 'view_item', {
+            currency: 'UAH',
+            value: parseFloat(detail.dataset.productPrice),
+            items: [{
+                item_id: detail.dataset.productId,
+                item_name: detail.dataset.productName,
+                price: parseFloat(detail.dataset.productPrice)
+            }]
+        });
+    }
+
 });

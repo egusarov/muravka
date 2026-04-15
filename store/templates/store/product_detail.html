@@ -1,66 +1,63 @@
-{% extends 'store/base.html' %}
+{% extends "store/base_store.html" %}
 {% load cloudinary %}
 
 {% block title %}{{ product.name }} — Muravka-krem{% endblock %}
 
 {% block content %}
 
-<div class="product-detail-page">
-    <div class="row">
+    <div class="product-detail-page"
+         data-product-id="{{ product.id }}"
+         data-product-name="{{ product.name }}"
+         data-product-price="{{ product.price|floatformat:2 }}">
+        <div class="row">
 
-        <!-- IMAGE -->
-        <div class="col-md-6 mb-4 d-flex align-items-start justify-content-center">
-            {% if product.image %}
-                <div class="product-image-wrapper product-detail-image">
-                    {% cloudinary product.image.url width=500 height=500 crop="fill" quality="auto" fetch_format="auto" %}
-                </div>
-            {% endif %}
-        </div>
-
-        <!-- INFO -->
-        <div class="col-md-6">
-
-            <h2 class="product-detail-title">{{ product.name }}</h2>
-
-            <div class="product-detail-price">{{ product.price|floatformat:0 }} ₴</div>
-
-            {% if product.description %}
-                <div class="product-detail-description">
-                    {{ product.description|linebreaks }}
-                </div>
-            {% endif %}
-            <div class="product-detail-actions">
-
-                <a href="{% url 'store:product_list' %}" class="btn btn--link product-back-link">
-                    ← До каталогу
-                </a>
-
-                <form action="{% url 'store:cart_add' product.id %}" method="post">
-                    {% csrf_token %}
-
-                    <button type="submit" class="btn btn--brand">
-                        🛒 Додати в кошик
-                    </button>
-                </form>
-
+            <!-- IMAGE -->
+            <div class="col-md-6 mb-4 d-flex align-items-start justify-content-center">
+                {% if product.image %}
+                    <div class="product-image-wrapper product-detail-image">
+                        {% cloudinary product.image.url width=500 height=500 crop="fill" quality="auto" fetch_format="auto" alt="{{ product.name }}" loading="eager" %}
+                    </div>
+                {% endif %}
             </div>
+
+            <!-- INFO -->
+            <div class="col-md-6">
+
+                <h1 class="product-detail-title">{{ product.name }}</h1>
+
+                <div class="product-detail-price">{{ product.price|floatformat:0 }} ₴</div>
+
+                {% if product.description %}
+                    <div class="product-detail-description">
+                        {{ product.description|linebreaks }}
+                    </div>
+                {% endif %}
+
+                <div class="product-detail-actions">
+
+                    <a href="{% url 'store:product_list' %}" class="btn btn--link product-back-link">
+                        ← До каталогу
+                    </a>
+
+                    <form
+                            action="{% url 'store:cart_add' product.id %}"
+                            method="post"
+                            class="js-add-to-cart"
+                            data-product-id="{{ product.id }}"
+                            data-product-name="{{ product.name }}"
+                            data-product-price="{{ product.price|floatformat:2 }}"
+                    >
+                        {% csrf_token %}
+
+                        <button type="submit" class="btn btn--brand" aria-label="Додати {{ product.name }} в кошик">
+                            🛒 Додати в кошик
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
         </div>
-
     </div>
-</div>
-
-<script>
-if (typeof gtag !== 'undefined') {
-  gtag('event', 'view_item', {
-    currency: 'UAH',
-    value: {{ product.price|floatformat:2 }},
-    items: [{
-      item_id: "{{ product.id }}",
-      item_name: "{{ product.name }}",
-      price: {{ product.price }}
-    }]
-  });
-}
-</script>
 
 {% endblock %}
