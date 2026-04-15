@@ -1,4 +1,4 @@
-{% extends 'store/base.html' %}
+{% extends "store/base_store.html" %}
 {% load cloudinary %}
 
 {% block title %}
@@ -6,86 +6,94 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    {% for product in page_obj %}
-        <div class="col-md-4 mb-4">
-            <div class="card product-card">
+    <div class="row">
+        {% for product in page_obj %}
+            <div class="col-md-4 mb-4">
+                <article class="card product-card">
 
-                {% if product.image %}
-                    <div class="product-image-wrapper">
-                        <a href="{% url 'store:product_detail' product.slug %}">
-                            {% cloudinary product.image.url width=400 height=400 crop="fill" quality="auto" fetch_format="auto" %}
-                        </a>
+                    {% if product.image %}
+                        <div class="product-image-wrapper">
+                            <a href="{% url 'store:product_detail' product.slug %}">
+                                {% cloudinary product.image.url width=400 height=400 crop="fill" quality="auto" fetch_format="auto" alt="{{ product.name }}" loading="lazy" %}
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title product-title">
+                            <a href="{% url 'store:product_detail' product.slug %}">
+                                {{ product.name }}
+                            </a>
+                        </h5>
+                        <div class="product-footer">
+                            <div class="product-price">{{ product.price|floatformat:"-0" }} ₴</div>
+
+                            <form
+                                    action="{% url 'store:cart_add' product.id %}"
+                                    method="post"
+                                    class="js-add-to-cart"
+                                    data-product-id="{{ product.id }}"
+                                    data-product-name="{{ product.name }}"
+                                    data-product-price="{{ product.price|floatformat:2 }}"
+                            >
+                                {% csrf_token %}
+                                <input type="hidden" name="quantity" value="1">
+                                <button
+                                        type="submit"
+                                        class="btn btn--icon btn--brand"
+                                        title="Додати в кошик"
+                                        aria-label="Додати {{ product.name }} в кошик">
+                                    🛒
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                {% endif %}
 
-                <div class="card-body">
-                    <h5 class="card-title product-title">
-                        <a href="{% url 'store:product_detail' product.slug %}">
-                            {{ product.name }}
-                        </a>
-                    </h5>
-                    <div class="product-footer">
-                        <div class="product-price">{{ product.price|floatformat:"-0" }} ₴</div>
-
-                        <form
-                            action="{% url 'store:cart_add' product.id %}"
-                            method="post"
-                            class="js-add-to-cart"
-                            data-product-id="{{ product.id }}"
-                            data-product-name="{{ product.name }}"
-                            data-product-price="{{ product.price }}"
-                        >
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button title="Додати в кошик" type="submit" class="btn btn--icon btn--brand">
-                                🛒
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
+                </article>
             </div>
-        </div>
-    {% endfor %}
-</div>
+        {% empty %}
+            <div class="col-12 text-center mt-5">
+                <p>Товари не знайдені</p>
+            </div>
+        {% endfor %}
+    </div>
 
-{% if page_obj.paginator.num_pages > 1 %}
-<div class="pagination">
+    {% if page_obj.paginator.num_pages > 1 %}
+        <nav class="pagination" aria-label="Pagination">
 
-    <!-- PREV -->
-    {% if page_obj.has_previous %}
-        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}"
-           class="pagination-btn">
-            ←
-        </a>
-    {% else %}
-        <span class="pagination-btn disabled">←</span>
+            <!-- PREV -->
+            {% if page_obj.has_previous %}
+                <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}"
+                   class="pagination-btn">
+                    ←
+                </a>
+            {% else %}
+                <span class="pagination-btn disabled" aria-disabled="true">←</span>
+            {% endif %}
+
+            <!-- PAGES -->
+            {% for num in page_obj.paginator.page_range %}
+                {% if num == page_obj.number %}
+                    <span class="pagination-btn active">{{ num }}</span>
+                {% else %}
+                    <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ num }}"
+                       class="pagination-btn">
+                        {{ num }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+
+            <!-- NEXT -->
+            {% if page_obj.has_next %}
+                <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}"
+                   class="pagination-btn">
+                    →
+                </a>
+            {% else %}
+                <span class="pagination-btn disabled" aria-disabled="true">→</span>
+            {% endif %}
+
+        </nav>
     {% endif %}
-
-    <!-- PAGES -->
-    {% for num in page_obj.paginator.page_range %}
-        {% if num == page_obj.number %}
-            <span class="pagination-btn active">{{ num }}</span>
-        {% else %}
-            <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ num }}"
-               class="pagination-btn">
-                {{ num }}
-            </a>
-        {% endif %}
-    {% endfor %}
-
-    <!-- NEXT -->
-    {% if page_obj.has_next %}
-        <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}"
-           class="pagination-btn">
-            →
-        </a>
-    {% else %}
-        <span class="pagination-btn disabled">→</span>
-    {% endif %}
-
-</div>
-{% endif %}
 
 {% endblock %}

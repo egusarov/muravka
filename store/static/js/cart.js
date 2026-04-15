@@ -217,4 +217,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ADD TO CART TRACKING
+    document.querySelectorAll('.js-add-to-cart').forEach(form => {
+        form.addEventListener('submit', function (e) {
+            if (typeof gtag === 'undefined') return;
+
+            e.preventDefault();
+
+            const productId = form.dataset.productId;
+            const productName = form.dataset.productName;
+            const price = parseFloat(form.dataset.productPrice) || 0;
+            const quantity = parseInt(form.querySelector('input[name="quantity"]').value) || 1;
+
+            let submitted = false;
+
+            const submitForm = () => {
+                if (submitted) return;
+                submitted = true;
+                form.submit();
+            };
+
+            gtag('event', 'add_to_cart', {
+                currency: 'UAH',
+                value: price * quantity,
+                items: [
+                    {
+                        item_id: productId,
+                        item_name: productName,
+                        price: price,
+                        quantity: quantity
+                    }
+                ],
+                event_callback: submitForm
+            });
+
+            // fallback (если GA не ответит)
+            setTimeout(submitForm, 300);
+        });
+    });
+
 });
