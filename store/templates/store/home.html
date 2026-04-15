@@ -1,84 +1,84 @@
+{% extends "store/base_landing.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <title>Головна — Muravka-krem</title>
+{% block title %}Головна — Muravka-krem{% endblock %}
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% block extra_head %}
+    <meta name="description"
+          content="Muravka-krem — натуральна косметика ручної роботи. Догляд за шкірою без компромісів.">
     <link href="{% static 'css/about.css' %}" rel="stylesheet">
+{% endblock %}
 
-    {% if GA_MEASUREMENT_ID %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}"></script>
+{% block extra_body_class %}home-page{% endblock %}
 
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+{% block content %}
+    <section class="hero">
+        <img src="{% static 'img/hero.webp' %}"
+             class="hero-img"
+             alt="Натуральна косметика Muravka-krem"
+             fetchpriority="high">
 
-      gtag('config', '{{ GA_MEASUREMENT_ID }}');
-    </script>
-    {% endif %}
-</head>
-<body class="home-page">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Натуральна косметика ручної роботи</h1>
 
-<div class="hero">
-    <img src="{% static 'img/hero.webp' %}" class="hero-img">
+                <p>
+                    Турбота про шкіру без компромісів — тільки природні інгредієнти
+                </p>
 
-    <div class="hero-overlay">
-        <div class="hero-content">
-            <h1>Натуральна косметика ручної роботи</h1>
+                <div class="hero-buttons">
+                    <a href="{% url 'store:product_list' %}"
+                       class="btn btn--primary js-cta-click"
+                       data-location="home_hero"
+                       data-cta="go_to_shop">
+                        🧴 Магазин
+                    </a>
 
-            <p>
-                Турбота про шкіру без компромісів — тільки природні інгредієнти
-            </p>
+                    <a href="{% url 'aromadiagnostics' %}"
+                       class="btn btn--primary js-cta-click"
+                       data-location="home_hero"
+                       data-cta="go_to_aroma">
+                        🌿 Аромадіагностика
+                    </a>
 
-            <div class="hero-buttons">
-                <a href="{% url 'store:product_list' %}" class="btn btn--primary">
-                    🧴 Магазин
-                </a>
-
-                <a href="{% url 'aromadiagnostics' %}" class="btn btn--primary">
-                    🌿 Аромадіагностика
-                </a>
-
-                <a href="#" class="btn btn--secondary">
-                    💆 Даоський масаж
-                </a>
+                    <a href="#" class="btn btn--secondary" aria-disabled="true">
+                        💆 Даоський масаж
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<section class="about-preview">
-    <div class="about-preview-container">
+    <section class="about-preview">
+        <div class="about-preview-container">
 
-        <div class="about-preview-image">
-            <img src="{% static 'img/about-2.webp' %}">
+            <div class="about-preview-image">
+                <img src="{% static 'img/about-2.webp' %}"
+                     loading="lazy"
+                     alt="Натуральна косметика ручної роботи Muravka-krem">
+            </div>
+
+            <div class="about-preview-text">
+                <h2>Про мене</h2>
+
+                <p class="about-lead">
+                    Я створюю натуральну косметику, яку сама використовую щодня.
+                </p>
+
+                <p>
+                    Усе почалося з власного досвіду — коли жодні засоби не допомагали,
+                    я створила свій перший крем.
+                </p>
+
+                <a href="{% url 'about' %}"
+                   class="btn btn--outline about-btn js-cta-click"
+                   data-location="home_about"
+                   data-cta="learn_more">
+                    Дізнатися більше
+                </a>
+            </div>
+
         </div>
+    </section>
 
-        <div class="about-preview-text">
-            <h2>Про мене</h2>
-
-            <p class="about-lead">
-                Я створюю натуральну косметику, яку сама використовую щодня.
-            </p>
-
-            <p>
-                Усе почалося з власного досвіду — коли жодні засоби не допомагали,
-                я створила свій перший крем.
-            </p>
-
-            <a href="{% url 'about' %}" class="btn btn--outline about-btn">
-                Дізнатися більше
-            </a>
-        </div>
-
-    </div>
-</section>
-
-</body>
-</html>
+{% endblock %}
