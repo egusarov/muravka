@@ -1,140 +1,132 @@
-{% extends 'store/base.html' %}
+{% extends 'store/base_store.html' %}
 {% load static %}
 
 {% block title %}Оформлення замовлення — Muravka-krem{% endblock %}
 
 {% block content %}
 
-<h2 class="mb-4">Оформлення замовлення</h2>
+    <div class="checkout-page"
+         data-total="{{ cart.get_total_price|floatformat:2 }}">
+        <h2 class="mb-4">Оформлення замовлення</h2>
 
-<div class="row">
+        <div class="row">
 
-    <!-- FORM -->
-    <div class="col-md-7">
+            <!-- FORM -->
+            <div class="col-md-7">
 
-        <form method="post" novalidate class="card p-4 shadow-sm">
-            {% csrf_token %}
+                <form method="post" novalidate class="card p-4 shadow-sm js-checkout-form">
+                    {% csrf_token %}
 
-            <div class="mb-3">
-                {{ form.first_name }}
-                {% if form.first_name.errors %}
-                    <div class="text-danger small">
-                        {{ form.first_name.errors.0 }}
+                    <div class="mb-3">
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="text-danger small">
+                                {{ form.first_name.errors.0 }}
+                            </div>
+                        {% endif %}
                     </div>
-                {% endif %}
-            </div>
 
-            <div class="mb-3">
-                {{ form.last_name }}
-                {% if form.last_name.errors %}
-                    <div class="text-danger small">
-                        {{ form.last_name.errors.0 }}
+                    <div class="mb-3">
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="text-danger small">
+                                {{ form.last_name.errors.0 }}
+                            </div>
+                        {% endif %}
                     </div>
-                {% endif %}
-            </div>
 
-            <div class="mb-3">
-                {{ form.phone }}
-                {% if form.phone.errors %}
-                    <div class="text-danger small">
-                        {{ form.phone.errors.0 }}
+                    <div class="mb-3">
+                        {{ form.phone }}
+                        {% if form.phone.errors %}
+                            <div class="text-danger small">
+                                {{ form.phone.errors.0 }}
+                            </div>
+                        {% endif %}
                     </div>
-                {% endif %}
-            </div>
 
-            <div class="mb-3 position-relative">
-                {{ form.city }}
-                {% if form.city.errors %}
-                    <div class="text-danger small">
-                        {{ form.city.errors.0 }}
+                    <div class="mb-3 position-relative">
+                        {{ form.city }}
+                        {% if form.city.errors %}
+                            <div class="text-danger small">
+                                {{ form.city.errors.0 }}
+                            </div>
+                        {% endif %}
+                        <input type="hidden" id="city-ref" name="city_ref">
+                        <div id="city-dropdown" class="dropdown-list"></div>
                     </div>
-                {% endif %}
-                <input type="hidden" id="city-ref" name="city_ref">
-                <div id="city-dropdown" class="dropdown-list"></div>
-            </div>
 
-            <div class="mb-3 position-relative">
-                {{ form.warehouse }}
-                {% if form.warehouse.errors %}
-                    <div class="text-danger small">
-                        {{ form.warehouse.errors.0 }}
+                    <div class="mb-3 position-relative">
+                        {{ form.warehouse }}
+                        {% if form.warehouse.errors %}
+                            <div class="text-danger small">
+                                {{ form.warehouse.errors.0 }}
+                            </div>
+                        {% endif %}
+                        <div id="warehouse-dropdown" class="dropdown-list"></div>
                     </div>
-                {% endif %}
-                <div id="warehouse-dropdown" class="dropdown-list"></div>
+
+                    <div class="mb-3">
+                        {{ form.comment }}
+                    </div>
+
+                    <div class="product-detail-actions d-flex justify-content-between">
+
+                        <a href="{% url 'store:cart_detail' %}" class="btn btn--link">
+                            ← До кошика
+                        </a>
+
+                        <button type="submit" class="btn btn--brand" aria-label="Підтвердити замовлення">
+                            🧾 Підтвердити замовлення
+                        </button>
+
+                    </div>
+
+                </form>
+
             </div>
 
-            <div class="mb-3">
-                {{ form.comment }}
+            <!-- SUMMARY -->
+            <div class="col-md-5">
+
+                <div class="card p-4 shadow-sm">
+
+                    <h5 class="mb-3">Ваше замовлення</h5>
+
+                    {% if cart %}
+                        <ul class="list-unstyled">
+                        {% for item in cart %}
+                            <li class="checkout-item d-flex justify-content-between mb-2"
+                                data-product-id="{{ item.product.id }}"
+                                data-product-name="{{ item.product.name }}"
+                                data-product-price="{{ item.product.price|floatformat:2 }}"
+                                data-product-quantity="{{ item.quantity }}">
+                                <span>{{ item.product.name }} × {{ item.quantity }}</span>
+                                <span>{{ item.total_price|floatformat:0 }} ₴</span>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <p>Кошик порожній</p>
+                    {% endif %}
+                    </ul>
+
+                    <hr>
+
+                    <h5 class="d-flex justify-content-between">
+                        <span>Разом:</span>
+                        <strong>{{ cart.get_total_price|floatformat:0 }} ₴</strong>
+                    </h5>
+
+                </div>
+
             </div>
-
-            <div class="product-detail-actions d-flex justify-content-between">
-
-                <a href="{% url 'store:cart_detail' %}" class="btn btn--link">
-                    ← До кошика
-                </a>
-
-                <button type="submit" class="btn btn--brand">
-                    🧾 Підтвердити замовлення
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-    <!-- SUMMARY -->
-    <div class="col-md-5">
-
-        <div class="card p-4 shadow-sm">
-
-            <h5 class="mb-3">Ваше замовлення</h5>
-
-            <ul class="list-unstyled">
-                {% if cart %}
-                    {% for item in cart %}
-                        <li class="d-flex justify-content-between mb-2">
-                            <span>{{ item.product.name }} × {{ item.quantity }}</span>
-                            <span>{{ item.total_price|floatformat:0 }} ₴</span>
-                        </li>
-                    {% endfor %}
-                {% else %}
-                    <p>Кошик порожній</p>
-                {% endif %}
-            </ul>
-
-            <hr>
-
-            <h5 class="d-flex justify-content-between">
-                <span>Разом:</span>
-                <strong>{{ cart.get_total_price|floatformat:0 }} ₴</strong>
-            </h5>
 
         </div>
 
     </div>
 
-</div>
+{% endblock %}
 
-<script src="{% static 'js/novaposhta.js' %}"></script>
-
-<script>
-if (typeof gtag !== 'undefined') {
-  gtag('event', 'begin_checkout', {
-    currency: 'UAH',
-    value: {{ cart.get_total_price|floatformat:2 }},
-    items: [
-      {% for item in cart %}
-      {
-        item_id: "{{ item.product.id }}",
-        item_name: "{{ item.product.name }}",
-        price: {{ item.product.price }},
-        quantity: {{ item.quantity }}
-      }
-      {% endfor %}
-    ]
-  });
-}
-</script>
-
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/novaposhta.js' %}"></script>
 {% endblock %}

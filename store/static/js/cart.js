@@ -271,4 +271,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // CHECKOUT tracking
+    const checkout = document.querySelector('.checkout-page');
+
+    if (checkout && typeof gtag !== 'undefined') {
+        const items = [];
+
+        document.querySelectorAll('.checkout-item').forEach(el => {
+            items.push({
+                item_id: el.dataset.productId,
+                item_name: el.dataset.productName,
+                price: parseFloat(el.dataset.productPrice) || 0,
+                quantity: parseInt(el.dataset.productQuantity, 10)
+            });
+        });
+
+        if (items.length === 0) return;
+
+        gtag('event', 'begin_checkout', {
+            currency: 'UAH',
+            value: parseFloat(checkout.dataset.total),
+            items: items
+        });
+    }
+
 });
