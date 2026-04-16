@@ -295,4 +295,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // PURCHASE tracking
+    const orderPage = document.querySelector('.order-created-page');
+
+    if (orderPage && typeof gtag !== 'undefined') {
+        const items = [];
+
+        orderPage.querySelectorAll('.purchase-item').forEach(el => {
+            items.push({
+                item_id: el.dataset.productId,
+                item_name: el.dataset.productName,
+                price: parseFloat(el.dataset.productPrice) || 0,
+                quantity: parseInt(el.dataset.productQuantity, 10) || 1
+            });
+        });
+
+        if (items.length === 0) return;
+
+        const transactionId = orderPage.dataset.transactionId;
+
+        if (sessionStorage.getItem('purchase_' + transactionId)) return;
+
+        sessionStorage.setItem('purchase_' + transactionId, '1');
+
+        gtag('event', 'purchase', {
+            transaction_id: orderPage.dataset.transactionId,
+            currency: 'UAH',
+            value: parseFloat(orderPage.dataset.total) || 0,
+            items: items,
+
+            // UTM
+            utm_source: orderPage.dataset.utmSource || 'direct',
+            utm_medium: orderPage.dataset.utmMedium || 'none',
+            utm_campaign: orderPage.dataset.utmCampaign || 'none'
+        });
+    }
+
 });

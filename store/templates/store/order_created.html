@@ -1,33 +1,30 @@
-{% extends 'store/base.html' %}
+{% extends 'store/base_store.html' %}
 
 {% block content %}
 
-<h2>Дякуємо!</h2>
-<p>Ваше замовлення №{{ order.id }} успішно створено.</p>
+    <div class="order-created-page"
+         data-transaction-id="{{ order.id }}"
+         data-total="{{ order.get_total_cost|floatformat:2 }}"
+         data-utm-source="{{ request.session.utm_source|default:'direct' }}"
+         data-utm-medium="{{ request.session.utm_medium|default:'none' }}"
+         data-utm-campaign="{{ request.session.utm_campaign|default:'none' }}">
 
-<a href="{% url 'store:product_list' %}">До магазину</a>
+        <h2>Дякуємо!</h2>
+        <p>Ваше замовлення №{{ order.id }} успішно створено.</p>
 
-<script>
-if (typeof gtag !== 'undefined') {
-  gtag('event', 'purchase', {
-    transaction_id: "{{ order.id }}",
-    currency: 'UAH',
-    value: {{ order.get_total_cost|floatformat:2 }},
-    items: [
-      {% for item in order.items.all %}
-      {
-        item_id: "{{ item.product.id }}",
-        item_name: "{{ item.product.name }}",
-        price: {{ item.price }},
-        quantity: {{ item.quantity }}
-      }
-      {% endfor %}
-    ],
-        utm_source: "{{ request.session.utm_source|default:'direct' }}",
-        utm_medium: "{{ request.session.utm_medium|default:'none' }}",
-        utm_campaign: "{{ request.session.utm_campaign|default:'none' }}"
-  });
-}
-</script>
+        <a href="{% url 'store:product_list' %}">До магазину</a>
+
+        <ul hidden>
+            {% for item in order.items.all %}
+                <li class="purchase-item"
+                    data-product-id="{{ item.product.id }}"
+                    data-product-name="{{ item.product.name }}"
+                    data-product-price="{{ item.price|floatformat:2 }}"
+                    data-product-quantity="{{ item.quantity }}">
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
 
 {% endblock %}
