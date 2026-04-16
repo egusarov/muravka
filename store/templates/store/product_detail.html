@@ -3,6 +3,10 @@
 
 {% block title %}{{ product.name }} — Muravka-krem{% endblock %}
 
+{% block meta_description %}
+    {{ product.name }} — натуральний засіб ручної роботи Muravka-krem. {{ product.description|truncatechars:140 }}
+{% endblock %}
+
 {% block content %}
 
     <div class="product-detail-page"
