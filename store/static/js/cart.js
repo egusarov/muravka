@@ -184,24 +184,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     socialLinks.forEach(link => {
         link.addEventListener('click', (e) => {
+            if (typeof gtag === 'undefined') return;
+
             const url = link.href;
+            const isBlank = link.target === '_blank';
 
-            if (typeof gtag !== 'undefined') {
-                e.preventDefault();
+            e.preventDefault();
 
-                gtag('event', 'social_click', {
-                    social_network: link.dataset.social,
-                    location: link.dataset.location,
-                    event_callback: () => {
-                        window.location.href = url;
-                    }
-                });
+            let navigated = false;
 
-                // fallback если callback не сработает
-                setTimeout(() => {
+            const navigate = () => {
+                if (navigated) return;
+                navigated = true;
+
+                if (isBlank) {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                } else {
                     window.location.href = url;
-                }, 300);
-            }
+                }
+            };
+
+            gtag('event', 'social_click', {
+                social_network: link.dataset.social,
+                location: link.dataset.location,
+                event_callback: navigate
+            });
+
+            // fallback
+            setTimeout(navigate, 300);
         });
     });
 
