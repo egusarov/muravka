@@ -30,6 +30,7 @@
 
 .btn--primary:hover {
     background: #fff;
+    color: #000;
 }
 
 /* SECONDARY */
