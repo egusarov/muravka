@@ -5,11 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
 
     <title>{% block title %}Muravka-krem{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}Натуральна косметика ручної роботи Muravka-krem{% endblock %}">
+    <meta name="description"
+          content="{% block meta_description %}Натуральна косметика ручної роботи Muravka-krem{% endblock %}">
 
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- CSS -->
@@ -21,13 +25,13 @@
     <link id="favicon" rel="icon" type="image/png" href="{% static 'img/favicon-light.png' %}">
 
     <script>
-        const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
         document.addEventListener('DOMContentLoaded', () => {
             const favicon = document.getElementById('favicon');
             if (!favicon) return;
 
-            favicon.href = darkMode
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            favicon.href = isDark
                 ? "{% static 'img/favicon-dark.png' %}"
                 : "{% static 'img/favicon-light.png' %}";
         });
@@ -43,8 +47,9 @@
                 dataLayer.push(arguments);
             }
 
-            gtag('js', new Date());
+            window.gtag = gtag;
 
+            gtag('js', new Date());
             gtag('config', '{{ GA_MEASUREMENT_ID }}');
         </script>
     {% endif %}
@@ -57,7 +62,11 @@
 {% block layout %}{% endblock %}
 
 <!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+<!-- Analytics (global) -->
+<script src="{% static 'js/analytics.js' %}" defer></script>
+<script src="{% static 'js/tracking-init.js' %}" defer></script>
 
 {% block scripts %}{% endblock %}
 </body>
