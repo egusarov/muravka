@@ -9,15 +9,15 @@ from .services.novaposhta import get_cities, get_warehouses
 
 
 def home(request):
-    return render(request, 'store/home.html')
+    return render(request, 'store/landing/home.html')
 
 
 def about(request):
-    return render(request, 'store/about.html')
+    return render(request, 'store/landing/about.html')
 
 
 def aromadiagnostics(request):
-    return render(request, 'store/aromadiagnostics.html')
+    return render(request, 'store/landing/aromadiagnostics.html')
 
 
 def product_list(request):
@@ -39,7 +39,7 @@ def product_list(request):
 
     return render(
         request,
-        'store/product_list.html',
+        'store/catalog/product_list.html',
         {
             'categories': categories,
             'page_obj': page_obj,
@@ -60,7 +60,7 @@ def product_detail(request, slug):
 
     return render(
         request,
-        'store/product_detail.html',
+        'store/catalog/product_detail.html',
         {
             'product': product,
             'form': form
@@ -124,7 +124,7 @@ def cart_detail(request):
         )
 
     return render(
-        request, 'store/cart_detail.html', {'cart': cart})
+        request, 'store/cart/cart_detail.html', {'cart': cart})
 
 
 def order_create(request):
@@ -151,7 +151,7 @@ def order_create(request):
 
             request.session['cart'] = {}
 
-            return render(request, 'store/order_created.html', {'order': order})
+            return render(request, 'store/order/order_created.html', {'order': order})
     else:
         initial_data = {}
 
@@ -163,7 +163,7 @@ def order_create(request):
 
         form = OrderCreateForm(initial=initial_data)
 
-    return render(request, 'store/order_create.html', {'cart': cart, 'form': form})
+    return render(request, 'store/order/order_create.html', {'cart': cart, 'form': form})
 
 
 def api_cities(request):
