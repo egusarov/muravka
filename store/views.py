@@ -184,3 +184,7 @@ def api_warehouses(request):
 
     warehouses = get_warehouses(city_ref)
     return JsonResponse({"results": warehouses})
+
+
+def privacy_policy(request):
+    return render(request, 'store/privacy/privacy.html')
