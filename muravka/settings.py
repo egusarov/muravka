@@ -19,7 +19,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'muravka-krem.pp.ua',
+    'www.muravka-krem.pp.ua',
+]
 
 # Application definition
 
@@ -81,9 +84,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'muravka.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -109,7 +117,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 CLOUDINARY_STORAGE = {
@@ -132,19 +140,43 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-LOGIN_REDIRECT_URL = '/'
+# ========================
+# LOGIN FLOW (GOOGLE ONLY)
+# ========================
+
+LOGIN_REDIRECT_URL = 'store:product_list'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
-ACCOUNT_LOGIN_METHODS = {'email'}
-
-ACCOUNT_SIGNUP_FIELDS = [
-    'email*',
-    'password1*',
-    'password2*',
-]
-
+# SOCIAL LOGIN
+SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+#SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+#SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+SOCIALACCOUNT_STORE_TOKENS = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+
+# ACCOUNT SYSTEM (disable password system)
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_PRESERVE_USERNAME_CASING = False
+
+ACCOUNT_ADAPTER = 'store.adapters.CustomAccountAdapter'
 
 NOVA_POSHTA_API_KEY = os.getenv('NOVA_POSHTA_API_KEY')
 
 GA_MEASUREMENT_ID = os.getenv('GA_MEASUREMENT_ID')
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://muravka-krem.pp.ua",
+    "https://www.muravka-krem.pp.ua",
+]
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
