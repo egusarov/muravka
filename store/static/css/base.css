@@ -187,10 +187,11 @@
 }
 
 .logo-title {
+    font-family: 'Caveat', cursive;
     font-weight: 600;
-    font-size: var(--fs-lg);
+    font-size: var(--fs-3xl);
+    line-height: 0.9;
     color: #3e2723;
-    letter-spacing: 1px;
     transition: color 0.2s ease;
 }
 
