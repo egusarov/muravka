@@ -137,7 +137,7 @@ ul {
   list-style-type: "✨";
 }
 
-/* АДАПТИВ */
+
 @media (max-width: 768px) {
 
     .aroma-block {
@@ -146,12 +146,25 @@ ul {
 
     .aroma-left,
     .aroma-right {
-        align-items: center;
-        text-align: center;
+        text-align: left;
     }
 
-    .aroma-text {
+    .aroma-content {
         margin: 0 auto;
+    }
+
+    .aroma-img,
+    .aroma-cert {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .aroma-page .btn--brand {
+        display: inline-flex;
+    }
+
+    .text-center {
+        text-align: center;
     }
 
 }
