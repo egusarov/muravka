@@ -265,15 +265,35 @@ Investigated and resolved:
 
 ## 📸 Screenshots
 
-_Add project screenshots here._
+### Homepage
 
-Suggested sections:
+<p align="center">
+  <img src="screenshots/homepage.webp" width="900">
+</p>
 
-- Homepage
-- Store page
-- Product detail page
-- Aromadiagnostics page
-- Mobile version
+### Store
+
+<p align="center">
+  <img src="screenshots/store.webp" width="900">
+</p>
+
+### Aromadiagnostics
+
+<p align="center">
+  <img src="screenshots/aroma.webp" width="900">
+</p>
+
+### Mobile Version Homepage
+
+<p align="center">
+  <img src="screenshots/mobile-home.webp" width="900">
+</p>
+
+### Mobile Version Store
+
+<p align="center">
+  <img src="screenshots/mobile-store.webp" width="900">
+</p>
 
 ---
 
