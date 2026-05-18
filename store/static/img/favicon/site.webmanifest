@@ -1,0 +1,19 @@
+{
+  "name": "Muravka-krem",
+  "short_name": "Muravka",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#EFE6D8",
+  "background_color": "#EFE6D8",
+  "display": "standalone"
+}
