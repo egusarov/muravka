@@ -28,13 +28,9 @@
 }
 
 /* КОЛОНКИ */
-.aroma-left {
-    margin-right: auto;
-    text-align: left;
-}
-
+.aroma-left,
 .aroma-right {
-    margin-left: auto;
+    margin: 0 auto;
     text-align: left;
 }
 
