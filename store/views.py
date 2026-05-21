@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .cart import Cart
@@ -19,6 +19,10 @@ def about(request):
 def aromadiagnostics(request):
     return render(request, 'store/landing/aromadiagnostics.html')
 
+
+# def massage(request):
+#     return render(request, 'store/landing/massage.html')
+#
 
 def product_list(request):
     categories = Category.objects.all()
@@ -188,3 +192,17 @@ def api_warehouses(request):
 
 def privacy_policy(request):
     return render(request, 'store/privacy/privacy.html')
+
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "",
+        "Disallow: /admin/",
+        "Disallow: /cart/",
+        "Disallow: /checkout/",
+        "",
+        "Sitemap: https://muravka-krem.pp.ua/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
