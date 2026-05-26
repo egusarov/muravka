@@ -11,18 +11,12 @@ class UTMTrackingMiddleware:
 
         if utm_source:
             request.session['utm_source'] = utm_source
-        else:
-            request.session.setdefault('utm_source', 'direct')
 
         if utm_medium:
             request.session['utm_medium'] = utm_medium
-        else:
-            request.session.setdefault('utm_medium', 'none')
 
         if utm_campaign:
             request.session['utm_campaign'] = utm_campaign
-        else:
-            request.session.setdefault('utm_campaign', 'none')
 
         response = self.get_response(request)
         return response
