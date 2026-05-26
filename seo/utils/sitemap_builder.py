@@ -32,7 +32,7 @@ def build_sitemap():
     for product in products:
         url_entries.append({
             "loc": f"{BASE_URL}{product.get_absolute_url()}",
-            "lastmod": product.created_at.date(),
+            "lastmod": product.updated_at.date(),
         })
 
     # -------------------------
