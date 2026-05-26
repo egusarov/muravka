@@ -1,17 +1,10 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
 
-from seo.sitemaps import StaticViewSitemap, ProductSitemap
 from store.views import home, about, aromadiagnostics, privacy_policy, robots_txt
 
-
-sitemaps = {
-    "static": StaticViewSitemap,
-    "products": ProductSitemap,
-}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,8 +17,7 @@ urlpatterns = [
     path('privacy/', privacy_policy, name='privacy'),
 
     # SEO
-    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
-    path("robots.txt", robots_txt),
+    path("robots.txt", robots_txt, name="robots"),
 ]
 
 if settings.DEBUG:
