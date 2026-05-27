@@ -9,10 +9,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'available', 'created_at')
-    list_filter = ('available', 'created_at', 'category')
+    list_display = ('name', 'price', 'available', 'updated_at')
+    list_filter = ('category', 'available', 'updated_at')
     list_editable = ('price', 'available')
     prepopulated_fields = {'slug': ('name',)}
+    date_hierarchy = 'updated_at'
 
 
 class OrderItemInline(admin.TabularInline):
