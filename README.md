@@ -6,20 +6,9 @@ Production-ready Django web application for a natural cosmetics brand with e-com
 
 ## 🌿 About the Project
 
-Muravka-krem is a custom-built website for a handmade natural cosmetics brand.
+Muravka-krem is a Django web application for a handmade natural cosmetics brand.
 
-The project combines:
-
-- marketing landing pages
-- online store
-- aromadiagnostics service presentation
-- product catalog
-- authentication system
-- analytics
-- cloud media storage
-- production infrastructure
-
-The application was designed and deployed as a full-stack production project with focus on clean architecture, responsive UX, SEO, and maintainable deployment workflow.
+The project demonstrates a full-stack implementation of an e-commerce platform with service-based landing pages, authentication via Google OAuth, and CI/CD deployment to AWS infrastructure.
 
 ---
 
@@ -39,14 +28,15 @@ The application was designed and deployed as a full-stack production project wit
 
 - Shopping cart
 - Checkout flow
-- Product detail pages
-- Category filtering
+- Product catalog with search and category filtering
+- Nova Poshta API integration (delivery point selection during checkout)
 
 ### Authentication
 
-- Google OAuth login via django-allauth
-- Email-based authentication
-- Custom allauth configuration
+- Google OAuth 2.0 authentication implemented using django-allauth
+- Password-based authentication is disabled
+- Users are provisioned automatically from Google account data
+- Simplified authentication flow (no signup/password management)
 
 ### Media & Analytics
 
@@ -71,10 +61,8 @@ The application was designed and deployed as a full-stack production project wit
 
 ### Backend
 
-- Python
-- Django 6
-- PostgreSQL
-- SQLite
+- Python, Django 6
+- PostgreSQL (production), SQLite (development)
 
 ### Frontend
 
@@ -85,15 +73,15 @@ The application was designed and deployed as a full-stack production project wit
 ### Infrastructure
 
 - AWS EC2 (Ubuntu 24.04)
-- Gunicorn
-- Nginx
-- Let's Encrypt
+- Nginx + Gunicorn
+- Let's Encrypt SSL
 
-### Third-Party Services
+### Integrations
 
-- Cloudinary
-- Google Analytics 4
-- Google OAuth
+- Google OAuth 2.0 (authentication)
+- Google Analytics 4 (traffic analytics)
+- Cloudinary (media storage)
+- Nova Poshta API (delivery point selection during checkout)
 
 ### DevOps
 
@@ -171,17 +159,15 @@ Application restart
 
 ## 🔐 Authentication
 
-Implemented with:
+The application uses Google OAuth 2.0 (django-allauth) as the sole authentication method.
 
-- django-allauth
-- Google OAuth provider
-- Site-aware SocialApp configuration
+Key features:
 
-Customized authentication flow:
-
-- email-only login
-- username-less authentication
-- simplified signup process
+- No password-based authentication
+- No username-based login
+- Automatic user provisioning from Google OAuth data
+- Stateless and simplified onboarding flow
+- Managed via django-allauth (Google OAuth 2.0 provider)
 
 ---
 
@@ -286,13 +272,19 @@ Investigated and resolved:
 ### Mobile Version Homepage
 
 <p align="center">
-  <img src="screenshots/mobile-home.webp" width="900">
+  <img src="screenshots/mobile-home.webp" width="420">
 </p>
 
 ### Mobile Version Store
 
 <p align="center">
-  <img src="screenshots/mobile-store.webp" width="900">
+  <img src="screenshots/mobile-store.webp" width="420">
+</p>
+
+### Mobile Version Aromadiagnostics
+
+<p align="center">
+  <img src="screenshots/mobile-aroma.webp" width="420">
 </p>
 
 ---
@@ -323,26 +315,24 @@ python manage.py runserver
 
 ## 📈 Future Improvements
 
-- Nova Poshta integration
-- Online payments
-- Product reviews
-- Admin analytics dashboard
-- Email automation
-- Multilingual support
+- Multi-language support (Ukrainian / English)
+- Payment integration (LiqPay / Stripe)
+- Product reviews and ratings
+- Admin analytics dashboard for orders and traffic insights
 
 ---
 
 ## 👨‍💻 Author
 
-Developed by Evgeniy Gusarov.
+Evgeniy Gusarov — Python/Django backend developer focused on production-grade web applications.
 
-Backend-focused Python/Django developer with experience in:
+Focused on building production-ready web applications with experience in:
 
-- production deployment
-- cloud infrastructure
-- authentication systems
-- CI/CD automation
-- responsive web applications
+- Django backend development
+- AWS deployment and infrastructure
+- CI/CD automation (GitHub Actions)
+- Authentication systems (OAuth2)
+- E-commerce architecture
 
 ---
 
