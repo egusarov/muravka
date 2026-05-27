@@ -197,8 +197,7 @@ def privacy_policy(request):
 def robots_txt(request):
     lines = [
         "User-agent: *",
-        "Allow: /",
-        "",
+        "Disallow: /accounts/",
         "Disallow: /admin/",
         "Disallow: /cart/",
         "Disallow: /checkout/",
