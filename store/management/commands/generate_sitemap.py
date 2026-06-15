@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
         xml_content = build_sitemap()
 
-        output_path = "/home/ubuntu/apps/muravka/public/sitemap.xml"
+        output_path = "/home/muravka/apps/muravka/public/sitemap.xml"
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
