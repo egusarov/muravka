@@ -1,0 +1,219 @@
+{% extends "store/base/base_landing.html" %}
+{% load static %}
+
+{% block title %}Омолоджувальний масаж — Muravka-krem{% endblock %}
+
+{% block meta_description %}
+    Омолоджувальний даоський масаж — природне відновлення, розслаблення та турбота про себе.
+{% endblock %}
+
+{% block extra_head %}
+    <link href="{% static 'css/massage.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block extra_body_class %}massage-page{% endblock %}
+
+{% block content %}
+    <div class="container py-5">
+
+        <!-- HERO -->
+        <div class="row align-items-center massage-block justify-content-center g-5">
+
+            <div class="col-md-6">
+                <div class="massage-content massage-left">
+                    <img src="{% static 'img/massage-hero.webp' %}"
+                         class="img-fluid massage-img"
+                         alt="Омолоджувальний даоський масаж">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="massage-content massage-right">
+
+                    <h1 class="massage-title">
+                        Омолоджувальний даоський масаж
+                    </h1>
+
+                    <p class="massage-text">
+                        Поєднання міофасціальних, надкісткових та даоських технік
+                        для природного омолодження, глибокого розслаблення
+                        та відновлення внутрішнього балансу.
+                    </p>
+
+                    <p class="massage-text mt-3">
+                        Це не просто масаж обличчя —
+                        це ритуал турботи про себе,
+                        красу та внутрішню гармонію.
+                    </p>
+
+                    <a href="https://t.me/SvetaHusarova"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn btn--brand mt-3 js-social-click"
+                       data-social="telegram"
+                       data-location="massage_hero">
+                        💆 Записатися на сеанс
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- PROCESS -->
+        <div class="row align-items-center massage-block justify-content-center g-5">
+
+            <div class="col-md-6">
+
+                <div class="massage-content massage-left">
+
+                    <h2 class="massage-title">
+                        Як проходить сеанс
+                    </h2>
+
+                    <ul class="massage-list">
+                        <li>глибоке опрацювання м’язів та фасцій обличчя</li>
+                        <li>міофасціальні та надкісткові техніки</li>
+                        <li>даоські енергетичні практики</li>
+                        <li>розслаблення нервової системи</li>
+                        <li>відновлення внутрішнього ресурсу</li>
+                    </ul>
+
+                    <p class="massage-text mt-4">
+                        Даоські практики допомагають знизити внутрішню напругу
+                        та емоційне перевантаження,
+                        а масаж активує природні процеси регенерації,
+                        покращує мікроциркуляцію та лімфотік.
+                    </p>
+
+                    <p class="mt-3">
+                        ⏱ 1,5 години<br>
+                        💰 2500 грн
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="massage-content massage-right">
+
+                    <img src="{% static 'img/massage-process.webp' %}"
+                         loading="lazy"
+                         class="img-fluid massage-img"
+                         alt="Як проходить омолоджувальний масаж">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+        <div class="row align-items-center massage-block justify-content-center g-5">
+
+            <div class="col-md-6">
+
+                <div class="massage-content massage-left">
+
+                    <img src="{% static 'img/massage-result.webp' %}"
+                         loading="lazy"
+                         class="img-fluid massage-img"
+                         alt="Результат після омолоджувального масажу">
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="massage-content massage-right">
+
+                    <h2 class="massage-title">
+                        Результат після процедури
+                    </h2>
+
+                    <ul class="massage-list">
+                        <li>більш підтягнутий овал обличчя</li>
+                        <li>зменшення набряклості</li>
+                        <li>покращення тонусу шкіри</li>
+                        <li>розслаблення м’язових затисків</li>
+                        <li>свіжий та відпочилий вигляд</li>
+                        <li>відчуття легкості та внутрішнього балансу</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NATURAL -->
+        <div class="massage-block">
+
+            <div class="row align-items-center justify-content-center g-5">
+
+                <div class="col-md-6">
+
+                    <div class="massage-content massage-left">
+
+                        <h2 class="massage-title">
+                            🌿 Природне омолодження
+                        </h2>
+
+                        <p class="massage-text">
+                            Без ін’єкцій, операцій чи агресивних процедур —
+                            лише дбайлива робота з тілом,
+                            м’язами та внутрішнім станом.
+                        </p>
+
+                        <p class="massage-text mt-3">
+                            Після сеансу обличчя виглядає свіжішим,
+                            більш розслабленим та відпочилим,
+                            а тіло наповнюється відчуттям легкості,
+                            гармонії та внутрішньої сили.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="massage-content massage-right">
+
+                        <img src="{% static 'img/massage-natural.webp' %}"
+                             loading="lazy"
+                             class="img-fluid massage-img"
+                             alt="Природне омолодження">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-4">
+
+                <a href="https://t.me/SvetaHusarova"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="btn btn--brand js-social-click"
+                   data-social="telegram"
+                   data-location="massage_cta">
+
+                    ✨ Записатися на сеанс
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
