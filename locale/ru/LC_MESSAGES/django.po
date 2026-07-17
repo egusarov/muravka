@@ -3,250 +3,254 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-07-17 16:36+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2026-07-17 16:50+0300\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
 #: .\store\forms.py:11
 msgid "Кількість"
-msgstr ""
+msgstr "Количество"
 
 #: .\store\forms.py:34
 msgid "Ім’я"
-msgstr ""
+msgstr "Имя"
 
 #: .\store\forms.py:38 .\store\models.py:73
 msgid "Прізвище"
-msgstr ""
+msgstr "Фамилия"
 
 #: .\store\forms.py:42
 msgid "Телефон"
-msgstr ""
+msgstr "Телефон"
 
 #: .\store\forms.py:46 .\store\models.py:76
 msgid "Місто"
-msgstr ""
+msgstr "Город"
 
 #: .\store\forms.py:50
 msgid "Відділення / Поштомат"
-msgstr ""
+msgstr "Отделение / Почтомат"
 
 #: .\store\forms.py:54
 msgid "Коментар до замовлення (необов’язково)"
-msgstr ""
+msgstr "Комментарий к заказу (необязательно)"
 
 #: .\store\forms.py:62
 msgid "Введіть ім’я"
-msgstr ""
+msgstr "Введите имя"
 
 #: .\store\forms.py:65
 msgid "Введіть прізвище"
-msgstr ""
+msgstr "Введите фамилию"
 
 #: .\store\forms.py:68
 msgid "Введіть номер телефону"
-msgstr ""
+msgstr "Введите номер телефона"
 
 #: .\store\forms.py:71
 msgid "Оберіть місто"
-msgstr ""
+msgstr "Выберите город"
 
 #: .\store\forms.py:74
 msgid "Оберіть відділення"
-msgstr ""
+msgstr "Выберите отделение"
 
 #: .\store\models.py:14
 msgid "Максимальний розмір зображення — 2MB"
-msgstr ""
+msgstr "Максимальный размер изображения — 2 МБ"
 
 #: .\store\models.py:22
 msgid "Введіть номер у форматі +380XXXXXXXXX або 0XXXXXXXXX"
-msgstr ""
+msgstr "Введите номер в формате +380XXXXXXXXX или 0XXXXXXXXX"
 
 #: .\store\models.py:31
 msgid "Категорія"
-msgstr ""
+msgstr "Категория"
 
 #: .\store\models.py:32
 msgid "Категорії"
-msgstr ""
+msgstr "Категории"
 
 #: .\store\models.py:72
 msgid "Ім'я"
-msgstr ""
+msgstr "Имя"
 
 #: .\store\models.py:74
 msgid "Мобільний телефон"
-msgstr ""
+msgstr "Мобильный телефон"
 
 #: .\store\models.py:77
 msgid "Відділення / поштомат"
-msgstr ""
+msgstr "Отделение / почтомат"
 
 #: .\store\models.py:79
 msgid "Коментар"
-msgstr ""
+msgstr "Комментарий"
 
 #: .\store\templates\store\base\base.html:13
 msgid "Натуральна косметика ручної роботи Muravka-krem"
-msgstr ""
+msgstr "Натуральная косметика ручной работы Muravka-krem"
 
 #: .\store\templates\store\cart\cart_detail.html:4
 #: .\store\templates\store\cart\cart_detail.html:14
 msgid "Кошик"
-msgstr ""
+msgstr "Корзина"
 
 #: .\store\templates\store\cart\cart_detail.html:7
 msgid ""
 "Ваш кошик товарів Muravka-krem. Перевірте вибрані товари та оформіть "
 "замовлення."
 msgstr ""
+"Ваша корзина товаров Muravka-krem. Проверьте выбранные товары и оформите "
+"заказ."
 
 #: .\store\templates\store\cart\cart_detail.html:58
 msgid "Зменшити кількість"
-msgstr ""
+msgstr "Уменьшить количество"
 
 #: .\store\templates\store\cart\cart_detail.html:75
 msgid "Збільшити кількість"
-msgstr ""
+msgstr "Увеличить количество"
 
 #: .\store\templates\store\cart\cart_detail.html:96
 msgid "Видалити товар"
-msgstr ""
+msgstr "Удалить товар"
 
 #: .\store\templates\store\cart\cart_detail.html:111
 #: .\store\templates\store\order\order_create.html:120
 msgid "Разом:"
-msgstr ""
+msgstr "Итого:"
 
 #: .\store\templates\store\cart\cart_detail.html:121
 msgid "Оформити замовлення"
-msgstr ""
+msgstr "Оформить заказ"
 
 #: .\store\templates\store\cart\cart_detail.html:128
 msgid "Ваш кошик порожній"
-msgstr ""
+msgstr "Ваша корзина пуста"
 
 #: .\store\templates\store\cart\cart_detail.html:131
 msgid "Перейти до покупок"
-msgstr ""
+msgstr "Перейти к покупкам"
 
 #: .\store\templates\store\catalog\product_detail.html:8
 msgid "натуральний засіб ручної роботи Muravka-krem."
-msgstr ""
+msgstr "натуральное средство ручной работы Muravka-krem."
 
 #: .\store\templates\store\catalog\product_detail.html:44
 msgid "До каталогу"
-msgstr ""
+msgstr "В каталог"
 
 #: .\store\templates\store\catalog\product_detail.html:60
 #: .\store\templates\store\catalog\product_list.html:48
 #, python-format
 msgid "Додати %(name)s в кошик"
-msgstr ""
+msgstr "Добавить %(name)s в корзину"
 
 #: .\store\templates\store\catalog\product_detail.html:61
 #: .\store\templates\store\catalog\product_list.html:47
 msgid "Додати в кошик"
-msgstr ""
+msgstr "Добавить в корзину"
 
 #: .\store\templates\store\catalog\product_list.html:5
 msgid "Каталог натуральної косметики"
-msgstr ""
+msgstr "Каталог натуральной косметики"
 
 #: .\store\templates\store\catalog\product_list.html:8
 msgid ""
 "Каталог натуральної косметики ручної роботи Muravka-krem. Креми, бальзами та "
 "догляд без синтетики."
 msgstr ""
+"Каталог натуральной косметики ручной работы Muravka-krem. Кремы, бальзамы и "
+"уход без синтетики."
 
 #: .\store\templates\store\catalog\product_list.html:59
 msgid "Товари не знайдені"
-msgstr ""
+msgstr "Товары не найдены"
 
 #: .\store\templates\store\catalog\product_list.html:65
 msgid "Навігація сторінками"
-msgstr ""
+msgstr "Навигация по страницам"
 
 #: .\store\templates\store\includes\header.html:19
 msgid "натуральна косметика"
-msgstr ""
+msgstr "натуральная косметика"
 
 #: .\store\templates\store\includes\header.html:40
 msgid "Пошук"
-msgstr ""
+msgstr "Поиск"
 
 #: .\store\templates\store\includes\header.html:49
 msgid "Пошук..."
-msgstr ""
+msgstr "Поиск..."
 
 #: .\store\templates\store\includes\header.html:99
 msgid "Вийти"
-msgstr ""
+msgstr "Выйти"
 
 #: .\store\templates\store\includes\header.html:116
 msgid "Увійти"
-msgstr ""
+msgstr "Войти"
 
 #: .\store\templates\store\order\order_create.html:5
 #: .\store\templates\store\order\order_create.html:15
 msgid "Оформлення замовлення"
-msgstr ""
+msgstr "Оформление заказа"
 
 #: .\store\templates\store\order\order_create.html:8
 msgid ""
 "Оформлення замовлення натуральної косметики Muravka-krem. Швидке та безпечне "
 "оформлення покупки."
 msgstr ""
+"Оформление заказа натуральной косметики Muravka-krem. Быстрое и безопасное "
+"оформление покупки."
 
 #: .\store\templates\store\order\order_create.html:80
 msgid "До кошика"
-msgstr ""
+msgstr "В корзину"
 
 #: .\store\templates\store\order\order_create.html:83
 #: .\store\templates\store\order\order_create.html:84
 msgid "Підтвердити замовлення"
-msgstr ""
+msgstr "Подтвердить заказ"
 
 #: .\store\templates\store\order\order_create.html:98
 msgid "Ваше замовлення"
-msgstr ""
+msgstr "Ваш заказ"
 
 #: .\store\templates\store\order\order_create.html:113
 msgid "Кошик порожній"
-msgstr ""
+msgstr "Корзина пуста"
 
 #: .\store\templates\store\order\order_created.html:4
 msgid "Замовлення оформлено"
-msgstr ""
+msgstr "Заказ оформлен"
 
 #: .\store\templates\store\order\order_created.html:7
 msgid ""
 "Дякуємо за замовлення в Muravka-krem. Ваше замовлення успішно створено та "
 "передано в обробку."
 msgstr ""
+"Спасибо за заказ в Muravka-krem. Ваш заказ успешно создан и передан в "
+"обработку."
 
 #: .\store\templates\store\order\order_created.html:19
 msgid "Дякуємо!"
-msgstr ""
+msgstr "Спасибо!"
 
 #: .\store\templates\store\order\order_created.html:20
 #, python-format
 msgid "Ваше замовлення №%(order_id)s успішно створено."
-msgstr ""
+msgstr "Ваш заказ №%(order_id)s успешно создан."
 
 #: .\store\templates\store\order\order_created.html:22
 msgid "До магазину"
-msgstr ""
+msgstr "В магазин"
