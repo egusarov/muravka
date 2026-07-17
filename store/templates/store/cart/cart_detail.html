@@ -1,16 +1,17 @@
 {% extends 'store/base/base_store.html' %}
+{% load i18n %}
 
-{% block title %}Кошик — Muravka-krem{% endblock %}
+{% block title %}{% trans "Кошик" %} | Muravka-krem{% endblock %}
 
 {% block meta_description %}
-    Ваш кошик товарів Muravka-krem. Перевірте вибрані товари та оформіть замовлення.
+    {% trans "Ваш кошик товарів Muravka-krem. Перевірте вибрані товари та оформіть замовлення." %}
 {% endblock %}
 
 {% block content %}
 
     <div class="container-custom">
 
-        <h2 class="mb-4">🛒 Кошик</h2>
+        <h2 class="mb-4">🛒 {% trans "Кошик" %}</h2>
 
         {% if cart %}
 
@@ -54,7 +55,7 @@
                                 <button type="submit"
                                         class="btn btn--sm btn--outline btn--icon js-decrease-btn"
                                         {% if item.quantity <= 1 %}disabled{% endif %}
-                                        aria-label="Зменшити кількість">
+                                        aria-label="{% trans 'Зменшити кількість' %}">
                                     −
                                 </button>
                             </form>
@@ -71,7 +72,7 @@
 
                                 <button type="submit"
                                         class="btn btn--sm btn--outline btn--icon"
-                                        aria-label="Збільшити кількість">
+                                        aria-label="{% trans 'Збільшити кількість' %}">
                                     +
                                 </button>
                             </form>
@@ -92,7 +93,7 @@
 
                                 <button type="submit"
                                         class="btn btn--sm btn--danger btn--icon"
-                                        aria-label="Видалити товар">
+                                        aria-label="{% trans 'Видалити товар' %}">
                                     ✕
                                 </button>
                             </form>
@@ -107,26 +108,27 @@
             <div class="cart-summary text-end mt-4">
 
                 <h4 class="mb-3 fw-bold">
-                    Разом: <span id="cart-total">
-                    {{ cart.get_total_price|floatformat:0 }}
-                </span> ₴
+                    {% trans "Разом:" %}
+                    <span id="cart-total">
+                        {{ cart.get_total_price|floatformat:0 }}
+                    </span> ₴
                 </h4>
 
                 <a href="{% url 'store:order_create' %}"
                    class="btn btn--cta js-cta-click"
                    data-location="cart"
                    data-cta="begin_checkout">
-                    Оформити замовлення
+                    {% trans "Оформити замовлення" %}
                 </a>
 
             </div>
 
         {% else %}
 
-            <p>Ваш кошик порожній</p>
+            <p>{% trans "Ваш кошик порожній" %}</p>
 
             <a href="{% url 'store:product_list' %}" class="btn btn--cta mt-3">
-                Перейти до покупок
+                {% trans "Перейти до покупок" %}
             </a>
 
         {% endif %}
