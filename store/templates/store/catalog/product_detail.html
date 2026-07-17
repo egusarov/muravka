@@ -1,10 +1,11 @@
 {% extends "store/base/base_store.html" %}
 {% load cloudinary %}
+{% load i18n %}
 
-{% block title %}{{ product.name }} — Muravka-krem{% endblock %}
+{% block title %}{{ product.name }} | Muravka-krem{% endblock %}
 
 {% block meta_description %}
-    {{ product.name }} — натуральний засіб ручної роботи Muravka-krem. {{ product.description|truncatechars:140 }}
+    {{ product.name }} — {% trans "натуральний засіб ручної роботи Muravka-krem." %} {{ product.description|truncatechars:140 }}
 {% endblock %}
 
 {% block content %}
@@ -40,7 +41,7 @@
                 <div class="product-detail-actions">
 
                     <a href="{% url 'store:product_list' %}" class="btn btn--link product-back-link">
-                        ← До каталогу
+                        ← {% trans "До каталогу" %}
                     </a>
 
                     <form
@@ -53,8 +54,11 @@
                     >
                         {% csrf_token %}
 
-                        <button type="submit" class="btn btn--brand" aria-label="Додати {{ product.name }} в кошик">
-                            🛒 Додати в кошик
+                        <button
+                            type="submit"
+                            class="btn btn--brand"
+                            aria-label="{% blocktrans with name=product.name %}Додати {{ name }} в кошик{% endblocktrans %}">
+                                🛒 {% trans "Додати в кошик" %}
                         </button>
                     </form>
 
