@@ -20,10 +20,6 @@ def aromadiagnostics(request):
     return render(request, 'store/landing/aromadiagnostics.html')
 
 
-# def massage(request):
-#     return render(request, 'store/landing/massage.html')
-#
-
 def product_list(request):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)

@@ -5,18 +5,21 @@ from django.urls import reverse
 from django.conf import settings
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 def validate_image_size(image):
     if image.size > 2 * 1024 * 1024:
-        raise ValidationError("Максимальний розмір зображення — 2MB")
+        raise ValidationError(
+            _("Максимальний розмір зображення — 2MB")
+        )
 
 
 def validate_phone(value):
     pattern = r'^(\+380\d{9}|0\d{9})$'
     if not re.match(pattern, value):
         raise ValidationError(
-            'Введіть номер у форматі +380XXXXXXXXX або 0XXXXXXXXX'
+            _("Введіть номер у форматі +380XXXXXXXXX або 0XXXXXXXXX")
         )
 
 
@@ -25,8 +28,8 @@ class Category(models.Model):
     slug = models.SlugField(unique=True)
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = _("Категорія")
+        verbose_name_plural = _("Категорії")
 
     def __str__(self):
         return self.name
@@ -66,14 +69,14 @@ class Order(models.Model):
         related_name='orders'
     )
 
-    first_name = models.CharField("Ім'я", max_length=50)
-    last_name = models.CharField("Прізвище", max_length=50)
-    phone = models.CharField("Мобільний телефон", max_length=20, validators=[validate_phone])
+    first_name = models.CharField(_("Ім'я"), max_length=50)
+    last_name = models.CharField(_("Прізвище"), max_length=50)
+    phone = models.CharField(_("Мобільний телефон"), max_length=20, validators=[validate_phone])
 
-    city = models.CharField("Місто", max_length=50)
-    warehouse = models.CharField("Відділення / поштомат", max_length=255)
+    city = models.CharField(_("Місто"), max_length=50)
+    warehouse = models.CharField(_("Відділення / поштомат"), max_length=255)
 
-    comment = models.TextField("Коментар", blank=True)
+    comment = models.TextField(_("Коментар"), blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
