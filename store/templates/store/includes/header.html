@@ -1,6 +1,6 @@
 {% load static %}
 {% load socialaccount %}
-
+{% load i18n %}
 
 <header class="border-bottom py-3 site-header">
     <div class="container">
@@ -11,12 +11,12 @@
             <!-- LOGO -->
             <a href="{% url 'store:product_list' %}" class="logo text-decoration-none">
                 <div class="logo-wrapper d-flex align-items-center gap-2">
-                    <img src="{% static 'img/logo.webp' %}" class="logo-img">
+                    <img src="{% static 'img/logo.webp' %}" class="logo-img" alt="Muravka-krem logo">
 
                     <div class="logo-text">
                         <div class="logo-title">Muravka-krem</div>
                         <small class="text-muted d-none d-md-block">
-                            натуральна косметика
+                            {% trans "натуральна косметика" %}
                         </small>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
 
                 <!-- SEARCH -->
                 <div class="search position-relative">
-                    <button class="btn btn--ghost btn--icon" id="searchToggle">🔍</button>
+                    <button class="btn btn--ghost btn--icon" id="searchToggle" aria-label="{% trans 'Пошук' %}>🔍</button>
 
                     <form method="get"
                           action="{% url 'store:product_list' %}"
@@ -46,7 +46,7 @@
 
                         <input type="text"
                                name="q"
-                               placeholder="Пошук..."
+                               placeholder="{% trans 'Пошук...' %}"
                                value="{{ query|default:'' }}"
                                class="form-control">
                     </form>
@@ -96,7 +96,7 @@
                                         <form action="{% url 'account_logout' %}" method="post">
                                             {% csrf_token %}
                                             <button type="submit" class="dropdown-item">
-                                                Вийти
+                                                {% trans "Вийти" %}
                                             </button>
                                         </form>
                                     </li>
@@ -113,7 +113,7 @@
                     <a href="{% provider_login_url 'google' process='login' %}"
                        class="btn btn--google btn--sm d-flex align-items-center gap-2">
                         <img src="https://developers.google.com/identity/images/g-logo.png" width="18">
-                        <span class="d-none d-md-inline">Увійти</span>
+                        <span class="d-none d-md-inline">{% trans "Увійти" %}</span>
                     </a>
 
                 {% endif %}
