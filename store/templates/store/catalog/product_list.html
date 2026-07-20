@@ -17,7 +17,7 @@
                     {% if product.image %}
                         <div class="product-image-wrapper">
                             <a href="{% url 'store:product_detail' product.slug %}">
-                                {% cloudinary product.image.url width=400 height=400 crop="fill" quality="auto" fetch_format="auto" alt="{{ product.name }}" loading="lazy" %}
+                                {% cloudinary product.image.url width=400 height=400 crop="fill" quality="auto" fetch_format="auto" alt="{{ product.localized_name }}" loading="lazy" %}
                             </a>
                         </div>
                     {% endif %}
@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <h5 class="card-title product-title">
                             <a href="{% url 'store:product_detail' product.slug %}">
-                                {{ product.name }}
+                                {{ product.localized_name }}
                             </a>
                         </h5>
                         <div class="product-footer">
@@ -45,7 +45,7 @@
                                         type="submit"
                                         class="btn btn--icon btn--brand"
                                         title="{% trans 'Додати в кошик' %}"
-                                        aria-label="{% blocktrans with name=product.name %}Додати {{ name }} в кошик{% endblocktrans %}">
+                                        aria-label="{% blocktrans with name=product.localized_name %}Додати {{ name }} в кошик{% endblocktrans %}">
                                     🛒
                                 </button>
                             </form>
