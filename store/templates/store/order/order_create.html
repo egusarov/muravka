@@ -105,7 +105,7 @@
                                 data-product-name="{{ item.product.name }}"
                                 data-product-price="{{ item.product.price|floatformat:2 }}"
                                 data-product-quantity="{{ item.quantity }}">
-                                <span>{{ item.product.name }} × {{ item.quantity }}</span>
+                                <span>{{ item.product.localized_name }} × {{ item.quantity }}</span>
                                 <span>{{ item.total_price|floatformat:0 }} ₴</span>
                             </li>
                         {% endfor %}
