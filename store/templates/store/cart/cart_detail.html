@@ -29,13 +29,13 @@
                             {% if item.product.image %}
                                 <img src="{{ item.product.image.url }}"
                                      class="cart-item-img"
-                                     alt="{{ item.product.name }}"
+                                     alt="{{ item.product.localized_name }}"
                                      loading="lazy">
                             {% endif %}
 
                             <a href="{{ item.product.get_absolute_url }}"
                                class="cart-item-title">
-                                {{ item.product.name }}
+                                {{ item.product.localized_name }}
                             </a>
 
 
