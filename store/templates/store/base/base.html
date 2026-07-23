@@ -11,8 +11,11 @@
     <meta name="robots" content="index, follow">
 
     <title>{% block title %}Muravka-krem{% endblock %}</title>
+
     <meta name="description"
           content="{% block meta_description %}{% trans "Натуральна косметика ручної роботи Muravka-krem" %}{% endblock %}">
+
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
