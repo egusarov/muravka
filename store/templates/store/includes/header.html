@@ -27,7 +27,7 @@
                 {% for category in categories %}
                     <a href="{% url 'store:product_list' %}?category={{ category.slug }}"
                        class="btn btn--link {% if current_category == category.slug %}active-category{% endif %}">
-                        {{ category.name }}
+                        {{ category.localized_name }}
                     </a>
                 {% endfor %}
             </div>
@@ -126,7 +126,7 @@
             {% for category in categories %}
                 <a href="{% url 'store:product_list' %}?category={{ category.slug }}"
                    class="btn btn--link {% if current_category == category.slug %}active-category{% endif %}">
-                    {{ category.name }}
+                    {{ category.localized_name }}
                 </a>
             {% endfor %}
         </div>
