@@ -15,7 +15,11 @@
     <meta name="description"
           content="{% block meta_description %}{% trans "Натуральна косметика ручної роботи Muravka-krem" %}{% endblock %}">
 
-    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <link rel="alternate" hreflang="uk" href="{{ alternate_uk }}">
+    <link rel="alternate" hreflang="ru" href="{{ alternate_ru }}">
+    <link rel="alternate" hreflang="x-default" href="{{ alternate_uk }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
