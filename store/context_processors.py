@@ -42,15 +42,13 @@ def seo_urls(request):
     Canonical and alternate URLs
     for multilingual SEO.
     """
-    current_path = request.get_full_path()
-
     return {
-        "canonical_url": request.build_absolute_uri(),
+        "canonical_url": request.build_absolute_uri(request.path),
         "alternate_uk": request.build_absolute_uri(
-            translate_url(current_path, "uk")
+            translate_url(request.path, "uk")
         ),
         "alternate_ru": request.build_absolute_uri(
-            translate_url(current_path, "ru")
+            translate_url(request.path, "ru")
         ),
         "current_language": get_language(),
     }
