@@ -82,6 +82,7 @@ TEMPLATES = [
                 'store.context_processors.categories',
                 'store.context_processors.analytics',
                 'store.context_processors.language_switcher',
+                'store.context_processors.seo_urls',
             ],
         },
     },
