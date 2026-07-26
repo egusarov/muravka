@@ -1,17 +1,18 @@
 {% extends 'store/base/base_store.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Оформлення замовлення — Muravka-krem{% endblock %}
+{% block title %}{% trans "Оформлення замовлення" %} | Muravka-krem{% endblock %}
 
 {% block meta_description %}
-    Оформлення замовлення натуральної косметики Muravka-krem. Швидке та безпечне оформлення покупки.
+    {% trans "Оформлення замовлення натуральної косметики Muravka-krem. Швидке та безпечне оформлення покупки." %}
 {% endblock %}
 
 {% block content %}
 
     <div class="checkout-page"
          data-total="{{ cart.get_total_price|floatformat:2 }}">
-        <h2 class="mb-4">Оформлення замовлення</h2>
+        <h2 class="mb-4">{% trans "Оформлення замовлення" %}</h2>
 
         <div class="row">
 
@@ -76,11 +77,11 @@
                     <div class="product-detail-actions d-flex justify-content-between">
 
                         <a href="{% url 'store:cart_detail' %}" class="btn btn--link">
-                            ← До кошика
+                            ← {% trans "До кошика" %}
                         </a>
 
-                        <button type="submit" class="btn btn--brand" aria-label="Підтвердити замовлення">
-                            🧾 Підтвердити замовлення
+                        <button type="submit" class="btn btn--brand" aria-label="{% trans 'Підтвердити замовлення' %}">
+                            🧾 {% trans "Підтвердити замовлення" %}
                         </button>
 
                     </div>
@@ -94,7 +95,7 @@
 
                 <div class="card p-4 shadow-sm">
 
-                    <h5 class="mb-3">Ваше замовлення</h5>
+                    <h5 class="mb-3">{% trans "Ваше замовлення" %}</h5>
 
                     {% if cart %}
                         <ul class="list-unstyled">
@@ -104,19 +105,19 @@
                                 data-product-name="{{ item.product.name }}"
                                 data-product-price="{{ item.product.price|floatformat:2 }}"
                                 data-product-quantity="{{ item.quantity }}">
-                                <span>{{ item.product.name }} × {{ item.quantity }}</span>
+                                <span>{{ item.product.localized_name }} × {{ item.quantity }}</span>
                                 <span>{{ item.total_price|floatformat:0 }} ₴</span>
                             </li>
                         {% endfor %}
                     {% else %}
-                        <p>Кошик порожній</p>
+                        <p>{% trans "Кошик порожній" %}</p>
                     {% endif %}
                     </ul>
 
                     <hr>
 
                     <h5 class="d-flex justify-content-between">
-                        <span>Разом:</span>
+                        <span>{% trans "Разом:" %}</span>
                         <strong>{{ cart.get_total_price|floatformat:0 }} ₴</strong>
                     </h5>
 

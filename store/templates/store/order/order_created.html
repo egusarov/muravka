@@ -1,9 +1,10 @@
 {% extends 'store/base/base_store.html' %}
+{% load i18n %}
 
-{% block title %}Замовлення оформлено — Muravka-krem{% endblock %}
+{% block title %}{% trans "Замовлення оформлено" %} | Muravka-krem{% endblock %}
 
 {% block meta_description %}
-    Дякуємо за замовлення в Muravka-krem. Ваше замовлення успішно створено та передано в обробку.
+    {% trans "Дякуємо за замовлення в Muravka-krem. Ваше замовлення успішно створено та передано в обробку." %}
 {% endblock %}
 
 {% block content %}
@@ -15,10 +16,10 @@
          data-utm-medium="{{ request.session.utm_medium|default:'none' }}"
          data-utm-campaign="{{ request.session.utm_campaign|default:'none' }}">
 
-        <h2>Дякуємо!</h2>
-        <p>Ваше замовлення №{{ order.id }} успішно створено.</p>
+        <h2>{% trans "Дякуємо!" %}</h2>
+        <p>{% blocktrans with order_id=order.id %}Ваше замовлення №{{ order_id }} успішно створено.{% endblocktrans %}</p>
 
-        <a href="{% url 'store:product_list' %}">До магазину</a>
+        <a href="{% url 'store:product_list' %}">{% trans "До магазину" %}</a>
 
         <ul hidden>
             {% for item in order.items.all %}

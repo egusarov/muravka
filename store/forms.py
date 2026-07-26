@@ -1,4 +1,6 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
+
 from .models import Order
 
 
@@ -6,7 +8,7 @@ class CartAddProductForm(forms.Form):
     quantity = forms.IntegerField(
         min_value=1,
         initial=1,
-        label='Кількість'
+        label=_("Кількість")
     )
     override = forms.BooleanField(
         required=False,
@@ -29,27 +31,27 @@ class OrderCreateForm(forms.ModelForm):
 
         widgets = {
             'first_name': forms.TextInput(attrs={
-                'placeholder': "Ім’я",
+                'placeholder': _("Ім’я"),
                 'class': 'form-control'
             }),
             'last_name': forms.TextInput(attrs={
-                'placeholder': "Прізвище",
+                'placeholder': _("Прізвище"),
                 'class': 'form-control'
             }),
             'phone': forms.TextInput(attrs={
-                'placeholder': "Телефон",
+                'placeholder': _("Телефон"),
                 'class': 'form-control'
             }),
             'city': forms.TextInput(attrs={
-                'placeholder': "Місто",
+                'placeholder': _("Місто"),
                 'class': 'form-control'
             }),
             'warehouse': forms.TextInput(attrs={
-                'placeholder': "Відділення / Поштомат",
+                'placeholder': _("Відділення / Поштомат"),
                 'class': 'form-control'
             }),
             'comment': forms.Textarea(attrs={
-                'placeholder': "Коментар до замовлення (необов’язково)",
+                'placeholder': _("Коментар до замовлення (необов’язково)"),
                 'rows': 3,
                 'class': 'form-control'
             })
@@ -57,18 +59,18 @@ class OrderCreateForm(forms.ModelForm):
 
         error_messages = {
             'first_name': {
-                'required': "Введіть ім’я",
+                'required': _("Введіть ім’я"),
             },
             'last_name': {
-                'required': "Введіть прізвище",
+                'required': _("Введіть прізвище"),
             },
             'phone': {
-                'required': "Введіть номер телефону",
+                'required': _("Введіть номер телефону"),
             },
             'city': {
-                'required': "Оберіть місто",
+                'required': _("Оберіть місто"),
             },
             'warehouse': {
-                'required': "Оберіть відділення",
+                'required': _("Оберіть відділення"),
             },
         }

@@ -1,15 +1,25 @@
 {% load static %}
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
 
     <title>{% block title %}Muravka-krem{% endblock %}</title>
+
     <meta name="description"
-          content="{% block meta_description %}Натуральна косметика ручної роботи Muravka-krem{% endblock %}">
+          content="{% block meta_description %}{% trans "Натуральна косметика ручної роботи Muravka-krem" %}{% endblock %}">
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <link rel="alternate" hreflang="uk" href="{{ alternate_uk }}">
+    <link rel="alternate" hreflang="ru" href="{{ alternate_ru }}">
+    <link rel="alternate" hreflang="x-default" href="{{ alternate_uk }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

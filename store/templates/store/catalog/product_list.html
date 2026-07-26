@@ -1,10 +1,11 @@
 {% extends "store/base/base_store.html" %}
 {% load cloudinary %}
+{% load i18n %}
 
-{% block title %}Каталог натуральної косметики — Muravka-krem{% endblock %}
+{% block title %}{% trans "Каталог натуральної косметики" %} | Muravka-krem{% endblock %}
 
 {% block meta_description %}
-    Каталог натуральної косметики ручної роботи Muravka-krem. Креми, бальзами та догляд без синтетики.
+    {% trans "Каталог натуральної косметики ручної роботи Muravka-krem. Креми, бальзами та догляд без синтетики." %}
 {% endblock %}
 
 {% block content %}
@@ -16,7 +17,7 @@
                     {% if product.image %}
                         <div class="product-image-wrapper">
                             <a href="{% url 'store:product_detail' product.slug %}">
-                                {% cloudinary product.image.url width=400 height=400 crop="fill" quality="auto" fetch_format="auto" alt="{{ product.name }}" loading="lazy" %}
+                                {% cloudinary product.image.url width=400 height=400 crop="fill" quality="auto" fetch_format="auto" alt="{{ product.localized_name }}" loading="lazy" %}
                             </a>
                         </div>
                     {% endif %}
@@ -24,7 +25,7 @@
                     <div class="card-body">
                         <h5 class="card-title product-title">
                             <a href="{% url 'store:product_detail' product.slug %}">
-                                {{ product.name }}
+                                {{ product.localized_name }}
                             </a>
                         </h5>
                         <div class="product-footer">
@@ -43,8 +44,8 @@
                                 <button
                                         type="submit"
                                         class="btn btn--icon btn--brand"
-                                        title="Додати в кошик"
-                                        aria-label="Додати {{ product.name }} в кошик">
+                                        title="{% trans 'Додати в кошик' %}"
+                                        aria-label="{% blocktrans with name=product.localized_name %}Додати {{ name }} в кошик{% endblocktrans %}">
                                     🛒
                                 </button>
                             </form>
@@ -55,13 +56,13 @@
             </div>
         {% empty %}
             <div class="col-12 text-center mt-5">
-                <p>Товари не знайдені</p>
+                <p>{% trans "Товари не знайдені" %}</p>
             </div>
         {% endfor %}
     </div>
 
     {% if page_obj.paginator.num_pages > 1 %}
-        <nav class="pagination" aria-label="Pagination">
+        <nav class="pagination" aria-label="{% trans "Навігація сторінками" %}">
 
             <!-- PREV -->
             {% if page_obj.has_previous %}

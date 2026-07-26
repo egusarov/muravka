@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,6 +81,8 @@ TEMPLATES = [
                 'store.context_processors.cart',
                 'store.context_processors.categories',
                 'store.context_processors.analytics',
+                'store.context_processors.language_switcher',
+                'store.context_processors.seo_urls',
             ],
         },
     },
@@ -121,13 +124,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "uk"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "Europe/Kyiv"
 
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGES = [
+    ("uk", "Українська"),
+    ("ru", "Русский"),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / "locale",
+]
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'

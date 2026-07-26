@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <footer class="site-footer mt-auto">
     <div class="container">
 
@@ -53,8 +55,20 @@
                 </a>
             </div>
 
-            <!-- RIGHT (empty spacer) -->
-            <div></div>
+            <!-- LANGUAGE -->
+            <div class="language-switcher">
+                {% get_current_language as LANGUAGE_CODE %}
+
+                {% if LANGUAGE_CODE == "uk" %}
+                    <span class="language-switcher__active">UK</span>
+                    <span class="language-switcher__divider">|</span>
+                    <a href="{{ switch_to_ru }}">RU</a>
+                {% else %}
+                    <a href="{{ switch_to_uk }}">UK</a>
+                    <span class="language-switcher__divider">|</span>
+                    <span class="language-switcher__active">RU</span>
+                {% endif %}
+            </div>
 
         </div>
 
