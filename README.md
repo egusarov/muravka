@@ -1,6 +1,6 @@
 # Muravka-krem
 
-Production-ready Django web application for a natural cosmetics brand with e-commerce functionality, aromadiagnostics service pages, OAuth authentication, analytics integration, and automated deployment pipeline.
+Production-ready Django web application for a natural cosmetics brand featuring multilingual support, e-commerce functionality, Google OAuth authentication, SEO optimization, analytics integration, and automated AWS deployment.
 
 ---
 
@@ -8,7 +8,7 @@ Production-ready Django web application for a natural cosmetics brand with e-com
 
 Muravka-krem is a Django web application for a handmade natural cosmetics brand.
 
-The project demonstrates a full-stack implementation of an e-commerce platform with service-based landing pages, authentication via Google OAuth, and CI/CD deployment to AWS infrastructure.
+The project demonstrates a production-ready implementation of an e-commerce platform combined with service-based landing pages, multilingual content, Google OAuth authentication, SEO optimization, and automated deployment on AWS infrastructure.
 
 ---
 
@@ -16,44 +16,49 @@ The project demonstrates a full-stack implementation of an e-commerce platform w
 
 ### Website & Content
 
-- Responsive landing pages
-- Product catalog with categories
-- Product search
-- Pagination
-- Aromadiagnostics service page
-- Gift certificate section
-- About / brand presentation pages
+* Responsive landing pages
+* Multilingual interface (Ukrainian / Russian)
+* Localized product names and descriptions
+* Product catalog with categories
+* Product search
+* Pagination
+* Aromadiagnostics service page
+* Gift certificate section
+* About / brand presentation pages
 
 ### E-commerce
 
-- Shopping cart
-- Checkout flow
-- Product catalog with search and category filtering
-- Nova Poshta API integration (delivery point selection during checkout)
+* Shopping cart
+* Checkout flow
+* Product catalog with search and category filtering
+* Nova Poshta API integration (delivery point selection during checkout)
 
 ### Authentication
 
-- Google OAuth 2.0 authentication implemented using django-allauth
-- Password-based authentication is disabled
-- Users are provisioned automatically from Google account data
-- Simplified authentication flow (no signup/password management)
+* Google OAuth 2.0 authentication implemented using django-allauth
+* Password-based authentication is disabled
+* Users are provisioned automatically from Google account data
+* Simplified authentication flow (no signup/password management)
 
-### Media & Analytics
+### SEO & Analytics
 
-- Cloudinary media storage
-- Google Analytics 4 integration
-- SEO-friendly structure
-- UTM campaign support
+* SEO-friendly multilingual architecture
+* Canonical URLs
+* hreflang alternate tags
+* XML sitemap generation
+* Cloudinary media storage
+* Google Analytics 4 integration
+* UTM campaign support
 
 ### Infrastructure & Deployment
 
-- AWS EC2 deployment
-- Nginx reverse proxy
-- Gunicorn application server
-- PostgreSQL in production
-- SQLite for local development
-- HTTPS with Let's Encrypt
-- GitHub Actions CI/CD pipeline
+* AWS EC2 deployment
+* Nginx reverse proxy
+* Gunicorn application server
+* PostgreSQL in production
+* SQLite for local development
+* HTTPS with Let's Encrypt
+* GitHub Actions CI/CD pipeline
 
 ---
 
@@ -61,32 +66,35 @@ The project demonstrates a full-stack implementation of an e-commerce platform w
 
 ### Backend
 
-- Python, Django 6
-- PostgreSQL (production), SQLite (development)
+* Python
+* Django 6
+* PostgreSQL (production)
+* SQLite (development)
 
 ### Frontend
 
-- HTML5
-- CSS3
-- JavaScript
+* HTML5
+* CSS3
+* JavaScript
 
 ### Infrastructure
 
-- AWS EC2 (Ubuntu 24.04)
-- Nginx + Gunicorn
-- Let's Encrypt SSL
+* AWS EC2 (Ubuntu 24.04)
+* Nginx
+* Gunicorn
+* Let's Encrypt SSL
 
 ### Integrations
 
-- Google OAuth 2.0 (authentication)
-- Google Analytics 4 (traffic analytics)
-- Cloudinary (media storage)
-- Nova Poshta API (delivery point selection during checkout)
+* Google OAuth 2.0 (django-allauth)
+* Google Analytics 4
+* Cloudinary
+* Nova Poshta API
 
 ### DevOps
 
-- GitHub Actions
-- CI/CD deployment pipeline
+* GitHub Actions
+* CI/CD deployment pipeline
 
 ---
 
@@ -112,22 +120,22 @@ The project uses separate database configurations for local and production envir
 
 ### Local Development
 
-- SQLite
-- DEBUG=True
+* SQLite
+* DEBUG=True
 
 ### Production
 
-- PostgreSQL
-- DEBUG=False
-- HTTPS enabled
+* PostgreSQL
+* DEBUG=False
+* HTTPS enabled
 
-Example logic:
+Example configuration:
 
 ```python
-if os.getenv('USE_SQLITE') == 'True':
-    # SQLite config
+if os.getenv("USE_SQLITE") == "True":
+    # SQLite configuration
 else:
-    # PostgreSQL config
+    # PostgreSQL configuration
 ```
 
 ---
@@ -136,12 +144,12 @@ else:
 
 Production deployment includes:
 
-- AWS EC2 Ubuntu server
-- Gunicorn process management
-- Nginx reverse proxy
-- SSL certificates via Let's Encrypt
-- HTTP → HTTPS redirects
-- GitHub Actions auto-deploy
+* AWS EC2 Ubuntu server
+* Gunicorn process management
+* Nginx reverse proxy
+* SSL certificates via Let's Encrypt
+* HTTP → HTTPS redirects
+* GitHub Actions automatic deployment
 
 Deployment flow:
 
@@ -161,30 +169,46 @@ Application restart
 
 The application uses Google OAuth 2.0 (django-allauth) as the sole authentication method.
 
-Key features:
+Features include:
 
-- No password-based authentication
-- No username-based login
-- Automatic user provisioning from Google OAuth data
-- Stateless and simplified onboarding flow
-- Managed via django-allauth (Google OAuth 2.0 provider)
+* No password-based authentication
+* No username-based login
+* Automatic user provisioning from Google account data
+* Simplified authentication flow
+* Secure OAuth-based authentication
+
+---
+
+## 🌍 Internationalization
+
+The application supports multilingual content using Django's internationalization framework.
+
+Implemented features:
+
+* Ukrainian and Russian interface
+* Localized product names and descriptions
+* Language-aware URLs
+* Language switcher
+* Canonical URLs
+* hreflang alternate links
+* Multilingual XML sitemap
 
 ---
 
 ## 📱 Responsive Design
 
-The UI was optimized for:
+The interface is optimized for:
 
-- desktop devices
-- tablets
-- mobile phones
+* Desktop devices
+* Tablets
+* Mobile phones
 
-Improvements include:
+Responsive improvements include:
 
-- mobile typography adjustments
-- left-aligned mobile content
-- responsive CTA sections
-- optimized landing layout
+* Mobile typography adjustments
+* Left-aligned mobile content
+* Responsive CTA sections
+* Optimized landing page layouts
 
 ---
 
@@ -192,26 +216,28 @@ Improvements include:
 
 ### Landing
 
-Main marketing homepage with brand presentation.
+Marketing homepage introducing the brand and its philosophy.
 
 ### Store
 
-Online shop with:
+Online shop featuring:
 
-- categories
-- search
-- pagination
-- cart
-- checkout
+* Product catalog
+* Categories
+* Search
+* Pagination
+* Shopping cart
+* Checkout
 
 ### Aromadiagnostics
 
-Dedicated service landing page including:
+Dedicated landing page describing the aromadiagnostics service, including:
 
-- process explanation
-- natural tools presentation
-- certification section
-- gift certificate CTA
+* Service overview
+* Diagnostic process
+* Natural tools presentation
+* Certification section
+* Gift certificate CTA
 
 ---
 
@@ -221,31 +247,43 @@ Dedicated service landing page including:
 
 Implemented conditional database configuration for:
 
-- SQLite (development)
-- PostgreSQL (production)
+* SQLite (development)
+* PostgreSQL (production)
 
-### Production SSL & Proxy Handling
+### Production SSL & Reverse Proxy
 
 Configured:
 
-- `SECURE_PROXY_SSL_HEADER`
-- HTTPS redirects
-- Nginx proxy forwarding
+* `SECURE_PROXY_SSL_HEADER`
+* HTTPS redirects
+* Nginx reverse proxy
 
-### OAuth Integration
+### Google OAuth Integration
 
 Resolved:
 
-- SocialApp configuration issues
-- local/production environment inconsistencies
+* SocialApp configuration
+* Environment-specific OAuth settings
+* Production authentication workflow
+
+### Internationalization (i18n)
+
+Implemented:
+
+* Ukrainian and Russian localization
+* Language-aware routing
+* Canonical URLs
+* hreflang alternate tags
+* Multilingual XML sitemap
+* Localized product and category content
 
 ### Production Stability
 
 Investigated and resolved:
 
-- Gunicorn worker hangs
-- Nginx upstream timeout issues
-- deployment synchronization problems
+* Gunicorn worker hangs
+* Nginx upstream timeout issues
+* Deployment synchronization problems
 
 ---
 
@@ -269,19 +307,19 @@ Investigated and resolved:
   <img src="screenshots/aroma.webp" width="900">
 </p>
 
-### Mobile Version Homepage
+### Mobile Homepage
 
 <p align="center">
   <img src="screenshots/mobile-home.webp" width="420">
 </p>
 
-### Mobile Version Store
+### Mobile Store
 
 <p align="center">
   <img src="screenshots/mobile-store.webp" width="420">
 </p>
 
-### Mobile Version Aromadiagnostics
+### Mobile Aromadiagnostics
 
 <p align="center">
   <img src="screenshots/mobile-aroma.webp" width="420">
@@ -298,13 +336,13 @@ git clone <repository_url>
 # Create virtual environment
 python -m venv venv
 
-# Activate environment
+# Activate virtual environment
 source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Run migrations
+# Apply migrations
 python manage.py migrate
 
 # Start development server
@@ -315,24 +353,26 @@ python manage.py runserver
 
 ## 📈 Future Improvements
 
-- Multi-language support (Ukrainian / English)
-- Payment integration (LiqPay / Stripe)
-- Product reviews and ratings
-- Admin analytics dashboard for orders and traffic insights
+* English localization
+* Online payment integration (LiqPay / Stripe)
+* Product reviews and ratings
+* Admin dashboard with sales and traffic analytics
 
 ---
 
 ## 👨‍💻 Author
 
-Evgeniy Gusarov — Python/Django backend developer focused on production-grade web applications.
+**Evgeniy Gusarov** — Python/Django Backend Developer.
 
-Focused on building production-ready web applications with experience in:
+Interested in building production-ready web applications with focus on:
 
-- Django backend development
-- AWS deployment and infrastructure
-- CI/CD automation (GitHub Actions)
-- Authentication systems (OAuth2)
-- E-commerce architecture
+* Django backend development
+* REST APIs
+* AWS deployment and infrastructure
+* CI/CD automation
+* Authentication systems (OAuth 2.0)
+* SEO-friendly web applications
+* E-commerce architecture
 
 ---
 
