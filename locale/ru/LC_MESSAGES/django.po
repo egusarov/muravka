@@ -323,3 +323,119 @@ msgstr "Ваш заказ №%(order_id)s успешно создан."
 #: .\store\templates\store\order\order_created.html:22
 msgid "До магазину"
 msgstr "В магазин"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Аромадіагностика в Одесі — сесія ароматерапії"
+msgstr "Аромадиагностика в Одессе — сеанс ароматерапии"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Сесія аромадіагностики та ароматерапії в Одесі. Індивідуальний підбір ефірних олій для розуміння себе. ⏳ 1.5 години. 🎁 Є подарункові сертифікати. Записуйтесь!"
+msgstr "Сеанс аромадиагностики и ароматерапии в Одессе. Индивидуальный подбор эфирных масел для понимания себя. ⏳ 1,5 часа. 🎁 Есть подарочные сертификаты. Записывайтесь!"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Аромадіагностика — робота з ефірними оліями"
+msgstr "Аромадиагностика — работа с эфирными маслами"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Аромадіагностика в Одесі"
+msgstr "Аромадиагностика в Одессе"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Діалог із собою через аромати натуральних ефірних олій"
+msgstr "Диалог с собой через ароматы натуральных эфирных масел"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Чи знали ви, що нюх — одне з найсильніших наших відчуттів?"
+msgstr "Знаете ли вы, что обоняние — одно из самых сильных наших чувств?"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Записатися на сесію"
+msgstr "Записаться на сеанс"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Як проходить сесія аромадіагностики"
+msgstr "Как проходит сеанс аромадиагностики"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "зустріч у комфортному просторі"
+msgstr "встреча в комфортном пространстве"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "обговорення запиту"
+msgstr "обсуждение запроса"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "знайомство з ароматами"
+msgstr "знакомство с ароматами"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "розподіл за відчуттями"
+msgstr "распределение по ощущениям"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "розшифровка"
+msgstr "расшифровка"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "створення парфумів"
+msgstr "создание парфюма"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Місце: в Одесі"
+msgstr "Место: в Одессе"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Тривалість: 1,5 години"
+msgstr "Продолжительность: 1,5 часа"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Вартість: 2500 грн"
+msgstr "Стоимость: 2500 грн"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Аромадіагностика — як проходить сесія"
+msgstr "Аромадиагностика — как проходит сеанс"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Аромадіагностика — натуральні інструменти"
+msgstr "Аромадиагностика — натуральные инструменты"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Сила натуральних ефірних олій"
+msgstr "Сила натуральных эфирных масел"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Кожен аромат — це сигнал, який допомагає краще зрозуміти свій стан."
+msgstr "Каждый аромат — это сигнал, который помогает лучше понять своё состояние."
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Подарунковий сертифікат"
+msgstr "Подарочный сертификат"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Подаруйте близькій людині особливий досвід — сесію аромадіагностики та індивідуальний підбір ароматів."
+msgstr "Подарите близкому человеку особенный опыт — сеанс аромадиагностики и индивидуальный подбор ароматов."
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Сертифікат доступний у електронному форматі."
+msgstr "Сертификат доступен в электронном формате."
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Подарунковий сертифікат на аромадіагностику"
+msgstr "Подарочный сертификат на аромадиагностику"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Замовити сертифікат"
+msgstr "Заказать сертификат"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Сертифікація"
+msgstr "Сертификация"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Аромадіагностика — сертифікат майстра"
+msgstr "Аромадиагностика — сертификат мастера"
+
+#: .\store\templates\store\landing\aromadiagnostics.html
+msgid "Сертифікат аромадіагностики"
+msgstr "Сертификат аромадиагностики"

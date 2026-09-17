@@ -1,10 +1,10 @@
 {% extends "store/base/base_landing.html" %}
-{% load static %}
+{% load i18n static %}
 
-{% block title %}Аромадіагностика в Одесі — сесія ароматерапії | Muravka-krem{% endblock %}
+{% block title %}{% trans "Аромадіагностика в Одесі — сесія ароматерапії" %} | Muravka-krem{% endblock %}
 
 {% block meta_description %}
-    Сесія аромадіагностики та ароматерапії в Одесі. Індивідуальний підбір ефірних олій для розуміння себе. ⏳ 1.5 години. 🎁 Є подарункові сертифікати. Записуйтесь!
+    {% trans "Сесія аромадіагностики та ароматерапії в Одесі. Індивідуальний підбір ефірних олій для розуміння себе. ⏳ 1.5 години. 🎁 Є подарункові сертифікати. Записуйтесь!" %}
 {% endblock %}
 
 {% block extra_head %}
@@ -23,20 +23,20 @@
                 <div class="aroma-content aroma-left">
                     <img src="{% static 'img/aroma-hero.webp' %}"
                          class="img-fluid aroma-img"
-                         alt="Аромадіагностика — робота з ефірними оліями">
+                         alt="{% trans 'Аромадіагностика — робота з ефірними оліями' %}">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="aroma-content aroma-right">
-                    <h1 class="aroma-title">Аромадіагностика в Одесі</h1>
+                    <h1 class="aroma-title">{% trans "Аромадіагностика в Одесі" %}</h1>
 
                     <p class="aroma-text">
-                        Діалог із собою через аромати натуральних ефірних олій
+                        {% trans "Діалог із собою через аромати натуральних ефірних олій" %}
                     </p>
 
                     <p class="aroma-text mt-3">
-                        Чи знали ви, що нюх — одне з найсильніших наших відчуттів?
+                        {% trans "Чи знали ви, що нюх — одне з найсильніших наших відчуттів?" %}
                     </p>
 
                     <a href="https://t.me/SvetaHusarova"
@@ -45,7 +45,7 @@
                        class="btn btn--brand mt-3 js-social-click"
                        data-social="telegram"
                        data-location="aroma_hero">
-                        🟢 Записатися на сесію
+                        🟢 {% trans "Записатися на сесію" %}
                     </a>
                 </div>
             </div>
@@ -58,21 +58,21 @@
 
             <div class="col-md-6">
                 <div class="aroma-content aroma-left">
-                    <h2 class="aroma-title">Як проходить сесія аромадіагностики</h2>
+                    <h2 class="aroma-title">{% trans "Як проходить сесія аромадіагностики" %}</h2>
 
                     <ul class="aroma-list">
-                        <li> зустріч у комфортному просторі</li>
-                        <li> обговорення запиту</li>
-                        <li> знайомство з ароматами</li>
-                        <li> розподіл за відчуттями</li>
-                        <li> розшифровка</li>
-                        <li> створення парфумів</li>
+                        <li>{% trans "зустріч у комфортному просторі" %}</li>
+                        <li>{% trans "обговорення запиту" %}</li>
+                        <li>{% trans "знайомство з ароматами" %}</li>
+                        <li>{% trans "розподіл за відчуттями" %}</li>
+                        <li>{% trans "розшифровка" %}</li>
+                        <li>{% trans "створення парфумів" %}</li>
                     </ul>
 
                     <p class="mt-3">
-                        🗺️ Місце: в Одесі<br>
-                        ⏳ Тривалість: 1,5 години<br>
-                        💎 Вартість: 2500 грн
+                        🗺️ {% trans "Місце: в Одесі" %}<br>
+                        ⏳ {% trans "Тривалість: 1,5 години" %}<br>
+                        💎 {% trans "Вартість: 2500 грн" %}
                     </p>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                     <img src="{% static 'img/aroma-process.webp' %}"
                          loading="lazy"
                          class="img-fluid aroma-img"
-                         alt="Аромадіагностика — як проходить сесія">
+                         alt="{% trans 'Аромадіагностика — як проходить сесія' %}">
                 </div>
             </div>
 
@@ -97,16 +97,16 @@
                     <img src="{% static 'img/aroma-kit.webp' %}"
                          loading="lazy"
                          class="img-fluid aroma-img"
-                         alt="Аромадіагностика — натуральні інструменти">
+                         alt="{% trans 'Аромадіагностика — натуральні інструменти' %}">
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="aroma-content aroma-right">
-                    <h2 class="aroma-title">Сила натуральних ефірних олій</h2>
+                    <h2 class="aroma-title">{% trans "Сила натуральних ефірних олій" %}</h2>
 
                     <p class="aroma-text">
-                        Кожен аромат — це сигнал, який допомагає краще зрозуміти свій стан.
+                        {% trans "Кожен аромат — це сигнал, який допомагає краще зрозуміти свій стан." %}
                     </p>
                 </div>
             </div>
@@ -120,15 +120,14 @@
 
                 <div class="col-md-6">
                     <div class="aroma-content aroma-left">
-                        <h2 class="aroma-title">🎁 Подарунковий сертифікат</h2>
+                        <h2 class="aroma-title">🎁 {% trans "Подарунковий сертифікат" %}</h2>
 
                         <p class="aroma-text">
-                            Подаруйте близькій людині особливий досвід —
-                            сесію аромадіагностики та індивідуальний підбір ароматів.
+                            {% trans "Подаруйте близькій людині особливий досвід — сесію аромадіагностики та індивідуальний підбір ароматів." %}
                         </p>
 
                         <p class="aroma-text mt-3">
-                            Сертифікат доступний у електронному форматі.
+                            {% trans "Сертифікат доступний у електронному форматі." %}
                         </p>
                     </div>
                 </div>
@@ -138,7 +137,7 @@
                         <img src="{% static 'img/aroma-gift-certificate.webp' %}"
                              loading="lazy"
                              class="img-fluid aroma-img aroma-gift-img"
-                             alt="Подарунковий сертифікат на аромадіагностику">
+                             alt="{% trans 'Подарунковий сертифікат на аромадіагностику' %}">
                     </div>
                 </div>
 
@@ -152,7 +151,7 @@
                    class="btn btn--brand js-social-click"
                    data-social="telegram"
                    data-location="gift_certificate">
-                    🎁 Замовити сертифікат
+                    🎁 {% trans "Замовити сертифікат" %}
                 </a>
             </div>
 
@@ -161,13 +160,13 @@
         <!-- CERTIFICATE -->
         <div class="aroma-block aroma-center">
 
-            <h2 class="aroma-title">Сертифікація</h2>
+            <h2 class="aroma-title">{% trans "Сертифікація" %}</h2>
 
             <img src="{% static 'img/aroma-certificate.webp' %}"
                  loading="lazy"
                  class="aroma-cert mt-3"
                  id="cert-preview"
-                 alt="Аромадіагностика — сертифікат майстра">
+                 alt="{% trans 'Аромадіагностика — сертифікат майстра' %}">
 
             <a href="https://t.me/SvetaHusarova"
                target="_blank"
@@ -175,7 +174,7 @@
                class="btn btn--brand mt-4 js-social-click"
                data-social="telegram"
                data-location="aroma_certificate">
-                🟢 Записатися на сесію
+                🟢 {% trans "Записатися на сесію" %}
             </a>
 
         </div>
@@ -186,7 +185,7 @@
     <!-- MODAL -->
     <div id="cert-modal" class="cert-modal" role="dialog" aria-hidden="true">
         <img src="{% static 'img/aroma-certificate.webp' %}"
-             alt="Сертифікат аромадіагностики">
+             alt="{% trans 'Сертифікат аромадіагностики' %}">
     </div>
 
 {% endblock %}
