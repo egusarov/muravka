@@ -1,10 +1,10 @@
 {% extends "store/base/base_landing.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Натуральна косметика та аромадіагностика в Одесі | Muravka-krem{% endblock %}
+{% block title %}{% trans "Натуральна косметика та аромадіагностика в Одесі | Muravka-krem" %}{% endblock %}
 
 {% block meta_description %}
-    Muravka-krem — натуральна косметика ручної роботи. Догляд за шкірою без компромісів.
+    {% trans "Muravka-krem — натуральна косметика ручної роботи. Догляд за шкірою без компромісів." %}
 {% endblock %}
 
 {% block extra_head %}
@@ -17,15 +17,15 @@
     <section class="hero">
         <img src="{% static 'img/hero.webp' %}"
              class="hero-img"
-             alt="Натуральна косметика Muravka-krem"
+             alt="{% trans 'Натуральна косметика Muravka-krem' %}"
              fetchpriority="high">
 
         <div class="hero-overlay">
             <div class="hero-content">
-                <h1>Натуральна косметика ручної роботи</h1>
+                <h1>{% trans "Натуральна косметика ручної роботи" %}</h1>
 
                 <p>
-                    Турбота про шкіру без компромісів — тільки природні інгредієнти
+                    {% trans "Турбота про шкіру без компромісів — тільки природні інгредієнти" %}
                 </p>
 
                 <div class="hero-buttons">
@@ -33,18 +33,18 @@
                        class="btn btn--primary js-cta-click"
                        data-location="home_hero"
                        data-cta="go_to_shop">
-                        🧴 Магазин
+                        🧴 {% trans "Магазин" %}
                     </a>
 
                     <a href="{% url 'aromadiagnostics' %}"
                        class="btn btn--primary js-cta-click"
                        data-location="home_hero"
                        data-cta="go_to_aroma">
-                        🌿 Аромадіагностика
+                        🌿 {% trans "Аромадіагностика" %}
                     </a>
 
                     <a href="#" class="btn btn--secondary" aria-disabled="true">
-                        💆 Даоський масаж
+                        💆 {% trans "Даоський масаж" %}
                     </a>
                 </div>
             </div>
@@ -57,26 +57,25 @@
             <div class="about-preview-image">
                 <img src="{% static 'img/about-2.webp' %}"
                      loading="lazy"
-                     alt="Натуральна косметика ручної роботи Muravka-krem">
+                     alt="{% trans 'Натуральна косметика ручної роботи Muravka-krem' %}">
             </div>
 
             <div class="about-preview-text">
-                <h2>Про мене</h2>
+                <h2>{% trans "Про мене" %}</h2>
 
                 <p class="about-lead">
-                    Я створюю натуральну косметику, яку сама використовую щодня.
+                    {% trans "Я створюю натуральну косметику, яку сама використовую щодня." %}
                 </p>
 
                 <p>
-                    Усе почалося з власного досвіду — коли жодні засоби не допомагали,
-                    я створила свій перший крем.
+                    {% trans "Усе почалося з власного досвіду — коли жодні засоби не допомагали, я створила свій перший крем." %}
                 </p>
 
                 <a href="{% url 'about' %}"
                    class="btn btn--outline about-btn js-cta-click"
                    data-location="home_about"
                    data-cta="learn_more">
-                    Дізнатися більше
+                    {% trans "Дізнатися більше" %}
                 </a>
             </div>
 

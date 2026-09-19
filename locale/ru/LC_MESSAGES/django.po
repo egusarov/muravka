@@ -439,3 +439,143 @@ msgstr "Аромадиагностика — сертификат мастера
 #: .\store\templates\store\landing\aromadiagnostics.html
 msgid "Сертифікат аромадіагностики"
 msgstr "Сертификат аромадиагностики"
+
+#: store/templates/store/landing/home.html
+msgid "Натуральна косметика та аромадіагностика в Одесі | Muravka-krem"
+msgstr "Натуральная косметика и аромадиагностика в Одессе | Muravka-krem"
+
+#: store/templates/store/landing/home.html
+msgid "Muravka-krem — натуральна косметика ручної роботи. Догляд за шкірою без компромісів."
+msgstr "Muravka-krem — натуральная косметика ручной работы. Уход за кожей без компромиссов."
+
+#: store/templates/store/landing/home.html
+msgid "Натуральна косметика Muravka-krem"
+msgstr "Натуральная косметика Muravka-krem"
+
+#: store/templates/store/landing/home.html
+msgid "Натуральна косметика ручної роботи"
+msgstr "Натуральная косметика ручной работы"
+
+#: store/templates/store/landing/home.html
+msgid "Турбота про шкіру без компромісів — тільки природні інгредієнти"
+msgstr "Забота о коже без компромиссов — только натуральные ингредиенты"
+
+#: store/templates/store/landing/home.html
+msgid "Магазин"
+msgstr "Магазин"
+
+#: store/templates/store/landing/home.html
+msgid "Аромадіагностика"
+msgstr "Аромадиагностика"
+
+#: store/templates/store/landing/home.html
+msgid "Даоський масаж"
+msgstr "Даосский массаж"
+
+#: store/templates/store/landing/home.html
+msgid "Натуральна косметика ручної роботи Muravka-krem"
+msgstr "Натуральная косметика ручной работы Muravka-krem"
+
+#: store/templates/store/landing/home.html
+msgid "Про мене"
+msgstr "Обо мне"
+
+#: store/templates/store/landing/home.html
+msgid "Я створюю натуральну косметику, яку сама використовую щодня."
+msgstr "Я создаю натуральную косметику, которой сама пользуюсь каждый день."
+
+#: store/templates/store/landing/home.html
+msgid "Усе почалося з власного досвіду — коли жодні засоби не допомагали, я створила свій перший крем."
+msgstr "Всё началось с личного опыта: когда никакие средства не помогали, я создала свой первый крем."
+
+#: store/templates/store/landing/home.html
+msgid "Дізнатися більше"
+msgstr "Узнать больше"
+
+#: store/templates/store/landing/about.html
+msgid "Про мене — Muravka-krem"
+msgstr "Обо мне — Muravka-krem"
+
+#: store/templates/store/landing/about.html
+msgid "Історія створення Muravka-krem. Натуральна косметика ручної роботи від Світлани Гусарової."
+msgstr "История создания Muravka-krem. Натуральная косметика ручной работы от Светланы Гусаровой."
+
+#: store/templates/store/landing/about.html
+msgid "Світлана Гусарова — засновниця Muravka-krem"
+msgstr "Светлана Гусарова — основательница Muravka-krem"
+
+#: store/templates/store/landing/about.html
+msgid "Мене звуть Світлана Гусарова — засновниця бренду"
+msgstr "Меня зовут Светлана Гусарова — основательница бренда"
+
+#: store/templates/store/landing/about.html
+msgid "Як усе почалося"
+msgstr "Как всё началось"
+
+#: store/templates/store/landing/about.html
+msgid "Усе почалося у 2017 році, коли моя шкіра стала настільки сухою, що аптечні засоби не давали результату."
+msgstr "Всё началось в 2017 году, когда моя кожа стала настолько сухой, что аптечные средства не давали результата."
+
+#: store/templates/store/landing/about.html
+msgid "Попри те, що я провізор за освітою, я шукала рішення зовні — у кремах і баночках."
+msgstr "Хотя по образованию я провизор, я искала решение снаружи — в кремах и баночках."
+
+#: store/templates/store/landing/about.html
+msgid "Одного дня я створила свій перший крем — і це змінило все."
+msgstr "Однажды я создала свой первый крем — и это изменило всё."
+
+#: store/templates/store/landing/about.html
+msgid "Мій перший результат"
+msgstr "Мой первый результат"
+
+#: store/templates/store/landing/about.html
+msgid "шкіра зажила"
+msgstr "кожа восстановилась"
+
+#: store/templates/store/landing/about.html
+msgid "пігментація побліднішала"
+msgstr "пигментация стала менее заметной"
+
+#: store/templates/store/landing/about.html
+msgid "чорні точки зникли"
+msgstr "чёрные точки исчезли"
+
+#: store/templates/store/landing/about.html
+msgid "зменшилась реактивність"
+msgstr "уменьшилась реактивность"
+
+#: store/templates/store/landing/about.html
+msgid "Це був не просто крем. Це був ритуал любові до себе."
+msgstr "Это был не просто крем. Это был ритуал любви к себе."
+
+#: store/templates/store/landing/about.html
+msgid "Мій шлях далі"
+msgstr "Мой дальнейший путь"
+
+#: store/templates/store/landing/about.html
+msgid "Я почала вивчати косметологію, нутріціологію та китайську медицину, щоб зрозуміти глибші причини стану шкіри."
+msgstr "Я начала изучать косметологию, нутрициологию и китайскую медицину, чтобы понять более глубокие причины состояния кожи."
+
+#: store/templates/store/landing/about.html
+msgid "Як створюється косметика"
+msgstr "Как создаётся косметика"
+
+#: store/templates/store/landing/about.html
+msgid "Кожен засіб створюється вручну — часто за індивідуальним рецептом після консультації."
+msgstr "Каждое средство создаётся вручную — часто по индивидуальному рецепту после консультации."
+
+#: store/templates/store/landing/about.html
+msgid "Філософія"
+msgstr "Философия"
+
+#: store/templates/store/landing/about.html
+msgid "“Muravka-krem” — це не лише натуральні компоненти."
+msgstr "«Muravka-krem» — это не только натуральные компоненты."
+
+#: store/templates/store/landing/about.html
+msgid "Це про увагу. Про м’яке піклування. Про любов до найважливішої людини — себе."
+msgstr "Это про внимание. Про мягкую заботу. Про любовь к самому важному человеку — себе."
+
+#: store/templates/store/landing/about.html
+msgid "Обрати свій догляд"
+msgstr "Выбрать свой уход"
