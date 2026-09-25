@@ -1,6 +1,9 @@
+import json
+
 from django.core.paginator import Paginator
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils.safestring import mark_safe
 
 from .cart import Cart
 from .forms import CartAddProductForm, OrderCreateForm
@@ -58,12 +61,41 @@ def product_detail(request, slug):
 
     form = CartAddProductForm()
 
+    product_schema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.localized_name,
+        "description": product.localized_description,
+        "url": request.build_absolute_uri(request.path),
+        "brand": {"@type": "Brand", "name": "Muravka-krem"},
+        "offers": {
+            "@type": "Offer",
+            "url": request.build_absolute_uri(request.path),
+            "priceCurrency": "UAH",
+            "price": str(product.price),
+            "availability": "https://schema.org/InStock",
+        },
+    }
+    if product.image:
+        product_schema["image"] = request.build_absolute_uri(product.image.url)
+
+    # Escape characters that could terminate the script element or alter JSON-LD parsing.
+    product_schema_json = mark_safe(
+        json.dumps(product_schema, ensure_ascii=False)
+        .replace("&", "\\u0026")
+        .replace("<", "\\u003c")
+        .replace(">", "\\u003e")
+        .replace("\u2028", "\\u2028")
+        .replace("\u2029", "\\u2029")
+    )
+
     return render(
         request,
         'store/catalog/product_detail.html',
         {
             'product': product,
-            'form': form
+            'form': form,
+            'product_schema_json': product_schema_json,
         }
     )
 

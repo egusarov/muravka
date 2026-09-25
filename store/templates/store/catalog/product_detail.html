@@ -4,6 +4,11 @@
 
 {% block title %}{{ product.localized_name }} | Muravka-krem{% endblock %}
 
+{% block extra_head %}
+    {{ block.super }}
+    <script type="application/ld+json">{{ product_schema_json }}</script>
+{% endblock %}
+
 {% block meta_description %}
     {{ product.localized_name }} — {% trans "натуральний засіб ручної роботи Muravka-krem." %} {{ product.localized_description|truncatechars:140 }}
 {% endblock %}
