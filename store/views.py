@@ -1,6 +1,7 @@
 import json
 
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.safestring import mark_safe
@@ -34,7 +35,12 @@ def product_list(request):
         products = products.filter(category__slug=category_slug)
 
     if query:
-        products = products.filter(name__icontains=query)
+        products = products.filter(
+            Q(name__icontains=query)
+            | Q(name_ru__icontains=query)
+            | Q(description__icontains=query)
+            | Q(description_ru__icontains=query)
+        )
 
     paginator = Paginator(products, 6)
     page_number = request.GET.get('page')
