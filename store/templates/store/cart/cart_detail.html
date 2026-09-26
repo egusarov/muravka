@@ -56,7 +56,7 @@
                                         class="btn btn--sm btn--outline btn--icon js-decrease-btn"
                                         {% if item.quantity <= 1 %}disabled{% endif %}
                                         aria-label="{% trans 'Зменшити кількість' %}">
-                                    −
+                                    {% include "store/includes/icons/minus.html" %}
                                 </button>
                             </form>
 
@@ -73,7 +73,7 @@
                                 <button type="submit"
                                         class="btn btn--sm btn--outline btn--icon"
                                         aria-label="{% trans 'Збільшити кількість' %}">
-                                    +
+                                    {% include "store/includes/icons/plus.html" %}
                                 </button>
                             </form>
 
@@ -94,7 +94,7 @@
                                 <button type="submit"
                                         class="btn btn--sm btn--danger btn--icon"
                                         aria-label="{% trans 'Видалити товар' %}">
-                                    ✕
+                                    {% include "store/includes/icons/x.html" %}
                                 </button>
                             </form>
                         </div>

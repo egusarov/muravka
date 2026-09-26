@@ -357,6 +357,12 @@ header a:hover .logo-title {
     display: inline-block;
 }
 
+.order-cart-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 @media (max-width: 768px) {
     .product-detail-image {
         max-width: 100%;

@@ -76,12 +76,12 @@
 
                     <div class="product-detail-actions d-flex justify-content-between">
 
-                        <a href="{% url 'store:cart_detail' %}" class="btn btn--link">
-                            ← {% trans "До кошика" %}
+                        <a href="{% url 'store:cart_detail' %}" class="btn btn--link order-cart-link">
+                            {% include "store/includes/icons/move_left.html" %} {% trans "До кошика" %}
                         </a>
 
                         <button type="submit" class="btn btn--brand" aria-label="{% trans 'Підтвердити замовлення' %}">
-                            🧾 {% trans "Підтвердити замовлення" %}
+                            {% include "store/includes/icons/clipboard_check.html" %} {% trans "Підтвердити замовлення" %}
                         </button>
 
                     </div>
