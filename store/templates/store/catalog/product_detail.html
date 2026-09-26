@@ -46,7 +46,7 @@
                 <div class="product-detail-actions">
 
                     <a href="{% url 'store:product_list' %}" class="btn btn--link product-back-link">
-                        ← {% trans "До каталогу" %}
+                        {% include "store/includes/icons/move_left.html" %} {% trans "До каталогу" %}
                     </a>
 
                     <form
@@ -63,7 +63,7 @@
                             type="submit"
                             class="btn btn--brand"
                             aria-label="{% blocktrans with name=product.localized_name %}Додати {{ name }} в кошик{% endblocktrans %}">
-                                🛒 {% trans "Додати в кошик" %}
+                                {% include "store/includes/icons/handbag.html" %} {% trans "Додати в кошик" %}
                         </button>
                     </form>
 

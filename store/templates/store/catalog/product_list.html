@@ -46,7 +46,7 @@
                                         class="btn btn--icon btn--brand"
                                         title="{% trans 'Додати в кошик' %}"
                                         aria-label="{% blocktrans with name=product.localized_name %}Додати {{ name }} в кошик{% endblocktrans %}">
-                                    🛒
+                                    {% include "store/includes/icons/handbag.html" %}
                                 </button>
                             </form>
                         </div>
@@ -67,11 +67,12 @@
             <!-- PREV -->
             {% if page_obj.has_previous %}
                 <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.previous_page_number }}"
-                   class="pagination-btn">
-                    ←
+                   class="pagination-btn"
+                   aria-label="{% trans 'Попередня сторінка' %}">
+                    {% include "store/includes/icons/move_left.html" %}
                 </a>
             {% else %}
-                <span class="pagination-btn disabled" aria-disabled="true">←</span>
+                <span class="pagination-btn disabled" aria-disabled="true" aria-label="{% trans 'Попередня сторінка' %}">{% include "store/includes/icons/move_left.html" %}</span>
             {% endif %}
 
             <!-- PAGES -->
@@ -89,11 +90,12 @@
             <!-- NEXT -->
             {% if page_obj.has_next %}
                 <a href="?{% if current_category %}category={{ current_category }}&{% endif %}{% if query %}q={{ query }}&{% endif %}page={{ page_obj.next_page_number }}"
-                   class="pagination-btn">
-                    →
+                   class="pagination-btn"
+                   aria-label="{% trans 'Наступна сторінка' %}">
+                    {% include "store/includes/icons/move_right.html" %}
                 </a>
             {% else %}
-                <span class="pagination-btn disabled" aria-disabled="true">→</span>
+                <span class="pagination-btn disabled" aria-disabled="true" aria-label="{% trans 'Наступна сторінка' %}">{% include "store/includes/icons/move_right.html" %}</span>
             {% endif %}
 
         </nav>

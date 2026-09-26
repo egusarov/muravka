@@ -143,6 +143,14 @@
     justify-content: center;
 }
 
+.lucide-icon {
+    display: inline-block;
+    width: 1.25em;
+    height: 1.25em;
+    flex: 0 0 auto;
+    vertical-align: middle;
+}
+
 /* DANGER */
 .btn--danger {
     border: 1px solid #dc3545;

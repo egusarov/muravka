@@ -336,6 +336,9 @@ header a:hover .logo-title {
 }
 
 .product-detail-actions .btn--brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 10px 16px;
     background: rgba(109, 76, 65, 0.1);
     color: #6d4c41;

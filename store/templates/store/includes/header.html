@@ -37,7 +37,7 @@
 
                 <!-- SEARCH -->
                 <div class="search position-relative">
-                    <button class="btn btn--ghost btn--icon" id="searchToggle" aria-label="{% trans "Пошук" %}">🔍</button>
+                    <button class="btn btn--ghost btn--icon" id="searchToggle" aria-label="{% trans "Пошук" %}">{% include "store/includes/icons/search.html" %}</button>
 
                     <form method="get"
                           action="{% url 'store:product_list' %}"
@@ -54,8 +54,9 @@
 
                 <!-- CART -->
                 <a href="{% url 'store:cart_detail' %}"
-                   class="btn btn--ghost btn--icon position-relative">
-                    🛒
+                   class="btn btn--ghost btn--icon position-relative"
+                   aria-label="{% trans 'Кошик' %}">
+                    {% include "store/includes/icons/handbag.html" %}
 
                     <span class="cart-counter position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                           style="{% if cart|length == 0 %}display: none;{% endif %}">
