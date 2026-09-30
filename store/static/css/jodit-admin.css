@@ -1,0 +1,9 @@
+/* Keep Django admin's muted field styles from fading the editor content. */
+.jodit-container .jodit-wysiwyg,
+.jodit-container .jodit-wysiwyg * {
+    opacity: 1 !important;
+}
+
+.jodit-container .jodit-wysiwyg {
+    color: var(--jd-dark-text-color, #d1cccc) !important;
+}

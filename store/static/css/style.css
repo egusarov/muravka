@@ -323,6 +323,15 @@ header a:hover .logo-title {
     margin-bottom: 16px;
 }
 
+.product-detail-description ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.product-detail-description li {
+    margin-bottom: 0.5rem;
+}
+
 .product-detail-actions {
     display: flex;
     align-items: center;

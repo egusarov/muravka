@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.safestring import mark_safe
+from django.utils.html import strip_tags
 
 from .cart import Cart
 from .forms import CartAddProductForm, OrderCreateForm
@@ -71,7 +72,7 @@ def product_detail(request, slug):
         "@context": "https://schema.org",
         "@type": "Product",
         "name": product.localized_name,
-        "description": product.localized_description,
+        "description": strip_tags(product.localized_description),
         "url": request.build_absolute_uri(request.path),
         "brand": {"@type": "Brand", "name": "Muravka-krem"},
         "offers": {

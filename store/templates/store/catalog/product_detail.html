@@ -1,6 +1,7 @@
 {% extends "store/base/base_store.html" %}
 {% load cloudinary %}
 {% load i18n %}
+{% load product_html %}
 
 {% block title %}{{ product.localized_name }} | Muravka-krem{% endblock %}
 
@@ -10,7 +11,7 @@
 {% endblock %}
 
 {% block meta_description %}
-    {{ product.localized_name }} — {% trans "натуральний засіб ручної роботи Muravka-krem." %} {{ product.localized_description|truncatechars:140 }}
+    {{ product.localized_name }} — {% trans "натуральний засіб ручної роботи Muravka-krem." %} {{ product.localized_description|striptags|truncatechars:140 }}
 {% endblock %}
 
 {% block content %}
@@ -39,7 +40,7 @@
 
                 {% if product.localized_description %}
                     <div class="product-detail-description">
-                        {{ product.localized_description|linebreaks }}
+                        {{ product.localized_description|product_html }}
                     </div>
                 {% endif %}
 
