@@ -1,9 +1,11 @@
 import json
 
 from django.core.paginator import Paginator
+from django.db import transaction
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.html import strip_tags
 
@@ -11,6 +13,7 @@ from .cart import Cart
 from .forms import CartAddProductForm, OrderCreateForm
 from .models import Category, Product, OrderItem
 from .services.novaposhta import get_cities, get_warehouses
+from .services.telegram import send_order_notification
 
 
 def home(request):
@@ -173,19 +176,27 @@ def order_create(request):
         form = OrderCreateForm(request.POST)
 
         if form.is_valid():
-            order = form.save(commit=False)
+            with transaction.atomic():
+                order = form.save(commit=False)
 
-            if request.user.is_authenticated:
-                order.user = request.user
+                if request.user.is_authenticated:
+                    order.user = request.user
 
-            order.save()
+                order.save()
 
-            for item in cart:
-                OrderItem.objects.create(
-                    order=order,
-                    product=item['product'],
-                    price=item['product'].price,
-                    quantity=item['quantity']
+                for item in cart:
+                    OrderItem.objects.create(
+                        order=order,
+                        product=item['product'],
+                        price=item['product'].price,
+                        quantity=item['quantity']
+                    )
+
+                admin_url = request.build_absolute_uri(
+                    reverse('admin:store_order_change', args=[order.pk])
+                )
+                transaction.on_commit(
+                    lambda: send_order_notification(order, admin_url)
                 )
 
             request.session['cart'] = {}
